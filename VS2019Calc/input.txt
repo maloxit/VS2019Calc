@@ -1,6 +1,10 @@
-e;pi;c=0
 
-sqrt(2)^2
+-2^2
+floor(-2.5)^2
+floor -2.5 ^2
+floor -2.5
+2*----2
+
 
 sqrt(0.5)
 sin(0.5)
@@ -17,4 +21,5 @@ ceil(0.5)
 ctg(pi * 10000000000)
 ctg(pi /2 + pi * 10000000000)
 ctg(pi)
-ctg(pi/2)
+ctg pi
+

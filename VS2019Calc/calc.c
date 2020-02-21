@@ -8,8 +8,9 @@
 #include "calc.h"
 #define LEM_LIST_LEN 25
 #define CALL_STACK_LEN 10
-#define M_PI 3.1415926535897932
-#define M_E  2.7182818284590452
+#define M_PI 3.1415926535897932384626
+#define M_E  2.71828182845904523536028747
+#define COMP_EPSILON 1e-15
 
 typedef enum lemType_t {
   LEM_TYPE_VALUE = -1,
@@ -189,23 +190,16 @@ static int AppendVar(varList_t* varList, char ch) {
   return (varList->len)++;
 }
 typedef double UnarOp_t(double arg1);
-//static double ctan(double arg1) {
-//  return tan(M_PI / 2 - arg1);
-//}
+
 static double ctan(double arg1) {
-  double buff = sin(arg1);
-  if (buff == 0) {
-    errno = EDOM;
-    return 0;
-  }
-  return /*cos(arg1) / buff - */tan(M_PI / 2 - arg1);
+  return tan(M_PI / 2 - arg1);
 }
 static double UnarMinus(double arg1) {
   return -arg1;
 }
 typedef double BinaryOp_t(double arg1, double arg2);
 static double Divide(double arg1, double arg2) {
-  if (arg2 == 0) {
+  if (fabs(arg2) < COMP_EPSILON) {
     errno = EDOM;
     return 0;
   }
@@ -290,7 +284,7 @@ static resultCode_t LogProcess(node_t* lem, node_t** start, node_t** end, node_t
   insert->type = LEM_TYPE_VALUE;
   errno = 0;
   buff = log(lem->next->value.couple.v2);
-  if (errno != 0 || buff == 0) {
+  if (errno != 0 || fabs(buff) < COMP_EPSILON) {
     errno = 0;
     return CRESULT_ERROR_INVALID_ARG_OR_HUGEVAL;
   }
@@ -332,7 +326,7 @@ static resultCode_t MinusProcess(node_t* lem, node_t** start, node_t** end, node
     i++;
   }
   if (item->type != LEM_TYPE_VALUE) {
-    *end = lem->next;
+    
     if (item->type == LEM_TYPE_MINUS) {
       *start = item;
       i++;
@@ -340,18 +334,34 @@ static resultCode_t MinusProcess(node_t* lem, node_t** start, node_t** end, node
     else {
       *start = item->next;
     }
-    insert->type = LEM_TYPE_VALUE;
-    if (i % 2 == 0)
-      insert->value.single = -lem->next->value.single;
-    else
-      insert->value.single = lem->next->value.single;
+    if (lem->next->next && lem->next->next->type == LEM_TYPE_POW) {
+      *end = lem;
+      if (i % 2 == 0)
+        insert->type = LEM_TYPE_MINUS;
+      else
+        insert->type = LEM_TYPE_PLUS;
+    }
+    else {
+      *end = lem->next;
+      insert->type = LEM_TYPE_VALUE;
+      if (i % 2 == 0)
+        insert->value.single = -lem->next->value.single;
+      else
+        insert->value.single = lem->next->value.single;
+    }
   }
   else {
     *end = lem;
     *start = item->next;
+    
     insert->type = LEM_TYPE_PLUS;
-    if (i % 2 == 0)
-      lem->next->value.single *= -1;
+    if (i % 2 == 0){
+      if (lem->next->next && lem->next->next->type == LEM_TYPE_POW) {
+        insert->type = LEM_TYPE_MINUS;
+      }
+      else
+        lem->next->value.single *= -1;
+    }
   }
   return CRESULT_OK;
 }
@@ -493,7 +503,7 @@ static node_t* GetPrevious(node_t* item) {
   return item->previous;
 }
 
-#define PRIORITY_GROUPS_COUNT 6
+#define PRIORITY_GROUPS_COUNT 7
 
 typedef int isMember_t(node_t * lem);
 int isGoup0Member(node_t* lem) {
@@ -504,34 +514,38 @@ int isGoup0Member(node_t* lem) {
 }
 int isGoup1Member(node_t* lem) {
 
-  if (lem->type >= LEM_TYPE_SQRT && lem->type <= LEM_TYPE_POW) {
-    return 1;
-  }
-  else if (lem->type == LEM_TYPE_MINUS) {
+  if ((lem->type >= LEM_TYPE_SQRT && lem->type <= LEM_TYPE_CEIL) || lem->type == LEM_TYPE_MINUS) {
     return 1;
   }
   else
     return 0;
 }
 int isGoup2Member(node_t* lem) {
+  if (lem->type == LEM_TYPE_POW)
+    return 1;
+  else
+    return 0;
+}
+
+int isGoup3Member(node_t* lem) {
   if (lem->type >= LEM_TYPE_MULTIPLY && lem->type <= LEM_TYPE_DIVIDE)
     return 1;
   else
     return 0;
 }
-int isGoup3Member(node_t* lem) {
+int isGoup4Member(node_t* lem) {
   if (lem->type >= LEM_TYPE_MINUS && lem->type <= LEM_TYPE_PLUS)
     return 1;
   else
     return 0;
 }
-int isGoup4Member(node_t* lem) {
+int isGoup5Member(node_t* lem) {
   if (lem->type == LEM_TYPE_COMMA)
     return 1;
   else
     return 0;
 }
-int isGoup5Member(node_t* lem) {
+int isGoup6Member(node_t* lem) {
   if (lem->type == LEM_TYPE_EQUAL)
     return 1;
   else
@@ -545,10 +559,11 @@ static resultCode_t SubExprCalc(dblList_t** expr, node_t* outItem) {
   } priorityGroups[] = {
     {isGoup0Member, 1},
     {isGoup1Member, 0},
-    {isGoup2Member, 1},
+    {isGoup2Member, 0},
     {isGoup3Member, 1},
     {isGoup4Member, 1},
-    {isGoup5Member, 0}
+    {isGoup5Member, 1},
+    {isGoup6Member, 0}
   };
   int i;
   node_t* item;

@@ -521,7 +521,7 @@ int isGoup1Member(node_t* lem) {
     return 0;
 }
 int isGoup2Member(node_t* lem) {
-  if (lem->type == LEM_TYPE_POW)
+  if (lem->type == LEM_TYPE_POW || lem->type == LEM_TYPE_MINUS)
     return 1;
   else
     return 0;

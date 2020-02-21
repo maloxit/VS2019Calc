@@ -10,7 +10,7 @@
 #define CALL_STACK_LEN 10
 #define M_PI 3.1415926535897932384626
 #define M_E  2.71828182845904523536028747
-#define COMP_EPSILON 1e-15
+#define COMP_EPSILON 0
 
 typedef enum lemType_t {
   LEM_TYPE_VALUE = -1,
@@ -199,7 +199,7 @@ static double UnarMinus(double arg1) {
 }
 typedef double BinaryOp_t(double arg1, double arg2);
 static double Divide(double arg1, double arg2) {
-  if (fabs(arg2) < COMP_EPSILON) {
+  if (fabs(arg2) <= COMP_EPSILON) {
     errno = EDOM;
     return 0;
   }
@@ -284,7 +284,7 @@ static resultCode_t LogProcess(node_t* lem, node_t** start, node_t** end, node_t
   insert->type = LEM_TYPE_VALUE;
   errno = 0;
   buff = log(lem->next->value.couple.v2);
-  if (errno != 0 || fabs(buff) < COMP_EPSILON) {
+  if (errno != 0 || fabs(buff) <= COMP_EPSILON) {
     errno = 0;
     return CRESULT_ERROR_INVALID_ARG_OR_HUGEVAL;
   }

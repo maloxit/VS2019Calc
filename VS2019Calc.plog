@@ -1,0 +1,1165 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="Solution_Path">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="SolutionPath" type="xs:string" minOccurs="0" />
+                <xs:element name="SolutionVersion" type="xs:string" minOccurs="0" />
+                <xs:element name="PlogVersion" type="xs:unsignedInt" minOccurs="0" />
+                <xs:element name="ModificationDate" msdata:DateTimeMode="Utc" type="xs:dateTime" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="PVS-Studio_Analysis_Log">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="FavIcon" type="xs:boolean" minOccurs="0" msdata:Ordinal="0" />
+                <xs:element name="Level" type="xs:unsignedInt" minOccurs="0" msdata:Ordinal="1" />
+                <xs:element name="DefaultOrder" type="xs:int" minOccurs="0" msdata:Ordinal="2" />
+                <xs:element name="ErrorCode" type="xs:string" minOccurs="0" msdata:Ordinal="3" />
+                <xs:element name="Message" type="xs:string" msdata:Ordinal="4" />
+                <xs:element name="Project" type="xs:string" minOccurs="0" msdata:Ordinal="5" />
+                <xs:element name="ShortFile" type="xs:string" minOccurs="0" msdata:Ordinal="6" />
+                <xs:element name="Line" type="xs:int" msdata:Ordinal="7" />
+                <xs:element name="FalseAlarm" type="xs:boolean" minOccurs="0" msdata:Ordinal="8" />
+                <xs:element name="File" type="xs:string" msdata:Ordinal="9" />
+                <xs:element name="CodePrev" type="xs:unsignedInt" minOccurs="0" msdata:Ordinal="10" />
+                <xs:element name="CodeCurrent" type="xs:unsignedInt" minOccurs="0" msdata:Ordinal="11" />
+                <xs:element name="CodeNext" type="xs:unsignedInt" minOccurs="0" msdata:Ordinal="12" />
+                <xs:element name="TrialMessage" type="xs:boolean" minOccurs="0" msdata:Ordinal="13" />
+                <xs:element name="Analyzer" type="xs:int" minOccurs="0" msdata:Ordinal="14" />
+                <xs:element name="LineExtension" type="xs:string" minOccurs="0" msdata:Ordinal="15" />
+                <xs:element name="Retired" type="xs:boolean" default="false" minOccurs="0" msdata:Ordinal="16" />
+                <xs:element name="AnalyzedSourceFiles" type="xs:string" minOccurs="0" msdata:Ordinal="17" />
+                <xs:element name="CWECode" type="xs:string" minOccurs="0" msdata:Ordinal="18" />
+                <xs:element name="MISRA" type="xs:string" minOccurs="0" msdata:Ordinal="19" />
+              </xs:sequence>
+              <xs:attribute name="ErrorCodeNumeric" msdata:ReadOnly="true" msdata:Expression="IIF(LEN(ErrorCode) &lt; 2 OR (SUBSTRING(ErrorCode, 1, 1) &lt;&gt; 'V'), 0, CONVERT(SUBSTRING(ErrorCode, 2, LEN(ErrorCode) - 1), 'System.UInt32'))" type="xs:unsignedInt" use="prohibited" />
+              <xs:attribute name="CWECodeNumeric" msdata:ReadOnly="true" msdata:Expression="ISNULL(IIF(LEN(CWECode) &lt; 4 + 1 OR (SUBSTRING(CWECode, 1, 4) &lt;&gt; 'CWE-'), 4294967295, CONVERT(SUBSTRING(CWECode, 4 + 1, LEN(CWECode) - 4), 'System.UInt32')), 4294967295)" type="xs:unsignedInt" use="prohibited" />
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+      <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//PVS-Studio_Analysis_Log" />
+        <xs:field xpath="Line" />
+        <xs:field xpath="Message" />
+        <xs:field xpath="File" />
+      </xs:unique>
+    </xs:element>
+  </xs:schema>
+  <Solution_Path>
+    <SolutionPath>I:\Projects\VS2019Calc\VS2019Calc.sln</SolutionPath>
+    <SolutionVersion>16.0</SolutionVersion>
+    <PlogVersion>5</PlogVersion>
+    <ModificationDate>2020-02-19T21:21:14.4126891Z</ModificationDate>
+  </Solution_Path>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>1</DefaultOrder>
+    <ErrorCode>V104</ErrorCode>
+    <Message>Implicit conversion of 'arrayLength' to memsize type in an arithmetic expression: sizeof (char) * arrayLength</Message>
+    <Project>VS2019Calc</Project>
+    <ShortFile>main.c</ShortFile>
+    <Line>40</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>I:\Projects\VS2019Calc\VS2019Calc\main.c</File>
+    <CodePrev>160121315</CodePrev>
+    <CodeCurrent>2215681661</CodeCurrent>
+    <CodeNext>164989</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>2</DefaultOrder>
+    <ErrorCode>V104</ErrorCode>
+    <Message>Implicit conversion of 'arrayLength' to memsize type in an arithmetic expression: strBuffer + arrayLength</Message>
+    <Project>VS2019Calc</Project>
+    <ShortFile>main.c</ShortFile>
+    <Line>47</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>I:\Projects\VS2019Calc\VS2019Calc\main.c</File>
+    <CodePrev>5803025</CodePrev>
+    <CodeCurrent>2257773695</CodeCurrent>
+    <CodeNext>125</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>3</DefaultOrder>
+    <ErrorCode>V103</ErrorCode>
+    <Message>Implicit type conversion from memsize to 32-bit type.</Message>
+    <Project>VS2019Calc</Project>
+    <ShortFile>main.c</ShortFile>
+    <Line>50</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>I:\Projects\VS2019Calc\VS2019Calc\main.c</File>
+    <CodePrev>1101</CodePrev>
+    <CodeCurrent>28211092</CodeCurrent>
+    <CodeNext>2344139778</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>4</DefaultOrder>
+    <ErrorCode>V108</ErrorCode>
+    <Message>Incorrect index type: strBuffer[not a memsize-type]. Use memsize type instead.</Message>
+    <Project>VS2019Calc</Project>
+    <ShortFile>main.c</ShortFile>
+    <Line>51</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>I:\Projects\VS2019Calc\VS2019Calc\main.c</File>
+    <CodePrev>28211092</CodePrev>
+    <CodeCurrent>2344139778</CodeCurrent>
+    <CodeNext>3319553351</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>5</DefaultOrder>
+    <ErrorCode>V108</ErrorCode>
+    <Message>Incorrect index type: strBuffer[not a memsize-type]. Use memsize type instead.</Message>
+    <Project>VS2019Calc</Project>
+    <ShortFile>main.c</ShortFile>
+    <Line>52</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>I:\Projects\VS2019Calc\VS2019Calc\main.c</File>
+    <CodePrev>2344139778</CodePrev>
+    <CodeCurrent>3319553351</CodeCurrent>
+    <CodeNext>841019</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>6</DefaultOrder>
+    <ErrorCode>V108</ErrorCode>
+    <Message>Incorrect index type: str[not a memsize-type]. Use memsize type instead.</Message>
+    <Project>VS2019Calc</Project>
+    <ShortFile>main.c</ShortFile>
+    <Line>63</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>I:\Projects\VS2019Calc\VS2019Calc\main.c</File>
+    <CodePrev>4903</CodePrev>
+    <CodeCurrent>2573914942</CodeCurrent>
+    <CodeNext>905</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>7</DefaultOrder>
+    <ErrorCode>V108</ErrorCode>
+    <Message>Incorrect index type: str[not a memsize-type]. Use memsize type instead.</Message>
+    <Project>VS2019Calc</Project>
+    <ShortFile>main.c</ShortFile>
+    <Line>66</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>I:\Projects\VS2019Calc\VS2019Calc\main.c</File>
+    <CodePrev>125</CodePrev>
+    <CodeCurrent>2990423</CodeCurrent>
+    <CodeNext>11235</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>8</DefaultOrder>
+    <ErrorCode>V108</ErrorCode>
+    <Message>Incorrect index type: str[not a memsize-type]. Use memsize type instead.</Message>
+    <Project>VS2019Calc</Project>
+    <ShortFile>main.c</ShortFile>
+    <Line>69</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>I:\Projects\VS2019Calc\VS2019Calc\main.c</File>
+    <CodePrev>1101</CodePrev>
+    <CodeCurrent>1756147544</CodeCurrent>
+    <CodeNext>11235</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>1</Level>
+    <DefaultOrder>9</DefaultOrder>
+    <ErrorCode>V004</ErrorCode>
+    <Message>Diagnostics from the 64-bit rule set are not entirely accurate without the appropriate 64-bit compiler. Consider utilizing 64-bit compiler if possible.</Message>
+    <Project>VS2019Calc</Project>
+    <ShortFile xml:space="preserve"> </ShortFile>
+    <Line>1</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File xml:space="preserve"> </File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>0</CodeCurrent>
+    <CodeNext>0</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>10</DefaultOrder>
+    <ErrorCode>V122</ErrorCode>
+    <Message>Memsize type is used in the struct/class.</Message>
+    <Project>VS2019Calc</Project>
+    <ShortFile>calc.c</ShortFile>
+    <Line>84</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>I:\Projects\VS2019Calc\VS2019Calc\calc.c</File>
+    <CodePrev>356117</CodePrev>
+    <CodeCurrent>399914593</CodeCurrent>
+    <CodeNext>24994363</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>11</DefaultOrder>
+    <ErrorCode>V122</ErrorCode>
+    <Message>Memsize type is used in the struct/class.</Message>
+    <Project>VS2019Calc</Project>
+    <ShortFile>calc.c</ShortFile>
+    <Line>85</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>I:\Projects\VS2019Calc\VS2019Calc\calc.c</File>
+    <CodePrev>399914593</CodePrev>
+    <CodeCurrent>24994363</CodeCurrent>
+    <CodeNext>11303</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>12</DefaultOrder>
+    <ErrorCode>V122</ErrorCode>
+    <Message>Memsize type is used in the struct/class.</Message>
+    <Project>VS2019Calc</Project>
+    <ShortFile>calc.c</ShortFile>
+    <Line>88</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>I:\Projects\VS2019Calc\VS2019Calc\calc.c</File>
+    <CodePrev>387702623</CodePrev>
+    <CodeCurrent>152095</CodeCurrent>
+    <CodeNext>76035</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>13</DefaultOrder>
+    <ErrorCode>V122</ErrorCode>
+    <Message>Memsize type is used in the struct/class.</Message>
+    <Project>VS2019Calc</Project>
+    <ShortFile>calc.c</ShortFile>
+    <Line>89</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>I:\Projects\VS2019Calc\VS2019Calc\calc.c</File>
+    <CodePrev>152095</CodePrev>
+    <CodeCurrent>76035</CodeCurrent>
+    <CodeNext>95007</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>14</DefaultOrder>
+    <ErrorCode>V122</ErrorCode>
+    <Message>Memsize type is used in the struct/class.</Message>
+    <Project>VS2019Calc</Project>
+    <ShortFile>calc.c</ShortFile>
+    <Line>149</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>I:\Projects\VS2019Calc\VS2019Calc\calc.c</File>
+    <CodePrev>387708767</CodePrev>
+    <CodeCurrent>22183</CodeCurrent>
+    <CodeNext>4819</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>15</DefaultOrder>
+    <ErrorCode>V108</ErrorCode>
+    <Message>Incorrect index type: localVarList-&gt;at[not a memsize-type]. Use memsize type instead.</Message>
+    <Project>VS2019Calc</Project>
+    <ShortFile>calc.c</ShortFile>
+    <Line>178</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>I:\Projects\VS2019Calc\VS2019Calc\calc.c</File>
+    <CodePrev>3586334348</CodePrev>
+    <CodeCurrent>677630598</CodeCurrent>
+    <CodeNext>2337</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>16</DefaultOrder>
+    <ErrorCode>V104</ErrorCode>
+    <Message>Implicit conversion of '(varList-&gt;size + 10)' to memsize type in an arithmetic expression: sizeof (var_t) * (varList-&gt;size + 10)</Message>
+    <Project>VS2019Calc</Project>
+    <ShortFile>calc.c</ShortFile>
+    <Line>189</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>I:\Projects\VS2019Calc\VS2019Calc\calc.c</File>
+    <CodePrev>1910392240</CodePrev>
+    <CodeCurrent>1045162327</CodeCurrent>
+    <CodeNext>82435</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>17</DefaultOrder>
+    <ErrorCode>V108</ErrorCode>
+    <Message>Incorrect index type: varList-&gt;at[not a memsize-type]. Use memsize type instead.</Message>
+    <Project>VS2019Calc</Project>
+    <ShortFile>calc.c</ShortFile>
+    <Line>197</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>I:\Projects\VS2019Calc\VS2019Calc\calc.c</File>
+    <CodePrev>125</CodePrev>
+    <CodeCurrent>2412305220</CodeCurrent>
+    <CodeNext>2444257536</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>18</DefaultOrder>
+    <ErrorCode>V108</ErrorCode>
+    <Message>Incorrect index type: varList-&gt;at[not a memsize-type]. Use memsize type instead.</Message>
+    <Project>VS2019Calc</Project>
+    <ShortFile>calc.c</ShortFile>
+    <Line>198</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>I:\Projects\VS2019Calc\VS2019Calc\calc.c</File>
+    <CodePrev>2412305220</CodePrev>
+    <CodeCurrent>2444257536</CodeCurrent>
+    <CodeNext>366972617</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>19</DefaultOrder>
+    <ErrorCode>V550</ErrorCode>
+    <Message>An odd precise comparison: arg2 == 0. It's probably better to use a comparison with defined precision: fabs(A - B) &lt; Epsilon.</Message>
+    <Project>VS2019Calc</Project>
+    <ShortFile>calc.c</ShortFile>
+    <Line>210</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>I:\Projects\VS2019Calc\VS2019Calc\calc.c</File>
+    <CodePrev>3969754430</CodePrev>
+    <CodeCurrent>181585</CodeCurrent>
+    <CodeNext>77453</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>4</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+    <CWECode>CWE-682</CWECode>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>20</DefaultOrder>
+    <ErrorCode>V550</ErrorCode>
+    <Message>An odd precise comparison: buff == 0. It's probably better to use a comparison with defined precision: fabs(A - B) &lt; Epsilon.</Message>
+    <Project>VS2019Calc</Project>
+    <ShortFile>calc.c</ShortFile>
+    <Line>295</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>I:\Projects\VS2019Calc\VS2019Calc\calc.c</File>
+    <CodePrev>2946305425</CodePrev>
+    <CodeCurrent>187299601</CodeCurrent>
+    <CodeNext>9591</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>4</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+    <CWECode>CWE-682</CWECode>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>21</DefaultOrder>
+    <ErrorCode>V108</ErrorCode>
+    <Message>Incorrect index type: localVarList-&gt;at[not a memsize-type]. Use memsize type instead.</Message>
+    <Project>VS2019Calc</Project>
+    <ShortFile>calc.c</ShortFile>
+    <Line>389</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>I:\Projects\VS2019Calc\VS2019Calc\calc.c</File>
+    <CodePrev>1610445484</CodePrev>
+    <CodeCurrent>2360618821</CodeCurrent>
+    <CodeNext>3521238130</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>22</DefaultOrder>
+    <ErrorCode>V108</ErrorCode>
+    <Message>Incorrect index type: localVarList-&gt;at[not a memsize-type]. Use memsize type instead.</Message>
+    <Project>VS2019Calc</Project>
+    <ShortFile>calc.c</ShortFile>
+    <Line>390</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>I:\Projects\VS2019Calc\VS2019Calc\calc.c</File>
+    <CodePrev>2360618821</CodePrev>
+    <CodeCurrent>3521238130</CodeCurrent>
+    <CodeNext>0</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>23</DefaultOrder>
+    <ErrorCode>V108</ErrorCode>
+    <Message>Incorrect index type: localVarList-&gt;at[not a memsize-type]. Use memsize type instead.</Message>
+    <Project>VS2019Calc</Project>
+    <ShortFile>calc.c</ShortFile>
+    <Line>397</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>I:\Projects\VS2019Calc\VS2019Calc\calc.c</File>
+    <CodePrev>222277</CodePrev>
+    <CodeCurrent>3183401165</CodeCurrent>
+    <CodeNext>1401127447</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>24</DefaultOrder>
+    <ErrorCode>V108</ErrorCode>
+    <Message>Incorrect index type: localVarList-&gt;at[not a memsize-type]. Use memsize type instead.</Message>
+    <Project>VS2019Calc</Project>
+    <ShortFile>calc.c</ShortFile>
+    <Line>399</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>I:\Projects\VS2019Calc\VS2019Calc\calc.c</File>
+    <CodePrev>1401127447</CodePrev>
+    <CodeCurrent>1887408948</CodeCurrent>
+    <CodeNext>125</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>25</DefaultOrder>
+    <ErrorCode>V122</ErrorCode>
+    <Message>Memsize type is used in the struct/class.</Message>
+    <Project>VS2019Calc</Project>
+    <ShortFile>calc.c</ShortFile>
+    <Line>410</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>I:\Projects\VS2019Calc\VS2019Calc\calc.c</File>
+    <CodePrev>70629</CodePrev>
+    <CodeCurrent>13842291</CodeCurrent>
+    <CodeNext>5719</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>26</DefaultOrder>
+    <ErrorCode>V122</ErrorCode>
+    <Message>Memsize type is used in the struct/class.</Message>
+    <Project>VS2019Calc</Project>
+    <ShortFile>calc.c</ShortFile>
+    <Line>542</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>I:\Projects\VS2019Calc\VS2019Calc\calc.c</File>
+    <CodePrev>1826480388</CodePrev>
+    <CodeCurrent>39688171</CodeCurrent>
+    <CodeNext>609731</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>1</Level>
+    <DefaultOrder>27</DefaultOrder>
+    <ErrorCode>V614</ErrorCode>
+    <Message>Uninitialized pointer 'item' used.</Message>
+    <Project>VS2019Calc</Project>
+    <ShortFile>calc.c</ShortFile>
+    <Line>559</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>I:\Projects\VS2019Calc\VS2019Calc\calc.c</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>544204160</CodeCurrent>
+    <CodeNext>20380119</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>4</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+    <CWECode>CWE-824</CWECode>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>28</DefaultOrder>
+    <ErrorCode>V122</ErrorCode>
+    <Message>Memsize type is used in the struct/class.</Message>
+    <Project>VS2019Calc</Project>
+    <ShortFile>calc.c</ShortFile>
+    <Line>595</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>I:\Projects\VS2019Calc\VS2019Calc\calc.c</File>
+    <CodePrev>387702409</CodePrev>
+    <CodeCurrent>8855567</CodeCurrent>
+    <CodeNext>152197</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>29</DefaultOrder>
+    <ErrorCode>V122</ErrorCode>
+    <Message>Memsize type is used in the struct/class.</Message>
+    <Project>VS2019Calc</Project>
+    <ShortFile>calc.c</ShortFile>
+    <Line>596</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>I:\Projects\VS2019Calc\VS2019Calc\calc.c</File>
+    <CodePrev>8855567</CodePrev>
+    <CodeCurrent>152197</CodeCurrent>
+    <CodeNext>1217541</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>30</DefaultOrder>
+    <ErrorCode>V122</ErrorCode>
+    <Message>Memsize type is used in the struct/class.</Message>
+    <Project>VS2019Calc</Project>
+    <ShortFile>calc.c</ShortFile>
+    <Line>597</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>I:\Projects\VS2019Calc\VS2019Calc\calc.c</File>
+    <CodePrev>152197</CodePrev>
+    <CodeCurrent>1217541</CodeCurrent>
+    <CodeNext>94921</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>31</DefaultOrder>
+    <ErrorCode>V108</ErrorCode>
+    <Message>Incorrect index type: subExprsCall[not a memsize-type]. Use memsize type instead.</Message>
+    <Project>VS2019Calc</Project>
+    <ShortFile>calc.c</ShortFile>
+    <Line>620</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>I:\Projects\VS2019Calc\VS2019Calc\calc.c</File>
+    <CodePrev>2175931</CodePrev>
+    <CodeCurrent>3579570933</CodeCurrent>
+    <CodeNext>381517970</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>32</DefaultOrder>
+    <ErrorCode>V108</ErrorCode>
+    <Message>Incorrect index type: subExprsCall[not a memsize-type]. Use memsize type instead.</Message>
+    <Project>VS2019Calc</Project>
+    <ShortFile>calc.c</ShortFile>
+    <Line>650</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>I:\Projects\VS2019Calc\VS2019Calc\calc.c</File>
+    <CodePrev>1444905</CodePrev>
+    <CodeCurrent>3408792117</CodeCurrent>
+    <CodeNext>3756052084</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>33</DefaultOrder>
+    <ErrorCode>V108</ErrorCode>
+    <Message>Incorrect index type: subExprsCall[not a memsize-type]. Use memsize type instead.</Message>
+    <Project>VS2019Calc</Project>
+    <ShortFile>calc.c</ShortFile>
+    <Line>651</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>I:\Projects\VS2019Calc\VS2019Calc\calc.c</File>
+    <CodePrev>3408792117</CodePrev>
+    <CodeCurrent>3756052084</CodeCurrent>
+    <CodeNext>2768323341</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>34</DefaultOrder>
+    <ErrorCode>V108</ErrorCode>
+    <Message>Incorrect index type: subExprsCall[not a memsize-type]. Use memsize type instead.</Message>
+    <Project>VS2019Calc</Project>
+    <ShortFile>calc.c</ShortFile>
+    <Line>655</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>I:\Projects\VS2019Calc\VS2019Calc\calc.c</File>
+    <CodePrev>23134553</CodePrev>
+    <CodeCurrent>1704601064</CodeCurrent>
+    <CodeNext>750473828</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>35</DefaultOrder>
+    <ErrorCode>V108</ErrorCode>
+    <Message>Incorrect index type: subExprsCall[not a memsize-type]. Use memsize type instead.</Message>
+    <Project>VS2019Calc</Project>
+    <ShortFile>calc.c</ShortFile>
+    <Line>656</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>I:\Projects\VS2019Calc\VS2019Calc\calc.c</File>
+    <CodePrev>1704601064</CodePrev>
+    <CodeCurrent>750473828</CodeCurrent>
+    <CodeNext>3971138623</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>36</DefaultOrder>
+    <ErrorCode>V108</ErrorCode>
+    <Message>Incorrect index type: subExprsCall[not a memsize-type]. Use memsize type instead.</Message>
+    <Project>VS2019Calc</Project>
+    <ShortFile>calc.c</ShortFile>
+    <Line>657</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>I:\Projects\VS2019Calc\VS2019Calc\calc.c</File>
+    <CodePrev>750473828</CodePrev>
+    <CodeCurrent>3971138623</CodeCurrent>
+    <CodeNext>125</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>37</DefaultOrder>
+    <ErrorCode>V104</ErrorCode>
+    <Message>Implicit conversion of 'stackLen' to memsize type in an arithmetic expression: sizeof (calcState) * stackLen</Message>
+    <Project>VS2019Calc</Project>
+    <ShortFile>calc.c</ShortFile>
+    <Line>661</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>I:\Projects\VS2019Calc\VS2019Calc\calc.c</File>
+    <CodePrev>1485992195</CodePrev>
+    <CodeCurrent>961919904</CodeCurrent>
+    <CodeNext>164989</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>38</DefaultOrder>
+    <ErrorCode>V108</ErrorCode>
+    <Message>Incorrect index type: subExprsCall[not a memsize-type]. Use memsize type instead.</Message>
+    <Project>VS2019Calc</Project>
+    <ShortFile>calc.c</ShortFile>
+    <Line>669</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>I:\Projects\VS2019Calc\VS2019Calc\calc.c</File>
+    <CodePrev>48714769</CodePrev>
+    <CodeCurrent>1704601064</CodeCurrent>
+    <CodeNext>750473828</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>39</DefaultOrder>
+    <ErrorCode>V108</ErrorCode>
+    <Message>Incorrect index type: subExprsCall[not a memsize-type]. Use memsize type instead.</Message>
+    <Project>VS2019Calc</Project>
+    <ShortFile>calc.c</ShortFile>
+    <Line>670</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>I:\Projects\VS2019Calc\VS2019Calc\calc.c</File>
+    <CodePrev>1704601064</CodePrev>
+    <CodeCurrent>750473828</CodeCurrent>
+    <CodeNext>3971138623</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>40</DefaultOrder>
+    <ErrorCode>V108</ErrorCode>
+    <Message>Incorrect index type: subExprsCall[not a memsize-type]. Use memsize type instead.</Message>
+    <Project>VS2019Calc</Project>
+    <ShortFile>calc.c</ShortFile>
+    <Line>671</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>I:\Projects\VS2019Calc\VS2019Calc\calc.c</File>
+    <CodePrev>750473828</CodePrev>
+    <CodeCurrent>3971138623</CodeCurrent>
+    <CodeNext>125</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>41</DefaultOrder>
+    <ErrorCode>V108</ErrorCode>
+    <Message>Incorrect index type: subExprsCall[not a memsize-type]. Use memsize type instead.</Message>
+    <Project>VS2019Calc</Project>
+    <ShortFile>calc.c</ShortFile>
+    <Line>677</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>I:\Projects\VS2019Calc\VS2019Calc\calc.c</File>
+    <CodePrev>1101</CodePrev>
+    <CodeCurrent>1161996737</CodeCurrent>
+    <CodeNext>8597</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>42</DefaultOrder>
+    <ErrorCode>V108</ErrorCode>
+    <Message>Incorrect index type: subExprsCall[not a memsize-type]. Use memsize type instead.</Message>
+    <Project>VS2019Calc</Project>
+    <ShortFile>calc.c</ShortFile>
+    <Line>683</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>I:\Projects\VS2019Calc\VS2019Calc\calc.c</File>
+    <CodePrev>154533511</CodePrev>
+    <CodeCurrent>2643817545</CodeCurrent>
+    <CodeNext>19537161</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>43</DefaultOrder>
+    <ErrorCode>V108</ErrorCode>
+    <Message>Incorrect index type: str[not a memsize-type]. Use memsize type instead.</Message>
+    <Project>VS2019Calc</Project>
+    <ShortFile>calc.c</ShortFile>
+    <Line>710</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>I:\Projects\VS2019Calc\VS2019Calc\calc.c</File>
+    <CodePrev>1460857570</CodePrev>
+    <CodeCurrent>2670252013</CodeCurrent>
+    <CodeNext>173632311</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>44</DefaultOrder>
+    <ErrorCode>V108</ErrorCode>
+    <Message>Incorrect index type: str[not a memsize-type]. Use memsize type instead.</Message>
+    <Project>VS2019Calc</Project>
+    <ShortFile>calc.c</ShortFile>
+    <Line>711</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>I:\Projects\VS2019Calc\VS2019Calc\calc.c</File>
+    <CodePrev>2670252013</CodePrev>
+    <CodeCurrent>173632311</CodeCurrent>
+    <CodeNext>905</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>45</DefaultOrder>
+    <ErrorCode>V108</ErrorCode>
+    <Message>Incorrect index type: str[not a memsize-type]. Use memsize type instead.</Message>
+    <Project>VS2019Calc</Project>
+    <ShortFile>calc.c</ShortFile>
+    <Line>713</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>I:\Projects\VS2019Calc\VS2019Calc\calc.c</File>
+    <CodePrev>905</CodePrev>
+    <CodeCurrent>5980885</CodeCurrent>
+    <CodeNext>2337</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>46</DefaultOrder>
+    <ErrorCode>V108</ErrorCode>
+    <Message>Incorrect index type: str[not a memsize-type]. Use memsize type instead.</Message>
+    <Project>VS2019Calc</Project>
+    <ShortFile>calc.c</ShortFile>
+    <Line>716</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>I:\Projects\VS2019Calc\VS2019Calc\calc.c</File>
+    <CodePrev>125</CodePrev>
+    <CodeCurrent>46154261</CodeCurrent>
+    <CodeNext>60539019</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>47</DefaultOrder>
+    <ErrorCode>V104</ErrorCode>
+    <Message>Implicit conversion of 'i' to memsize type in an arithmetic expression: str + i</Message>
+    <Project>VS2019Calc</Project>
+    <ShortFile>calc.c</ShortFile>
+    <Line>717</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>I:\Projects\VS2019Calc\VS2019Calc\calc.c</File>
+    <CodePrev>46154261</CodePrev>
+    <CodeCurrent>60539019</CodeCurrent>
+    <CodeNext>109855256</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>48</DefaultOrder>
+    <ErrorCode>V550</ErrorCode>
+    <Message>An odd precise comparison: valBuff == 0.0. It's probably better to use a comparison with defined precision: fabs(A - B) &lt; Epsilon.</Message>
+    <Project>VS2019Calc</Project>
+    <ShortFile>calc.c</ShortFile>
+    <Line>718</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>I:\Projects\VS2019Calc\VS2019Calc\calc.c</File>
+    <CodePrev>60539019</CodePrev>
+    <CodeCurrent>109855256</CodeCurrent>
+    <CodeNext>835067417</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>4</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+    <CWECode>CWE-682</CWECode>
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>49</DefaultOrder>
+    <ErrorCode>V104</ErrorCode>
+    <Message>Implicit conversion of 'i' to memsize type in an arithmetic expression: str + i</Message>
+    <Project>VS2019Calc</Project>
+    <ShortFile>calc.c</ShortFile>
+    <Line>718</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>I:\Projects\VS2019Calc\VS2019Calc\calc.c</File>
+    <CodePrev>60539019</CodePrev>
+    <CodeCurrent>109855256</CodeCurrent>
+    <CodeNext>835067417</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>50</DefaultOrder>
+    <ErrorCode>V103</ErrorCode>
+    <Message>Implicit type conversion from memsize to 32-bit type.</Message>
+    <Project>VS2019Calc</Project>
+    <ShortFile>calc.c</ShortFile>
+    <Line>729</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>I:\Projects\VS2019Calc\VS2019Calc\calc.c</File>
+    <CodePrev>125</CodePrev>
+    <CodeCurrent>1686557</CodeCurrent>
+    <CodeNext>125</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>51</DefaultOrder>
+    <ErrorCode>V104</ErrorCode>
+    <Message>Implicit conversion of 'i' to memsize type in an arithmetic expression: str + i</Message>
+    <Project>VS2019Calc</Project>
+    <ShortFile>calc.c</ShortFile>
+    <Line>734</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>I:\Projects\VS2019Calc\VS2019Calc\calc.c</File>
+    <CodePrev>2084199183</CodePrev>
+    <CodeCurrent>439110577</CodeCurrent>
+    <CodeNext>2337</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>52</DefaultOrder>
+    <ErrorCode>V108</ErrorCode>
+    <Message>Incorrect index type: str[not a memsize-type]. Use memsize type instead.</Message>
+    <Project>VS2019Calc</Project>
+    <ShortFile>calc.c</ShortFile>
+    <Line>738</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>I:\Projects\VS2019Calc\VS2019Calc\calc.c</File>
+    <CodePrev>49603993</CodePrev>
+    <CodeCurrent>46173717</CodeCurrent>
+    <CodeNext>4137546972</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>53</DefaultOrder>
+    <ErrorCode>V108</ErrorCode>
+    <Message>Incorrect index type: str[not a memsize-type]. Use memsize type instead.</Message>
+    <Project>VS2019Calc</Project>
+    <ShortFile>calc.c</ShortFile>
+    <Line>739</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>I:\Projects\VS2019Calc\VS2019Calc\calc.c</File>
+    <CodePrev>46173717</CodePrev>
+    <CodeCurrent>4137546972</CodeCurrent>
+    <CodeNext>745129</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>54</DefaultOrder>
+    <ErrorCode>V108</ErrorCode>
+    <Message>Incorrect index type: str[not a memsize-type]. Use memsize type instead.</Message>
+    <Project>VS2019Calc</Project>
+    <ShortFile>calc.c</ShortFile>
+    <Line>741</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>I:\Projects\VS2019Calc\VS2019Calc\calc.c</File>
+    <CodePrev>745129</CodePrev>
+    <CodeCurrent>3819013858</CodeCurrent>
+    <CodeNext>1490217</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>2</Level>
+    <DefaultOrder>55</DefaultOrder>
+    <ErrorCode>V103</ErrorCode>
+    <Message>Implicit type conversion from memsize to 32-bit type.</Message>
+    <Project>VS2019Calc</Project>
+    <ShortFile>calc.c</ShortFile>
+    <Line>778</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>I:\Projects\VS2019Calc\VS2019Calc\calc.c</File>
+    <CodePrev>125</CodePrev>
+    <CodeCurrent>3272660166</CodeCurrent>
+    <CodeNext>125</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>1</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+</NewDataSet>

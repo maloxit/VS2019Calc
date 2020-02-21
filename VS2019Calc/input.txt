@@ -1,0 +1,20 @@
+e;pi;c=0
+
+sqrt(2)^2
+
+sqrt(0.5)
+sin(0.5)
+cos(0.5)
+tg(0.5)
+ctg(0.5)
+arcsin(0.5)
+arccos(0.5)
+arctg(0.5)
+ln(0.5)
+log(2,0.5)
+floor(0.5)
+ceil(0.5)
+ctg(pi * 10000000000)
+ctg(pi /2 + pi * 10000000000)
+ctg(pi)
+ctg(pi/2)

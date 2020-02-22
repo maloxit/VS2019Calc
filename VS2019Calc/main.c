@@ -21,12 +21,15 @@ typedef enum inputResult_t {
 } inputResult_t;
 
 void SkipString() {
-  scanf("%*[^\n]\n");
+  scanf("%*[^\n]");
+  getchar();
 }
 
 inputResult_t ReadLine(char** strOut) {
   char* strBuffer, * strEndPoint, * memTry;
   unsigned int arrayLength;
+  if (feof(stdin))
+    return RESULT_ERROR_INPUT_END;
   memTry = (char*)malloc(sizeof(char) * (BUFF_LEN + 1));
   if (!memTry) {
     SkipString();
@@ -100,14 +103,11 @@ int main(int argc, char* argv[]) {
       if (err.isError) {
         printf(" == ERROR: ");
         CalcPrintError(err);
-        printf("\n");
       }
       else
-        printf(" == %lg\n", ans);
+        printf(" == %lg", ans);
     }
-    else {
-      printf("\n");
-    }
+    printf("\n");
     free(str);
   }
 #ifdef _CRTDBG_MAP_ALLOC

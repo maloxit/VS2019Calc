@@ -1,6 +1,7 @@
-
+//здравствуйте
+привет
 -2^-2^(-2)
-
+а=65
 -2^2
 floor(-2.5)^2
 floor -2.5 ^2
@@ -19,19 +20,16 @@ e^ln(1e-321)
 e^ln(1e-322)	
 e^ln(1e-323)	
 e^ln(1e-324)	
-
 ctg(pi * 1e0)
 ctg(pi * 1e1)
 ctg(pi * 1e2)
 ctg(pi * 1e3)
-ctg(pi * 1e4)
 ctg(pi * 1e5)
 ctg(pi * 1e6)
 ctg(pi * 1e7)
 ctg(pi * 1e8)
 ctg(pi * 1e9)
 ctg(pi * 1e10)
-
 ctg(pi/2 + pi * 1e0)
 ctg(pi/2 + pi * 1e1)
 ctg(pi/2 + pi * 1e2)

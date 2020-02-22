@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include <math.h>
+#include <windows.h>
 #ifdef _CRTDBG_MAP_ALLOC
 #include <crtdbg.h>
 #endif
@@ -60,7 +61,7 @@ inputResult_t ReadLine(char** strOut) {
 
 int IsExpression(char* str) {
   int i = 0;
-  while (str[i] != '\0' && isspace(str[i])) {
+  while (str[i] != '\0' && MyIsSpace(str[i])) {
     i++;
   }
   if (str[i] == '\0')
@@ -78,6 +79,7 @@ int main(int argc, char* argv[]) {
   double ans;
   inputResult_t inputResult;
   calcResult_t err;
+  SetConsoleOutputCP(1251);
   if (argc > 2) {
     printf("ERROR: invalid number of arguments\n");
     return -1;
@@ -86,6 +88,7 @@ int main(int argc, char* argv[]) {
     printf("ERROR: invalid file name\n");
     return -1;
   }
+  SetConsoleCP(1251);
   while ((inputResult = ReadLine(&str)) != RESULT_ERROR_INPUT_END) {
     if (inputResult == RESULT_ERROR_MEMORY_LACK) {
       printf("ERROR: Not enough memory\n");

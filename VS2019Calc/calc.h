@@ -8,7 +8,9 @@ typedef struct calcResult_t {
   int isError;
   char text[35];
 } calcResult_t;
-
+int MyIsSpace(char ch);
+int MyIsDigit(char ch);
+int MyIsAlpha(char ch);
 void CalcPrintError(calcResult_t err);
 calcResult_t StringCalc(const char* const str, double* ans);
 

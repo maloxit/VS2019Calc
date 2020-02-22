@@ -90,6 +90,24 @@ typedef struct dblList_t {
   node_t* end;
 } dblList_t;
 
+int MyIsSpace(char ch) {
+  if (ch == ' ' || ch == '\t' || ch == '\n' || ch == '\v' || ch == '\f' || ch == '\r')
+    return 1;
+  else
+    return 0;
+}
+int MyIsDigit(char ch) {
+  if (ch >= '0' && ch <= '9')
+    return 1;
+  else
+    return 0;
+}
+int MyIsAlpha(char ch) {
+  if ((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z'))
+    return 1;
+  else
+    return 0;
+}
 
 static dblList_t* DblListCreate(void) {
   dblList_t* list = (dblList_t*)malloc(sizeof(dblList_t));
@@ -733,12 +751,12 @@ static resultCode_t LemSplit(const char* const str, dblList_t** expression) {
   if (!(*expression))
     return CRESULT_ERROR_MEMORY_LACK;
   for (i = 0; str[i] != '\0'; i++) {
-    while (isspace(str[i]))
+    while (MyIsSpace(str[i]))
       i++;
     if (str[i] == '\0') {
       break;
     }
-    if (isdigit(str[i])) {
+    if (MyIsDigit(str[i])) {
       singleBuff = strtod(str + i, &endPtr);
       if (endPtr == str + i) {
         DblListFree(expression);
@@ -761,7 +779,7 @@ static resultCode_t LemSplit(const char* const str, dblList_t** expression) {
           break;
       }
       if (k == LEM_LIST_LEN) {
-        if (isalpha(str[i])) {
+        if (MyIsAlpha(str[i])) {
           varIndex = GetCharIndexInVarList(localVarList, str[i]);
           if (varIndex < 0)
             varIndex = AppendVar(localVarList, str[i]);

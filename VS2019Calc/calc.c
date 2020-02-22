@@ -10,7 +10,7 @@
 #define CALL_STACK_LEN 10
 #define M_PI 3.1415926535897932384626
 #define M_E  2.71828182845904523536028747
-#define COMP_EPSILON 0
+#define COMP_EPSILON 1e-11
 
 typedef enum lemType_t {
   LEM_TYPE_VALUE = -1,
@@ -191,8 +191,16 @@ static int AppendVar(varList_t* varList, char ch) {
 }
 typedef double UnarOp_t(double arg1);
 
-static double ctan(double arg1) {
-  return tan(M_PI / 2 - arg1);
+static double MyTan(double arg1) {
+  if (fabs(cos(arg1)) <= COMP_EPSILON) {
+    errno = EDOM;
+    return 0;
+  }
+  return tan(arg1);
+}
+
+static double MyCtan(double arg1) {
+  return MyTan(M_PI / 2 - arg1);
 }
 static double UnarMinus(double arg1) {
   return -arg1;
@@ -258,10 +266,10 @@ static resultCode_t CosProcess(node_t* lem, node_t** start, node_t** end, node_t
   return UnarProcess(cos, lem, start, end, insert);
 }
 static resultCode_t TgProcess(node_t* lem, node_t** start, node_t** end, node_t* insert) {
-  return UnarProcess(tan, lem, start, end, insert);
+  return UnarProcess(MyTan, lem, start, end, insert);
 }
 static resultCode_t CtgProcess(node_t* lem, node_t** start, node_t** end, node_t* insert) {
-  return UnarProcess(ctan, lem, start, end, insert);
+  return UnarProcess(MyCtan, lem, start, end, insert);
 }
 static resultCode_t ArcsinProcess(node_t* lem, node_t** start, node_t** end, node_t* insert) {
   return UnarProcess(asin, lem, start, end, insert);
@@ -288,12 +296,12 @@ static resultCode_t LogProcess(node_t* lem, node_t** start, node_t** end, node_t
     errno = 0;
     return CRESULT_ERROR_INVALID_ARG_OR_HUGEVAL;
   }
-  insert->value.couple.v1 = log(lem->next->value.couple.v1);
+  insert->value.single = log(lem->next->value.couple.v1);
   if (errno != 0) {
     errno = 0;
     return CRESULT_ERROR_INVALID_ARG_OR_HUGEVAL;
   }
-  insert->value.couple.v1 /= buff;
+  insert->value.single /= buff;
   if (errno != 0) {
     errno = 0;
     return CRESULT_ERROR_INVALID_ARG_OR_HUGEVAL;

@@ -643,20 +643,20 @@ static resultCode_t ExprCalc(dblList_t** expr, double* ans) {
   node_t* open;
   node_t* close;
   node_t finalOut;
-  resultCode_t localResult;
+  resultCode_t localResult = CRESULT_OK;
   int localDepth;
   int depth = 0;
   int stackLen = CALL_STACK_LEN;
   calcState* subExprsCall;
   calcState* memTry = (calcState*)malloc(sizeof(calcState) * stackLen);
   if (!memTry) {
+    DblListFree(expr);
     return CRESULT_ERROR_MEMORY_LACK;
   }
   subExprsCall = memTry;
   subExprsCall[depth].subExpr = *expr;
   subExprsCall[depth].item = (*expr)->head;
   subExprsCall[depth].outItem = &finalOut;
-  localResult = CRESULT_OK;
   while (depth >= 0 && !IsError(localResult)) {
     open = close = NULL;
     for (item = subExprsCall[depth].item; item && !IsError(localResult); item = item->next) {
@@ -724,16 +724,19 @@ static resultCode_t ExprCalc(dblList_t** expr, double* ans) {
     for (; depth >= 0; depth--)
       DblListFree(&(subExprsCall[depth].subExpr));
     free(subExprsCall);
+    *expr = NULL;
     return localResult;
   }
   else {
     if (finalOut.type == LEM_TYPE_VALUE) {
       *ans = finalOut.value.single;
       free(subExprsCall);
+      *expr = NULL;
       return localResult;
     }
     else
       free(subExprsCall);
+    *expr = NULL;
     return CRESULT_ERROR;
   }
 }
@@ -828,12 +831,10 @@ static resultCode_t LemSplit(const char* const str, dblList_t** expression) {
   return CRESULT_OK;
 }
 static resultCode_t ExprSequenceCalc(dblList_t** exprSequence, double* ans) {
-  node_t* item;
-  dblList_t* expr;
-  resultCode_t localResult;
+  node_t* item = (*exprSequence)->head;
+  dblList_t* expr = NULL;
+  resultCode_t localResult = CRESULT_OK;
   double localAns = 0;
-  item = (*exprSequence)->head;
-  localResult = CRESULT_OK;
   while (item && !IsError(localResult)) {
     if (item->type == LEM_TYPE_SEMICOLON) {
       localResult = ExptLeftSplit(&expr, exprSequence, item);
@@ -851,7 +852,12 @@ static resultCode_t ExprSequenceCalc(dblList_t** exprSequence, double* ans) {
   if (!item) {
     localResult = ExprCalc(exprSequence, &localAns);
   }
-
+  if ((*exprSequence)) {
+    DblListFree(exprSequence);
+  }
+  if (expr) {
+    DblListFree(&expr);
+  }
   *ans = localAns;
   return localResult;
 

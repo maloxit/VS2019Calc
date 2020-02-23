@@ -4,13 +4,17 @@
 #define CALC_H_INCLUDED__
 #pragma once
 
+#define TRUE 1
+#define FALSE 0
+
+typedef int Bool;
 typedef struct calcResult_t {
-  int isError;
+  Bool isError;
   char text[35];
 } calcResult_t;
-int MyIsSpace(char ch);
-int MyIsDigit(char ch);
-int MyIsAlpha(char ch);
+Bool MyIsSpace(char ch);
+Bool MyIsDigit(char ch);
+Bool MyIsAlpha(char ch);
 void CalcPrintError(calcResult_t err);
 calcResult_t StringCalc(const char* const str, double* ans);
 

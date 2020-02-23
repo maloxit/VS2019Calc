@@ -55,16 +55,16 @@ typedef enum resultCode_t {
 } resultCode_t;
 
 static calcResult_t errorList[] = {
-  {0, "Not an error"},
-  {1, "Invalid value format"},
-  {1, "Invalid symbol combination"},
-  {1, "Missing bracket"},
-  {1, "Not enough memory"},
-  {1, "Invalid expression"},
-  {1, "Invalid argument or huge value"},
-  {1, "Unclassified error"}
+  {FALSE, "Not an error"},
+  {TRUE, "Invalid value format"},
+  {TRUE, "Invalid symbol combination"},
+  {TRUE, "Missing bracket"},
+  {TRUE, "Not enough memory"},
+  {TRUE, "Invalid expression"},
+  {TRUE, "Invalid argument or huge value"},
+  {TRUE, "Unclassified error"}
 };
-int IsError(resultCode_t code) {
+Bool IsError(resultCode_t code) {
   return (code != CRESULT_OK);
 }
 void CalcPrintError(calcResult_t err) {
@@ -90,23 +90,14 @@ typedef struct dblList_t {
   node_t* end;
 } dblList_t;
 
-int MyIsSpace(char ch) {
-  if (ch == ' ' || ch == '\t' || ch == '\n' || ch == '\v' || ch == '\f' || ch == '\r')
-    return 1;
-  else
-    return 0;
+Bool MyIsSpace(char ch) {
+  return (ch == ' ' || ch == '\t' || ch == '\n' || ch == '\v' || ch == '\f' || ch == '\r');
 }
-int MyIsDigit(char ch) {
-  if (ch >= '0' && ch <= '9')
-    return 1;
-  else
-    return 0;
+Bool MyIsDigit(char ch) {
+  return (ch >= '0' && ch <= '9');
 }
-int MyIsAlpha(char ch) {
-  if ((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z'))
-    return 1;
-  else
-    return 0;
+Bool MyIsAlpha(char ch) {
+  return ((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z'));
 }
 
 static dblList_t* DblListCreate(void) {
@@ -135,8 +126,10 @@ static node_t* DblListAppend(dblList_t* list, const value_t * value, lemType_t t
   item->value = *value;
   item->type = type;
   if (list->head == NULL) {
-    item->next = item->previous = NULL;
-    list->head = list->end = item;
+    item->next = NULL;
+    item->previous = NULL;
+    list->head = item;
+    list->end = item;
   }
   else {
     list->end->next = item;
@@ -150,7 +143,7 @@ static node_t* DblListAppend(dblList_t* list, const value_t * value, lemType_t t
 #define VAR_LIST_BUFF_SIZE 10
 typedef struct var_t {
   double val;
-  int isCalculated;
+  Bool isCalculated;
   char ch;
 }var_t;
 
@@ -165,8 +158,9 @@ static varList_t* localVarList;
 static varList_t* GetVarList(void) {
   varList_t* varList;
   varList = (varList_t*)malloc(sizeof(varList_t));
-  if (!varList)
+  if (!varList) {
     return NULL;
+  }
   varList->at = (var_t*)malloc(sizeof(var_t) * VAR_LIST_BUFF_SIZE);
   if (!varList->at) {
     free(varList);
@@ -183,28 +177,33 @@ static void FreeVarList(varList_t** varList) {
 }
 static int GetCharIndexInVarList(varList_t* varList, char ch) {
   int i;
-  for (i = 0; i < varList->len; i++)
-    if (varList->at[i].ch == ch)
+  for (i = 0; i < varList->len; i++) {
+    if (varList->at[i].ch == ch) {
       break;
-  if (i == varList->len)
+    }
+  }
+  if (i == varList->len) {
     return -1;
-  else
+  }
+  else {
     return i;
+  }
 }
 
 static int AppendVar(varList_t* varList, char ch) {
   var_t* memTry;
   if (varList->len == varList->size) {
     memTry = (var_t*)realloc(varList->at, sizeof(var_t) * (varList->size + VAR_LIST_BUFF_SIZE));
-    if (!memTry)
+    if (!memTry) {
       return -1;
+    }
     else {
       varList->size += VAR_LIST_BUFF_SIZE;
       varList->at = memTry;
     }
   }
   varList->at[varList->len].ch = ch;
-  varList->at[varList->len].isCalculated = 0;
+  varList->at[varList->len].isCalculated = FALSE;
   return (varList->len)++;
 }
 typedef double UnarOp_t(double arg1);
@@ -242,10 +241,12 @@ static double BinMinus(double arg1, double arg2) {
 }
 
 static resultCode_t BinaryProcess(BinaryOp_t* operation, node_t* lem, node_t** start, node_t** end, node_t* insert) {
-  if (!(lem->previous && lem->next))
+  if (!(lem->previous && lem->next)) {
     return CRESULT_ERROR_INVALID_EXPR;
-  if (!(lem->previous->type == LEM_TYPE_VALUE && lem->next->type == LEM_TYPE_VALUE))
+  }
+  if (!(lem->previous->type == LEM_TYPE_VALUE && lem->next->type == LEM_TYPE_VALUE)) {
     return CRESULT_ERROR_INVALID_EXPR;
+  }
   *start = lem->previous;
   *end = lem->next;
   insert->type = LEM_TYPE_VALUE;
@@ -258,8 +259,9 @@ static resultCode_t BinaryProcess(BinaryOp_t* operation, node_t* lem, node_t** s
   return CRESULT_OK;
 }
 static resultCode_t UnarProcess(UnarOp_t* operation, node_t* lem, node_t** start, node_t** end, node_t* insert) {
-  if (!(lem->next && lem->next->type == LEM_TYPE_VALUE))
+  if (!(lem->next && lem->next->type == LEM_TYPE_VALUE)) {
     return CRESULT_ERROR_INVALID_EXPR;
+  }
   *start = lem;
   *end = lem->next;
   insert->type = LEM_TYPE_VALUE;
@@ -303,8 +305,9 @@ static resultCode_t LnProcess(node_t* lem, node_t** start, node_t** end, node_t*
 }
 static resultCode_t LogProcess(node_t* lem, node_t** start, node_t** end, node_t* insert) {
   double buff;
-  if (!(lem->next && lem->next->type == LEM_TYPE_COUPLE))
+  if (!(lem->next && lem->next->type == LEM_TYPE_COUPLE)) {
     return CRESULT_ERROR_INVALID_EXPR;
+  }
   *start = lem;
   *end = lem->next;
   insert->type = LEM_TYPE_VALUE;
@@ -352,7 +355,6 @@ static resultCode_t MinusProcess(node_t* lem, node_t** start, node_t** end, node
     i++;
   }
   if (item->type != LEM_TYPE_VALUE) {
-    
     if (item->type == LEM_TYPE_MINUS) {
       *start = item;
       i++;
@@ -362,18 +364,22 @@ static resultCode_t MinusProcess(node_t* lem, node_t** start, node_t** end, node
     }
     if (lem->next->next && lem->next->next->type == LEM_TYPE_POW) {
       *end = lem;
-      if (i % 2 == 0)
+      if (i % 2 == 0) {
         insert->type = LEM_TYPE_MINUS;
-      else
+      }
+      else {
         insert->type = LEM_TYPE_PLUS;
+      }
     }
     else {
       *end = lem->next;
       insert->type = LEM_TYPE_VALUE;
-      if (i % 2 == 0)
+      if (i % 2 == 0) {
         insert->value.single = -lem->next->value.single;
-      else
+      }
+      else {
         insert->value.single = lem->next->value.single;
+      }
     }
   }
   else {
@@ -381,30 +387,35 @@ static resultCode_t MinusProcess(node_t* lem, node_t** start, node_t** end, node
     *start = item->next;
     
     insert->type = LEM_TYPE_PLUS;
-    if (i % 2 == 0){
+    if (i % 2 == 0) {
       if (lem->next->next && lem->next->next->type == LEM_TYPE_POW) {
         insert->type = LEM_TYPE_MINUS;
       }
-      else
+      else {
         lem->next->value.single *= -1;
+      }
     }
   }
   return CRESULT_OK;
 }
 static resultCode_t PlusProcess(node_t* lem, node_t** start, node_t** end, node_t* insert) {
-  if (!(lem->previous && lem->next && lem->previous->type == LEM_TYPE_VALUE))
+  if (!(lem->previous && lem->next && lem->previous->type == LEM_TYPE_VALUE)) {
     return CRESULT_ERROR_INVALID_EXPR;
+  }
   if (lem->next->type == LEM_TYPE_VALUE) {
     return BinaryProcess(Plus, lem, start, end, insert);
   }
-  else
+  else {
     return CRESULT_ERROR_INVALID_EXPR;
+  }
 }
 static resultCode_t CommaProcess(node_t* lem, node_t** start, node_t** end, node_t* insert) {
-  if (!(lem->previous && lem->next))
+  if (!(lem->previous && lem->next)) {
     return CRESULT_ERROR_INVALID_EXPR;
-  if (!(lem->previous->type == LEM_TYPE_VALUE && lem->next->type == LEM_TYPE_VALUE))
+  }
+  if (!(lem->previous->type == LEM_TYPE_VALUE && lem->next->type == LEM_TYPE_VALUE)) {
     return CRESULT_ERROR_INVALID_EXPR;
+  }
   *start = lem->previous;
   *end = lem->next;
   insert->type = LEM_TYPE_COUPLE;
@@ -415,22 +426,25 @@ static resultCode_t CommaProcess(node_t* lem, node_t** start, node_t** end, node
 
 }
 static resultCode_t EqualProcess(node_t* lem, node_t** start, node_t** end, node_t* insert) {
-  if (!(lem->previous && lem->next))
+  if (!(lem->previous && lem->next)) {
     return CRESULT_ERROR_INVALID_EXPR;
-  if (!(lem->previous->type == LEM_TYPE_VAR && lem->next->type == LEM_TYPE_VALUE))
+  }
+  if (!(lem->previous->type == LEM_TYPE_VAR && lem->next->type == LEM_TYPE_VALUE)) {
     return CRESULT_ERROR_INVALID_EXPR;
+  }
   *start = lem->previous;
   *end = lem->next;
   insert->type = LEM_TYPE_VALUE;
   insert->value.single = lem->next->value.single;
   localVarList->at[lem->previous->value.varIndex].val = lem->next->value.single;
-  localVarList->at[lem->previous->value.varIndex].isCalculated = 1;
+  localVarList->at[lem->previous->value.varIndex].isCalculated = TRUE;
 
   return CRESULT_OK;
 
 }
 static resultCode_t VarProcess(node_t* lem, node_t** start, node_t** end, node_t* insert) {
-  *start = *end = lem;
+  *start = lem;
+  *end = lem;
   if (localVarList->at[lem->value.varIndex].isCalculated) {
     insert->type = LEM_TYPE_VALUE;
     insert->value.single = localVarList->at[lem->value.varIndex].val;
@@ -475,11 +489,13 @@ static lem_t lemList[LEM_LIST_LEN] = {
   {"\n", VarProcess}
 };
 static resultCode_t ExptLeftSplit(dblList_t** leftList, dblList_t** mainList, node_t* splitPoint) {
-  if ((*mainList)->head == splitPoint || (*mainList)->end == splitPoint)
+  if ((*mainList)->head == splitPoint || (*mainList)->end == splitPoint) {
     return CRESULT_ERROR_INVALID_EXPR;
+  }
   (*leftList) = DblListCreate();
-  if (!(*leftList))
+  if (!(*leftList)) {
     return CRESULT_ERROR_MEMORY_LACK;
+  }
   (*leftList)->head = (*mainList)->head;
   (*leftList)->end = splitPoint->previous;
   (*leftList)->end->next = NULL;
@@ -491,15 +507,18 @@ static resultCode_t ExptLeftSplit(dblList_t** leftList, dblList_t** mainList, no
 
 static resultCode_t ExtructSubExpr(dblList_t* expr, node_t* start, node_t* close, dblList_t** subExpr) {
   *subExpr = DblListCreate();
-  if (!(*subExpr))
+  if (!(*subExpr)) {
     return CRESULT_ERROR_MEMORY_LACK;
-  if (expr->end == close)
+  }
+  if (expr->end == close) {
     expr->end = start->previous;
+  }
   (*subExpr)->head = start;
   (*subExpr)->end = close->previous;
   start->previous->next = close->next;
-  if (close->next)
+  if (close->next) {
     close->next->previous = start->previous;
+  }
   (*subExpr)->head->previous = NULL;
   (*subExpr)->end->next = NULL;
   free(close);
@@ -507,10 +526,12 @@ static resultCode_t ExtructSubExpr(dblList_t* expr, node_t* start, node_t* close
 }
 static void ShrinkSubExpr(dblList_t* expr, node_t* start, node_t* end, const node_t * insert) {
   node_t* item, * next;
-  if (end->next)
+  if (end->next) {
     end->next->previous = start;
-  else
+  }
+  else {
     expr->end = start;
+  }
   start->next = end->next;
   item = end;
   while (item != start) {
@@ -531,65 +552,41 @@ static node_t* GetPrevious(node_t* item) {
 
 #define PRIORITY_GROUPS_COUNT 7
 
-typedef int isMember_t(node_t * lem);
-int isGoup0Member(node_t* lem) {
-  if (lem->type == LEM_TYPE_VAR)
-    return 1;
-  else
-    return 0;
+typedef Bool isMember_t(node_t * lem);
+Bool isGoup0Member(node_t* lem) {
+  return (lem->type == LEM_TYPE_VAR);
 }
-int isGoup1Member(node_t* lem) {
-
-  if ((lem->type >= LEM_TYPE_SQRT && lem->type <= LEM_TYPE_CEIL) || lem->type == LEM_TYPE_MINUS) {
-    return 1;
-  }
-  else
-    return 0;
+Bool isGoup1Member(node_t* lem) {
+  return ((lem->type >= LEM_TYPE_SQRT && lem->type <= LEM_TYPE_CEIL) || lem->type == LEM_TYPE_MINUS);
 }
-int isGoup2Member(node_t* lem) {
-  if (lem->type == LEM_TYPE_POW || lem->type == LEM_TYPE_MINUS)
-    return 1;
-  else
-    return 0;
+Bool isGoup2Member(node_t* lem) {
+  return (lem->type == LEM_TYPE_POW || lem->type == LEM_TYPE_MINUS);
 }
-
-int isGoup3Member(node_t* lem) {
-  if (lem->type >= LEM_TYPE_MULTIPLY && lem->type <= LEM_TYPE_DIVIDE)
-    return 1;
-  else
-    return 0;
+Bool isGoup3Member(node_t* lem) {
+  return (lem->type >= LEM_TYPE_MULTIPLY && lem->type <= LEM_TYPE_DIVIDE);
 }
-int isGoup4Member(node_t* lem) {
-  if (lem->type >= LEM_TYPE_MINUS && lem->type <= LEM_TYPE_PLUS)
-    return 1;
-  else
-    return 0;
+Bool isGoup4Member(node_t* lem) {
+  return (lem->type >= LEM_TYPE_MINUS && lem->type <= LEM_TYPE_PLUS);
 }
-int isGoup5Member(node_t* lem) {
-  if (lem->type == LEM_TYPE_COMMA)
-    return 1;
-  else
-    return 0;
+Bool isGoup5Member(node_t* lem) {
+  return (lem->type == LEM_TYPE_COMMA);
 }
-int isGoup6Member(node_t* lem) {
-  if (lem->type == LEM_TYPE_EQUAL)
-    return 1;
-  else
-    return 0;
+Bool isGoup6Member(node_t* lem) {
+  return (lem->type == LEM_TYPE_EQUAL);
 }
 
 static resultCode_t SubExprCalc(dblList_t** expr, node_t* outItem) {
   static struct priorityGroups {
     isMember_t* IsMember;
-    int isFromLeft;
+    Bool isFromLeft;
   } priorityGroups[] = {
-    {isGoup0Member, 1},
-    {isGoup1Member, 0},
-    {isGoup2Member, 0},
-    {isGoup3Member, 1},
-    {isGoup4Member, 1},
-    {isGoup5Member, 1},
-    {isGoup6Member, 0}
+    {isGoup0Member, TRUE},
+    {isGoup1Member, FALSE},
+    {isGoup2Member, FALSE},
+    {isGoup3Member, TRUE},
+    {isGoup4Member, TRUE},
+    {isGoup5Member, TRUE},
+    {isGoup6Member, FALSE}
   };
   int i;
   node_t* item;
@@ -611,22 +608,25 @@ static resultCode_t SubExprCalc(dblList_t** expr, node_t* outItem) {
     for (; item; item = GetAnother(item)) {
       if (priorityGroups[i].IsMember(item)) {
         localResult = lemList[item->type].CalcFun(item, &start, &end, &insert);
-        if (IsError(localResult))
+        if (IsError(localResult)) {
           break;
+        }
         ShrinkSubExpr(*expr, start, end, &insert);
         item = start;
       }
     }
-    if (IsError(localResult))
+    if (IsError(localResult)) {
       break;
+    }
   }
   if (!IsError(localResult)) {
     if ((*expr)->head && (*expr)->head == (*expr)->end) {
       outItem->type = (*expr)->head->type;
       outItem->value = (*expr)->head->value;
     }
-    else
+    else {
       localResult = CRESULT_ERROR_INVALID_EXPR;
+    }
   }
   DblListFree(expr);
   return localResult;
@@ -658,7 +658,8 @@ static resultCode_t ExprCalc(dblList_t** expr, double* ans) {
   subExprsCall[depth].item = (*expr)->head;
   subExprsCall[depth].outItem = &finalOut;
   while (depth >= 0 && !IsError(localResult)) {
-    open = close = NULL;
+    open = NULL;
+    close = NULL;
     for (item = subExprsCall[depth].item; item && !IsError(localResult); item = item->next) {
       if (item->type == LEM_TYPE_OPEN) {
         open = item;
@@ -667,22 +668,28 @@ static resultCode_t ExprCalc(dblList_t** expr, double* ans) {
         while (close) {
           if (close->type == LEM_TYPE_CLOSE) {
             localDepth--;
-            if (localDepth == 0)
+            if (localDepth == 0) {
               break;
+            }
           }
-          else if (close->type == LEM_TYPE_OPEN) {
-            localDepth++;
+          else {
+            if (close->type == LEM_TYPE_OPEN) {
+              localDepth++;
+            }
           }
           close = close->next;
         }
         if (!close || close == open->next) {
           localResult = CRESULT_ERROR_BRACKET;
         }
-        else
+        else {
           break;
+        }
       }
-      else if (item->type == LEM_TYPE_CLOSE) {
-        localResult = CRESULT_ERROR_BRACKET;
+      else {
+        if (item->type == LEM_TYPE_CLOSE) {
+          localResult = CRESULT_ERROR_BRACKET;
+        }
       }
     }
     if (IsError(localResult)) {
@@ -721,8 +728,9 @@ static resultCode_t ExprCalc(dblList_t** expr, double* ans) {
     }
   }
   if (IsError(localResult)) {
-    for (; depth >= 0; depth--)
+    for (; depth >= 0; depth--) {
       DblListFree(&(subExprsCall[depth].subExpr));
+    }
     free(subExprsCall);
     *expr = NULL;
     return localResult;
@@ -734,8 +742,9 @@ static resultCode_t ExprCalc(dblList_t** expr, double* ans) {
       *expr = NULL;
       return localResult;
     }
-    else
+    else {
       free(subExprsCall);
+    }
     *expr = NULL;
     return CRESULT_ERROR;
   }
@@ -748,16 +757,16 @@ static resultCode_t LemSplit(const char* const str, dblList_t** expression) {
   double singleBuff;
   value_t valBuff;
   localVarList = GetVarList();
-  if (!localVarList)
+  if (!localVarList) {
     return CRESULT_ERROR_MEMORY_LACK;
+  }
   *expression = DblListCreate();
-  if (!(*expression))
+  if (!(*expression)) {
     return CRESULT_ERROR_MEMORY_LACK;
+  }
   for (i = 0; str[i] != '\0'; i++) {
-    while (MyIsSpace(str[i]))
-      i++;
-    if (str[i] == '\0') {
-      break;
+    if (MyIsSpace(str[i])) {
+      continue;
     }
     if (MyIsDigit(str[i])) {
       singleBuff = strtod(str + i, &endPtr);
@@ -778,14 +787,16 @@ static resultCode_t LemSplit(const char* const str, dblList_t** expression) {
     }
     else {
       for (k = 0; k < LEM_LIST_LEN; k++) {
-        if (strncmp(str + i, lemList[k].str, strlen(lemList[k].str)) == 0)
+        if (strncmp(str + i, lemList[k].str, strlen(lemList[k].str)) == FALSE) {
           break;
+        }
       }
       if (k == LEM_LIST_LEN) {
         if (MyIsAlpha(str[i])) {
           varIndex = GetCharIndexInVarList(localVarList, str[i]);
-          if (varIndex < 0)
+          if (varIndex < 0) {
             varIndex = AppendVar(localVarList, str[i]);
+          }
           if (varIndex < 0) {
             DblListFree(expression);
             FreeVarList(&localVarList);
@@ -819,7 +830,7 @@ static resultCode_t LemSplit(const char* const str, dblList_t** expression) {
           typeSet = LEM_TYPE_VALUE;
         }
         valBuff.single = singleBuff;
-        if (!DblListAppend(*expression, &valBuff, (lemType_t)typeSet)) {
+        if (!DblListAppend(*expression, &valBuff, typeSet)) {
           DblListFree(expression);
           FreeVarList(&localVarList);
           return CRESULT_ERROR_MEMORY_LACK;
@@ -846,8 +857,9 @@ static resultCode_t ExprSequenceCalc(dblList_t** exprSequence, double* ans) {
         localResult = ExprCalc(&expr, &localAns);
       }
     }
-    else
+    else {
       item = item->next;
+    }
   }
   if (!item) {
     localResult = ExprCalc(exprSequence, &localAns);
@@ -866,8 +878,9 @@ calcResult_t StringCalc(const char* const str, double* ans) {
   dblList_t* expr;
   resultCode_t result;
   result = LemSplit(str, &expr);
-  if (IsError(result))
+  if (IsError(result)) {
     return errorList[result];
+  }
   result = ExprSequenceCalc(&expr, ans);
   FreeVarList(&localVarList);
   return errorList[result];

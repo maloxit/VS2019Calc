@@ -26,21 +26,19 @@ void SkipString() {
 }
 
 inputResult_t ReadLine(char** strOut) {
-  static int memFail = 0;
   char * strBuffer, * strEndPoint, * memTry;
   char firstCharBuff;
   int arrayLength;
   int strLength;
-  if ((int)(firstCharBuff = (char)getchar()) == EOF)
+  firstCharBuff = (char)getchar();
+  if ((int)firstCharBuff == EOF) {
     return RESULT_ERROR_INPUT_END;
-  memTry = (char*)malloc(sizeof(char) * (BUFF_LEN + 1));
-  if ((--memFail) == 0) {
-    free(memTry);
-    memTry = NULL;
   }
+  memTry = (char*)malloc(sizeof(char) * (BUFF_LEN + 1));
   if (!memTry) {
-    if (firstCharBuff != '\n')
+    if (firstCharBuff != '\n') {
       SkipString();
+    }
     return RESULT_ERROR_MEMORY_LACK;
   }
   strBuffer = memTry;
@@ -67,24 +65,28 @@ inputResult_t ReadLine(char** strOut) {
     fgets(strEndPoint, BUFF_LEN + 1, stdin);
   }
   strLength = (int)strlen(strBuffer);
-  if (strBuffer[strLength - 1] == '\n')
+  if (strBuffer[strLength - 1] == '\n') {
     strBuffer[strLength - 1] = '\0';
+  }
   *strOut = strBuffer;
   return RESULT_OK;
 }
 
-int IsExpression(char* str) {
+Bool IsExpression(char* str) {
   int i = 0;
   while (str[i] != '\0' && MyIsSpace(str[i])) {
     i++;
   }
-  if (str[i] == '\0')
-    return 0;
+  if (str[i] == '\0') {
+    return FALSE;
+  }
   else {
-    if (str[i] == '/' && str[i + 1] == '/')
-      return 0;
-    else
-      return 1;
+    if (str[i] == '/' && str[i + 1] == '/') {
+      return FALSE;
+    }
+    else {
+      return TRUE;
+    }
   }
 }
 
@@ -115,8 +117,9 @@ int main(int argc, char* argv[]) {
         printf(" == ERROR: ");
         CalcPrintError(err);
       }
-      else
+      else {
         printf(" == %lg", ans);
+      }
     }
     printf("\n");
     free(str);

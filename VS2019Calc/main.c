@@ -11,7 +11,7 @@
 #endif
 #pragma warning(disable:4996)
 #include "calc.h"
-#define BUFF_LEN 20
+#define READ_BUFF_LEN 20
 
 typedef enum inputResult_t {
   RESULT_OK,
@@ -34,7 +34,7 @@ inputResult_t ReadLine(char** strOut) {
   if ((int)firstCharBuff == EOF) {
     return RESULT_ERROR_INPUT_END;
   }
-  memTry = (char*)malloc(sizeof(char) * (BUFF_LEN + 1));
+  memTry = (char*)malloc(sizeof(char) * (READ_BUFF_LEN + 1));
   if (!memTry) {
     if (firstCharBuff != '\n') {
       SkipString();
@@ -42,7 +42,7 @@ inputResult_t ReadLine(char** strOut) {
     return RESULT_ERROR_MEMORY_LACK;
   }
   strBuffer = memTry;
-  arrayLength = BUFF_LEN + 1;
+  arrayLength = READ_BUFF_LEN + 1;
   
   if (firstCharBuff == '\n') {
     strBuffer[0] = '\0';
@@ -50,10 +50,10 @@ inputResult_t ReadLine(char** strOut) {
     return RESULT_OK;
   }
   strBuffer[0] = firstCharBuff;
-  fgets(strBuffer + 1, BUFF_LEN, stdin);
+  fgets(strBuffer + 1, READ_BUFF_LEN, stdin);
   strEndPoint = strBuffer;
-  while (strlen(strEndPoint) == BUFF_LEN && strEndPoint[BUFF_LEN - 1] != '\n') {
-    arrayLength += BUFF_LEN;
+  while (strlen(strEndPoint) == READ_BUFF_LEN && strEndPoint[READ_BUFF_LEN - 1] != '\n') {
+    arrayLength += READ_BUFF_LEN;
     memTry = (char*)realloc(strBuffer, sizeof(char) * arrayLength);
     if (!memTry) {
       SkipString();
@@ -61,8 +61,8 @@ inputResult_t ReadLine(char** strOut) {
       return RESULT_ERROR_MEMORY_LACK;
     }
     strBuffer = memTry;
-    strEndPoint = strBuffer + arrayLength - BUFF_LEN - 1;
-    fgets(strEndPoint, BUFF_LEN + 1, stdin);
+    strEndPoint = strBuffer + arrayLength - READ_BUFF_LEN - 1;
+    fgets(strEndPoint, READ_BUFF_LEN + 1, stdin);
   }
   strLength = (int)strlen(strBuffer);
   if (strBuffer[strLength - 1] == '\n') {
@@ -115,7 +115,7 @@ int main(int argc, char* argv[]) {
       err = StringCalc(str, &ans);
       if (err.isError) {
         printf(" == ERROR: ");
-        CalcPrintError(err);
+        CalcResultPrint(err);
       }
       else {
         printf(" == %lg", ans);

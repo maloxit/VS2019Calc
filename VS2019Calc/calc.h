@@ -6,16 +6,21 @@
 
 #define TRUE 1
 #define FALSE 0
-
 typedef int Bool;
+
 typedef struct calcResult_t {
   Bool isError;
   char text[35];
 } calcResult_t;
+
 Bool MyIsSpace(char ch);
+
 Bool MyIsDigit(char ch);
+
 Bool MyIsAlpha(char ch);
-void CalcPrintError(calcResult_t err);
+
+void CalcResultPrint(calcResult_t err);
+
 calcResult_t StringCalc(const char* const str, double* ans);
 
 #endif //CALC_H_INCLUDED__

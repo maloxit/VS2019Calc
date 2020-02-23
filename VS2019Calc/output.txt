@@ -1,0 +1,9 @@
+234567890 == 2.34568e+08
+90123456789 == 9.01235e+10
+012345678 == 1.23457e+07
+
+
+
+аа == ERROR: Invalid symbol combination
+
+ииии == ERROR: Invalid symbol combination

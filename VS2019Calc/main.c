@@ -26,40 +26,51 @@ void SkipString() {
 }
 
 inputResult_t ReadLine(char** strOut) {
-  char* strBuffer, * strEndPoint, * memTry;
-  unsigned int arrayLength;
-  if (feof(stdin))
+  static int memFail = 0;
+  char * strBuffer, * strEndPoint, * memTry;
+  char firstCharBuff;
+  int arrayLength;
+  int strLength;
+  if ((int)(firstCharBuff = getchar()) == EOF)
     return RESULT_ERROR_INPUT_END;
   memTry = (char*)malloc(sizeof(char) * (BUFF_LEN + 1));
+  if ((--memFail) == 0) {
+    free(memTry);
+    memTry = NULL;
+  }
   if (!memTry) {
-    SkipString();
+    if (firstCharBuff != '\n')
+      SkipString();
     return RESULT_ERROR_MEMORY_LACK;
   }
   strBuffer = memTry;
   arrayLength = BUFF_LEN + 1;
-  strEndPoint = strBuffer;
-  while (fgets(strEndPoint, BUFF_LEN + 1, stdin) != NULL) {
-    if (strlen(strEndPoint) == BUFF_LEN && strEndPoint[BUFF_LEN - 1] != '\n') {
-      arrayLength += BUFF_LEN;
-      memTry = (char*)realloc(strBuffer, sizeof(char) * arrayLength);
-      if (!memTry) {
-        SkipString();
-        free(strBuffer);
-        return RESULT_ERROR_MEMORY_LACK;
-      }
-      strBuffer = memTry;
-      strEndPoint = strBuffer + arrayLength - BUFF_LEN - 1;
-    }
-    else {
-      unsigned int strLength = strlen(strBuffer);
-      if (strBuffer[strLength - 1] == '\n')
-        strBuffer[strLength - 1] = '\0';
-      *strOut = strBuffer;
-      return RESULT_OK;
-    }
+  
+  if (firstCharBuff == '\n') {
+    strBuffer[0] = '\0';
+    *strOut = strBuffer;
+    return RESULT_OK;
   }
-  free(strBuffer);
-  return RESULT_ERROR_INPUT_END;
+  strBuffer[0] = firstCharBuff;
+  fgets(strBuffer + 1, BUFF_LEN, stdin);
+  strEndPoint = strBuffer;
+  while (strlen(strEndPoint) == BUFF_LEN && strEndPoint[BUFF_LEN - 1] != '\n') {
+    arrayLength += BUFF_LEN;
+    memTry = (char*)realloc(strBuffer, sizeof(char) * arrayLength);
+    if (!memTry) {
+      SkipString();
+      free(strBuffer);
+      return RESULT_ERROR_MEMORY_LACK;
+    }
+    strBuffer = memTry;
+    strEndPoint = strBuffer + arrayLength - BUFF_LEN - 1;
+    fgets(strEndPoint, BUFF_LEN + 1, stdin);
+  }
+  strLength = (int)strlen(strBuffer);
+  if (strBuffer[strLength - 1] == '\n')
+    strBuffer[strLength - 1] = '\0';
+  *strOut = strBuffer;
+  return RESULT_OK;
 }
 
 int IsExpression(char* str) {

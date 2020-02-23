@@ -31,7 +31,7 @@ inputResult_t ReadLine(char** strOut) {
   char firstCharBuff;
   int arrayLength;
   int strLength;
-  if ((int)(firstCharBuff = getchar()) == EOF)
+  if ((int)(firstCharBuff = (char)getchar()) == EOF)
     return RESULT_ERROR_INPUT_END;
   memTry = (char*)malloc(sizeof(char) * (BUFF_LEN + 1));
   if ((--memFail) == 0) {

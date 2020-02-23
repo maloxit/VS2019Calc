@@ -773,7 +773,7 @@ static resultCode_t LemSplit(const char* const str, dblList_t** expression) {
           FreeVarList(&localVarList);
           return CRESULT_ERROR_MEMORY_LACK;
         }
-        i = endPtr - str - 1;
+        i = (int)(endPtr - str - 1);
       }
     }
     else {
@@ -824,7 +824,7 @@ static resultCode_t LemSplit(const char* const str, dblList_t** expression) {
           FreeVarList(&localVarList);
           return CRESULT_ERROR_MEMORY_LACK;
         }
-        i += strlen(lemList[k].str) - 1;
+        i += (int)strlen(lemList[k].str) - 1;
       }
     }
   }

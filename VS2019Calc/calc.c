@@ -7,11 +7,11 @@
 #include <math.h>
 #include "calc.h"
 #define LEX_LIST_LEN 25
-#define CALL_STACK_LEN 10
+
 #define M_PI 3.1415926535897932384626
 #define M_E  2.71828182845904523536028747
 #define COMP_EPSILON 1e-11
-
+//Перчисление типов лексем
 typedef enum lexType_t {
   LEX_TYPE_VALUE = -1,
   LEX_TYPE_COUPLE = -2,
@@ -43,7 +43,7 @@ typedef enum lexType_t {
   LEX_TYPE_VAR
 } lexType_t;
 
-
+//Коды результатов вычисления, используются внутри модуля
 typedef enum resultCode_t {
   CRESULT_OK = 0,
   CRESULT_ERROR_VALUE_FORMAT,
@@ -55,6 +55,7 @@ typedef enum resultCode_t {
   CRESULT_ERROR
 } resultCode_t;
 
+//Подробная информация о результатах вычислений, используется вне модуля
 static calcResult_t resultList[] = {
   {FALSE, "Not an error"},
   {TRUE, "Invalid value format"},
@@ -66,15 +67,18 @@ static calcResult_t resultList[] = {
   {TRUE, "Unclassified error"}
 };
 
+//Проверяет, является ли результат ошибкой
 Bool ResultCodeIsError(resultCode_t code) {
   return (code != CRESULT_OK);
 }
 
+//Выводит в стандартный поток вывода текст результата вычисления (ошибки)
 void CalcResultPrint(calcResult_t result) {
   printf("%s", result.text);
 }
 
 
+//Функции работы с символами, аналогичные стандартным, но с поддержкой кирилицы
 Bool MyIsSpace(char ch) {
   return (ch == ' ' || ch == '\t' || ch == '\n' || ch == '\v' || ch == '\f' || ch == '\r');
 }
@@ -88,17 +92,20 @@ Bool MyIsAlpha(char ch) {
 }
 
 
+//Упорядоченная пара вещественных значений
 typedef struct couple_t {
   double v1;
   double v2;
 } couple_t;
 
+//Значение лексемы, которое может быть парой, индексом локальной перемонной или одним числом
 typedef union value_t {
   couple_t couple;
   unsigned int varIndex;
   double single;
 } value_t;
 
+//Лексема, являющаяся элементом двусвязного списка, имеет тип и значение
 typedef struct _node_t {
   lexType_t type;
   value_t value;
@@ -106,11 +113,13 @@ typedef struct _node_t {
   struct _node_t* next;
 } node_t;
 
+//Двусвязный список
 typedef struct dblList_t {
   node_t* head;
   node_t* end;
 } dblList_t;
 
+//Создает двусвязный список
 static dblList_t* DblListCreate(void) {
   dblList_t* list = (dblList_t*)malloc(sizeof(dblList_t));
   if (list != NULL) {
@@ -120,6 +129,7 @@ static dblList_t* DblListCreate(void) {
   return list;
 }
 
+//Выгружает двусвязный список из памяти
 static void DblListFree(dblList_t** list) {
   node_t* item = (*list)->head, * nextI = NULL;
   while (item) {
@@ -131,6 +141,7 @@ static void DblListFree(dblList_t** list) {
   *list = NULL;
 }
 
+//Добавляет элемент в конец двусвязного списка
 static node_t* DblListAppend(dblList_t* list, const value_t * value, lexType_t type) {
   node_t* item = (node_t*)malloc(sizeof(node_t));
   if (!item) {
@@ -153,6 +164,8 @@ static node_t* DblListAppend(dblList_t* list, const value_t * value, lexType_t t
   return item;
 }
 
+//Отсекает от списка подсписок слева от элемента деления
+//Используется для обработки последовательности выражений, записанных через ';'
 static resultCode_t DblListLeftSplit(dblList_t** leftList, dblList_t** mainList, node_t* splitPoint) {
   if ((*mainList)->head == splitPoint || (*mainList)->end == splitPoint) {
     return CRESULT_ERROR_INVALID_EXPR;
@@ -170,6 +183,8 @@ static resultCode_t DblListLeftSplit(dblList_t** leftList, dblList_t** mainList,
   return CRESULT_OK;
 }
 
+//Выделяет участок списка между двумя его элементами в подсписок, на месте него остается полько открываущий элемент
+//Используется для выделения выражений, заключенных в круглые скобки
 static resultCode_t DblListExtructSubList(dblList_t* list, node_t* start, node_t* close, dblList_t** subList) {
   *subList = DblListCreate();
   if (!(*subList)) {
@@ -190,6 +205,8 @@ static resultCode_t DblListExtructSubList(dblList_t* list, node_t* start, node_t
   return CRESULT_OK;
 }
 
+//Заменяет участок списка от начального элемента до конечного включительно на единственный переданный элемент
+//Используется для замены вычисленных выражений на результат
 static void DblListShrinkSubList(dblList_t* list, node_t* start, node_t* end, const node_t* insert) {
   node_t* item, * next;
   if (end->next) {
@@ -209,31 +226,38 @@ static void DblListShrinkSubList(dblList_t* list, node_t* start, node_t* end, co
   start->value = insert->value;
 }
 
+//Возвращает следующий за переданным элемент последовательности
 static node_t* NodeGetNext(node_t* item) {
   return item->next;
 }
 
+//Возвращает предыдущий переданному элемент последовательности
 static node_t* NodeGetPrevious(node_t* item) {
   return item->previous;
 }
 
-
+//Начальная длина списка локальных переменных
 #define VAR_LIST_BUFF_SIZE 10
 
+//Локальная однобуквенныя переменная, имеет вычисленное и неопределённое состояния и значение
 typedef struct var_t {
   double val;
   Bool isCalculated;
   char ch;
 }var_t;
 
+//Список локальных переменных с довыделяющейся памятью
 typedef struct varList_t {
   var_t* at;
   int len;
   int size;
 }varList_t;
 
+//Локальная глобальный указатель на текущий список локальных переменных
+//Нужен для уменьшения кол-ва аргументов функций обработки лексем
 static varList_t* localVarList;
 
+//Создает пустой список локильных переменных
 static varList_t* VarListGet(void) {
   varList_t* varList;
   varList = (varList_t*)malloc(sizeof(varList_t));
@@ -250,12 +274,14 @@ static varList_t* VarListGet(void) {
   return varList;
 }
 
+//Выгружает список локильных переменных из памяти
 static void VarListFree(varList_t** varList) {
   free((*varList)->at);
   free(*varList);
   *varList = NULL;
 }
 
+//Ищет по букве индекс локальной переменной в списке и возвращает его, или -1 в случае неудачи
 static int VarListGetIndexByChar(varList_t* varList, char ch) {
   int i;
   for (i = 0; i < varList->len; i++) {
@@ -271,6 +297,7 @@ static int VarListGetIndexByChar(varList_t* varList, char ch) {
   }
 }
 
+//Добавляет элемент в конец списка локальных переменных
 static int VarListAppend(varList_t* varList, char ch) {
   var_t* memTry;
   if (varList->len == varList->size) {
@@ -288,9 +315,10 @@ static int VarListAppend(varList_t* varList, char ch) {
   return (varList->len)++;
 }
 
-
+//Прототип унарной математической функции 
 typedef double UnarOp_t(double arg1);
 
+//Тангенс с проверкой деления на ноль, использует errno
 static double MyTan(double arg1) {
   if (fabs(cos(arg1)) <= COMP_EPSILON) {
     errno = EDOM;
@@ -299,12 +327,15 @@ static double MyTan(double arg1) {
   return tan(arg1);
 }
 
+//Котангенс с проверкой деления на ноль, использует errno
 static double MyCtan(double arg1) {
   return MyTan(M_PI / 2 - arg1);
 }
 
+//Прототип бинарной математической функции 
 typedef double BinaryOp_t(double arg1, double arg2);
 
+//Деление с проверкой деления на ноль, использует errno
 static double Divide(double arg1, double arg2) {
   if (fabs(arg2) <= COMP_EPSILON) {
     errno = EDOM;
@@ -313,18 +344,17 @@ static double Divide(double arg1, double arg2) {
   return arg1 / arg2;
 }
 
+//Умножение вещественных чисел
 static double Multiply(double arg1, double arg2) {
   return arg1 * arg2;
 }
 
+//Сложение вещественных чисел
 static double Plus(double arg1, double arg2) {
   return arg1 + arg2;
 }
 
-static double BinMinus(double arg1, double arg2) {
-  return arg1 - arg2;
-}
-
+//Обобщающий процесс обработки лексемы бинарной операции
 static resultCode_t BinaryProcess(BinaryOp_t* operation, node_t* lex, node_t** start, node_t** end, node_t* insert) {
   if (!(lex->previous && lex->next)) {
     return CRESULT_ERROR_INVALID_EXPR;
@@ -343,7 +373,7 @@ static resultCode_t BinaryProcess(BinaryOp_t* operation, node_t* lex, node_t** s
   }
   return CRESULT_OK;
 }
-
+//Обобщающий процесс обработки лексемы унарной операции
 static resultCode_t UnarProcess(UnarOp_t* operation, node_t* lex, node_t** start, node_t** end, node_t* insert) {
   if (!(lex->next && lex->next->type == LEX_TYPE_VALUE)) {
     return CRESULT_ERROR_INVALID_EXPR;
@@ -360,9 +390,11 @@ static resultCode_t UnarProcess(UnarOp_t* operation, node_t* lex, node_t** start
   return CRESULT_OK;
 }
 
-
+//Прототип функции обработки лемы
 typedef resultCode_t LemCalc_t(node_t* lex, node_t** start, node_t** end, node_t* insert);
 
+//Однотипные функции обработки лексем
+/*/*/
 static resultCode_t SqrtProcess(node_t* lex, node_t** start, node_t** end, node_t* insert) {
   return UnarProcess(sqrt, lex, start, end, insert);
 }
@@ -399,6 +431,28 @@ static resultCode_t LnProcess(node_t* lex, node_t** start, node_t** end, node_t*
   return UnarProcess(log, lex, start, end, insert);
 }
 
+static resultCode_t FloorProcess(node_t* lex, node_t** start, node_t** end, node_t* insert) {
+  return UnarProcess(floor, lex, start, end, insert);
+}
+
+static resultCode_t CeilProcess(node_t* lex, node_t** start, node_t** end, node_t* insert) {
+  return UnarProcess(ceil, lex, start, end, insert);
+}
+
+static resultCode_t PowProcess(node_t* lex, node_t** start, node_t** end, node_t* insert) {
+  return BinaryProcess(pow, lex, start, end, insert);
+}
+
+static resultCode_t MultiplyProcess(node_t* lex, node_t** start, node_t** end, node_t* insert) {
+  return BinaryProcess(Multiply, lex, start, end, insert);
+}
+
+static resultCode_t DivideProcess(node_t* lex, node_t** start, node_t** end, node_t* insert) {
+  return BinaryProcess(Divide, lex, start, end, insert);
+}
+/*/*/
+
+//Обработка лексемы логарифма от перы значений (по произвольному основанию) через отношение нормальных логарифмов
 static resultCode_t LogProcess(node_t* lex, node_t** start, node_t** end, node_t* insert) {
   double buff;
   if (!(lex->next && lex->next->type == LEX_TYPE_COUPLE)) {
@@ -426,26 +480,7 @@ static resultCode_t LogProcess(node_t* lex, node_t** start, node_t** end, node_t
   return CRESULT_OK;
 }
 
-static resultCode_t FloorProcess(node_t* lex, node_t** start, node_t** end, node_t* insert) {
-  return UnarProcess(floor, lex, start, end, insert);
-}
-
-static resultCode_t CeilProcess(node_t* lex, node_t** start, node_t** end, node_t* insert) {
-  return UnarProcess(ceil, lex, start, end, insert);
-}
-
-static resultCode_t PowProcess(node_t* lex, node_t** start, node_t** end, node_t* insert) {
-  return BinaryProcess(pow, lex, start, end, insert);
-}
-
-static resultCode_t MultiplyProcess(node_t* lex, node_t** start, node_t** end, node_t* insert) {
-  return BinaryProcess(Multiply, lex, start, end, insert);
-}
-
-static resultCode_t DivideProcess(node_t* lex, node_t** start, node_t** end, node_t* insert) {
-  return BinaryProcess(Divide, lex, start, end, insert);
-}
-
+//Обработка лексемы умнарного и бинарного минуса, и также повторяющихся минусов
 static resultCode_t MinusProcess(node_t* lex, node_t** start, node_t** end, node_t* insert) {
   node_t* item = lex;
   int i = 1;
@@ -501,6 +536,7 @@ static resultCode_t MinusProcess(node_t* lex, node_t** start, node_t** end, node
   return CRESULT_OK;
 }
 
+//Обработка лексемы бинарного минуса
 static resultCode_t PlusProcess(node_t* lex, node_t** start, node_t** end, node_t* insert) {
   if (!(lex->previous && lex->next && lex->previous->type == LEX_TYPE_VALUE)) {
     return CRESULT_ERROR_INVALID_EXPR;
@@ -513,6 +549,7 @@ static resultCode_t PlusProcess(node_t* lex, node_t** start, node_t** end, node_
   }
 }
 
+//Обработка лексемы запятой (скобки при логарифме). Объединяет зоседние значения в пару
 static resultCode_t CommaProcess(node_t* lex, node_t** start, node_t** end, node_t* insert) {
   if (!(lex->previous && lex->next)) {
     return CRESULT_ERROR_INVALID_EXPR;
@@ -530,6 +567,7 @@ static resultCode_t CommaProcess(node_t* lex, node_t** start, node_t** end, node
 
 }
 
+//Обработка лексемы присваивания значения временной переменной
 static resultCode_t EqualProcess(node_t* lex, node_t** start, node_t** end, node_t* insert) {
   if (!(lex->previous && lex->next)) {
     return CRESULT_ERROR_INVALID_EXPR;
@@ -548,6 +586,7 @@ static resultCode_t EqualProcess(node_t* lex, node_t** start, node_t** end, node
 
 }
 
+//Обработка локальной переменной. Если значение уже вычислено, замна на это значение, иначе пропускается
 static resultCode_t VarProcess(node_t* lex, node_t** start, node_t** end, node_t* insert) {
   *start = lex;
   *end = lex;
@@ -562,16 +601,16 @@ static resultCode_t VarProcess(node_t* lex, node_t** start, node_t** end, node_t
   return CRESULT_OK;
 }
 
-
+//Символьное обозначение лексемы, и указатель на фукуцию для её обработки
 typedef struct lex_t {
   char str[7];
   LemCalc_t* CalcFun;
 } lex_t;
-
+//Список символьных обозначений лексем, и указателей на фукуцию для их обработки
 static lex_t lexList[LEX_LIST_LEN] = {
   {"(", NULL},
   {")", NULL},
-  {"sqrt", SqrtProcess},/*{<- + unar minus*/
+  {"sqrt", SqrtProcess},
   {"sin", SinProcess},
   {"cos", CosProcess},
   {"tg", TgProcess},
@@ -583,12 +622,12 @@ static lex_t lexList[LEX_LIST_LEN] = {
   {"log", LogProcess},
   {"floor", FloorProcess},
   {"ceil", CeilProcess},
-  {"^", PowProcess},/*}*/
-  {"*", MultiplyProcess},/*{->*/
-  {"/", DivideProcess},/*}*/
-  {"-", MinusProcess},/*{->*/
-  {"+", PlusProcess},/*}*/
-  {",", CommaProcess}, /*{->}*/
+  {"^", PowProcess},
+  {"*", MultiplyProcess},
+  {"/", DivideProcess},
+  {"-", MinusProcess},
+  {"+", PlusProcess},
+  {",", CommaProcess},
   {"=", EqualProcess},
   {";", NULL},
   {"pi", NULL},
@@ -596,8 +635,11 @@ static lex_t lexList[LEX_LIST_LEN] = {
   {"\n", VarProcess}
 };
 
+//Кол-во групп операций с равным приоритетом выполнения
 #define PRIORITY_GROUPS_COUNT 7
 
+//Однотипные функции, определяющие, принадлежит ли лексема группе приоритета операций
+/*/*/
 typedef Bool isMember_t(node_t * lex);
 
 static Bool IsGoup0Member(node_t* lex) {
@@ -627,8 +669,12 @@ static Bool IsGoup5Member(node_t* lex) {
 static Bool IsGoup6Member(node_t* lex) {
   return (lex->type == LEX_TYPE_EQUAL);
 }
+/*/*/
 
-
+//Функция вычисления подвыражения (без скобок и ';')
+//В случае успеха записывает ответ во внешний элемент из выражения уровнем выше
+//Иначе освобождает память и возвращает код ошибки
+//Вычисление производится упрощением выражения последовательными проходами по операциям из групп приоритетов
 static resultCode_t SubExprCalc(dblList_t** expr, node_t* outItem) {
   static struct priorityGroups {
     isMember_t* IsMember;
@@ -686,6 +732,14 @@ static resultCode_t SubExprCalc(dblList_t** expr, node_t* outItem) {
   return localResult;
 }
 
+//Начальная длина стека вызова
+#define CALL_STACK_LEN 10
+//Функция вычисления выражения (без ';')
+//В случае успеха возвращает численный ответ
+//Функция рекурсивная, но с собственным стеком вызова с динамическим выделением памяти
+//Оброжит выражение в глубину по скобкам, до тех пор, пока в подвыражении их не останется, 
+//затем вычисляет его значение функцией SubExprCalc и подставляет в то место, откуда было извлечено это подвыражение
+//При возникновении ошибки на любом из этапов освобождает память и возвращает её код
 static resultCode_t ExprCalc(dblList_t** expr, double* ans) {
   typedef struct calcState {
     dblList_t* subExpr;
@@ -804,6 +858,9 @@ static resultCode_t ExprCalc(dblList_t** expr, double* ans) {
   }
 }
 
+//Функция вычисления последовательности выражений разделенных ';'
+//В случае успеха возвращает численный ответ последнего выражения
+//Иначе освобождает память и возвращает код ошибки
 static resultCode_t ExprSequenceCalc(dblList_t** exprSequence, double* ans) {
   node_t* item = (*exprSequence)->head;
   dblList_t* expr = NULL;
@@ -838,6 +895,8 @@ static resultCode_t ExprSequenceCalc(dblList_t** exprSequence, double* ans) {
 
 }
 
+//Преобразует символьную строку в последовательность лексем, записаных в двусвязный список
+//Также распознает однобуквенные локальные переменные
 static resultCode_t LexSplit(const char* const str, dblList_t** expression) {
   int i, k, typeSet, varIndex;
   char* endPtr;
@@ -929,6 +988,8 @@ static resultCode_t LexSplit(const char* const str, dblList_t** expression) {
   return CRESULT_OK;
 }
 
+//Пытается обработать переданную строку как математическое выражение
+//Возвращает информацию о результате, и, если попытка удачна, численный ответ
 calcResult_t StringCalc(const char* const str, double* ans) {
   dblList_t* expr;
   resultCode_t result;

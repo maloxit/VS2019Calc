@@ -11,24 +11,25 @@
 #endif
 #pragma warning(disable:4996)
 #include "calc.h"
+
+//Кол-во символов, считываемых за раз
 #define READ_BUFF_LEN 20
 
+//Результат попытки чтения
 typedef enum inputResult_t {
   RESULT_OK,
   RESULT_ERROR_MEMORY_LACK,
   RESULT_ERROR_INPUT_END,
   RESULT_ERROR
 } inputResult_t;
-/*
-Пропускает одну строку из стандартного входного потока
-*/
+
+//Пропускает одну строку из стандартного входного потока
 void SkipString() {
   scanf("%*[^\n]");
   getchar();
 }
-/*
-Считывает одну строку из стандартного входного потока
-*/
+
+//Пытается считать одну строку из стандартного потока ввода и возвращает информацию о результате
 inputResult_t ReadLine(char** strOut) {
   char * strBuffer, * strEndPoint, * memTry;
   char firstCharBuff;
@@ -75,9 +76,8 @@ inputResult_t ReadLine(char** strOut) {
   *strOut = strBuffer;
   return RESULT_OK;
 }
-/*
-Проверяет, является ли строка выражением (не комментарием)
-*/
+
+//Проверяет, является ли строка выражением (не комментарием)
 Bool IsExpression(char* str) {
   int i = 0;
   while (str[i] != '\0' && MyIsSpace(str[i])) {
@@ -101,6 +101,7 @@ int main(int argc, char* argv[]) {
   double ans;
   inputResult_t inputResult;
   calcResult_t err;
+  //Смена кодировки, проверка корректности аргументов, попытка открытия файла для чтения
   SetConsoleOutputCP(1251);
   if (argc > 2) {
     printf("ERROR: invalid number of arguments\n");
@@ -111,6 +112,7 @@ int main(int argc, char* argv[]) {
     return -1;
   }
   SetConsoleCP(1251);
+  //Последовательное чтение и обработка строк до конца файла
   while ((inputResult = ReadLine(&str)) != RESULT_ERROR_INPUT_END) {
     if (inputResult == RESULT_ERROR_MEMORY_LACK) {
       printf("ERROR: Not enough memory\n");
@@ -118,7 +120,9 @@ int main(int argc, char* argv[]) {
     }
     printf("%s", str);
     if (IsExpression(str)) {
+      //Вызов вычислительного модуля
       err = StringCalc(str, &ans);
+      //Вывод ошибки блока вычисления или ответа
       if (err.isError) {
         printf(" == ERROR: ");
         CalcResultPrint(err);

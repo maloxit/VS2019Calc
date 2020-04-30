@@ -19,12 +19,16 @@ typedef enum inputResult_t {
   RESULT_ERROR_INPUT_END,
   RESULT_ERROR
 } inputResult_t;
-
+/*
+Пропускает одну строку из стандартного входного потока
+*/
 void SkipString() {
   scanf("%*[^\n]");
   getchar();
 }
-
+/*
+Считывает одну строку из стандартного входного потока
+*/
 inputResult_t ReadLine(char** strOut) {
   char * strBuffer, * strEndPoint, * memTry;
   char firstCharBuff;
@@ -71,7 +75,9 @@ inputResult_t ReadLine(char** strOut) {
   *strOut = strBuffer;
   return RESULT_OK;
 }
-
+/*
+Проверяет, является ли строка выражением (не комментарием)
+*/
 Bool IsExpression(char* str) {
   int i = 0;
   while (str[i] != '\0' && MyIsSpace(str[i])) {

@@ -1,10 +1,14 @@
 log(2,6) == 2.58496
 log(6,2) == 0.386853
-log(1,6) == ERROR: Invalid argument or huge value
+яlog(1,6) == ERROR: Invalid symbol combination
 log(6,1) == 0
 log(1,2) == ERROR: Invalid argument or huge value
 log(2,1) == 0
-log(-6,2) == ERROR: Invalid argument or huge value
+logя(-6,2) == ERROR: Invalid symbol combination
 log(6,-2) == ERROR: Invalid argument or huge value
 log(-6,-2) == ERROR: Invalid argument or huge value
 log(2,8) == 3
+2*sqrt(5+2*sqrt(3)) == 5.81863
+sqrt(4+(2+4*cos(pi/6))^2) == 5.81863
+5/sqrt((3)^2+(4)^2+(5)^2) == 0.707107
+40/sin(pi/3) == 46.188

@@ -6,48 +6,48 @@
 #include <string.h>
 #include <math.h>
 #include "calc.h"
-#define LEM_LIST_LEN 25
+#define LEX_LIST_LEN 25
 #define CALL_STACK_LEN 10
 #define M_PI 3.1415926535897932384626
 #define M_E  2.71828182845904523536028747
 #define COMP_EPSILON 1e-11
 
-typedef enum lemType_t {
-  LEM_TYPE_VALUE = -1,
-  LEM_TYPE_COUPLE = -2,
+typedef enum lexType_t {
+  LEX_TYPE_VALUE = -1,
+  LEX_TYPE_COUPLE = -2,
 
-  LEM_TYPE_OPEN = 0,
-  LEM_TYPE_CLOSE,
-  LEM_TYPE_SQRT,
-  LEM_TYPE_SIN,
-  LEM_TYPE_COS,
-  LEM_TYPE_TG,
-  LEM_TYPE_CTG,
-  LEM_TYPE_ARCSIN,
-  LEM_TYPE_ARCCOS,
-  LEM_TYPE_ARCTG,
-  LEM_TYPE_LN,
-  LEM_TYPE_LOG,
-  LEM_TYPE_FLOOR,
-  LEM_TYPE_CEIL,
-  LEM_TYPE_POW,
-  LEM_TYPE_MULTIPLY,
-  LEM_TYPE_DIVIDE,
-  LEM_TYPE_MINUS,
-  LEM_TYPE_PLUS,
-  LEM_TYPE_COMMA,
-  LEM_TYPE_EQUAL,
-  LEM_TYPE_SEMICOLON,
-  LEM_TYPE_PI,
-  LEM_TYPE_E,
-  LEM_TYPE_VAR
-} lemType_t;
+  LEX_TYPE_OPEN = 0,
+  LEX_TYPE_CLOSE,
+  LEX_TYPE_SQRT,
+  LEX_TYPE_SIN,
+  LEX_TYPE_COS,
+  LEX_TYPE_TG,
+  LEX_TYPE_CTG,
+  LEX_TYPE_ARCSIN,
+  LEX_TYPE_ARCCOS,
+  LEX_TYPE_ARCTG,
+  LEX_TYPE_LN,
+  LEX_TYPE_LOG,
+  LEX_TYPE_FLOOR,
+  LEX_TYPE_CEIL,
+  LEX_TYPE_POW,
+  LEX_TYPE_MULTIPLY,
+  LEX_TYPE_DIVIDE,
+  LEX_TYPE_MINUS,
+  LEX_TYPE_PLUS,
+  LEX_TYPE_COMMA,
+  LEX_TYPE_EQUAL,
+  LEX_TYPE_SEMICOLON,
+  LEX_TYPE_PI,
+  LEX_TYPE_E,
+  LEX_TYPE_VAR
+} lexType_t;
 
 
 typedef enum resultCode_t {
   CRESULT_OK = 0,
   CRESULT_ERROR_VALUE_FORMAT,
-  CRESULT_ERROR_UNKNOWN_LEM,
+  CRESULT_ERROR_UNKNOWN_LEX,
   CRESULT_ERROR_BRACKET,
   CRESULT_ERROR_MEMORY_LACK,
   CRESULT_ERROR_INVALID_EXPR,
@@ -100,7 +100,7 @@ typedef union value_t {
 } value_t;
 
 typedef struct _node_t {
-  lemType_t type;
+  lexType_t type;
   value_t value;
   struct _node_t* previous;
   struct _node_t* next;
@@ -131,7 +131,7 @@ static void DblListFree(dblList_t** list) {
   *list = NULL;
 }
 
-static node_t* DblListAppend(dblList_t* list, const value_t * value, lemType_t type) {
+static node_t* DblListAppend(dblList_t* list, const value_t * value, lexType_t type) {
   node_t* item = (node_t*)malloc(sizeof(node_t));
   if (!item) {
     return NULL;
@@ -325,18 +325,18 @@ static double BinMinus(double arg1, double arg2) {
   return arg1 - arg2;
 }
 
-static resultCode_t BinaryProcess(BinaryOp_t* operation, node_t* lem, node_t** start, node_t** end, node_t* insert) {
-  if (!(lem->previous && lem->next)) {
+static resultCode_t BinaryProcess(BinaryOp_t* operation, node_t* lex, node_t** start, node_t** end, node_t* insert) {
+  if (!(lex->previous && lex->next)) {
     return CRESULT_ERROR_INVALID_EXPR;
   }
-  if (!(lem->previous->type == LEM_TYPE_VALUE && lem->next->type == LEM_TYPE_VALUE)) {
+  if (!(lex->previous->type == LEX_TYPE_VALUE && lex->next->type == LEX_TYPE_VALUE)) {
     return CRESULT_ERROR_INVALID_EXPR;
   }
-  *start = lem->previous;
-  *end = lem->next;
-  insert->type = LEM_TYPE_VALUE;
+  *start = lex->previous;
+  *end = lex->next;
+  insert->type = LEX_TYPE_VALUE;
   errno = 0;
-  insert->value.single = operation(lem->previous->value.single, lem->next->value.single);
+  insert->value.single = operation(lex->previous->value.single, lex->next->value.single);
   if (errno != 0) {
     errno = 0;
     return CRESULT_ERROR_INVALID_ARG_OR_HUGEVAL;
@@ -344,15 +344,15 @@ static resultCode_t BinaryProcess(BinaryOp_t* operation, node_t* lem, node_t** s
   return CRESULT_OK;
 }
 
-static resultCode_t UnarProcess(UnarOp_t* operation, node_t* lem, node_t** start, node_t** end, node_t* insert) {
-  if (!(lem->next && lem->next->type == LEM_TYPE_VALUE)) {
+static resultCode_t UnarProcess(UnarOp_t* operation, node_t* lex, node_t** start, node_t** end, node_t* insert) {
+  if (!(lex->next && lex->next->type == LEX_TYPE_VALUE)) {
     return CRESULT_ERROR_INVALID_EXPR;
   }
-  *start = lem;
-  *end = lem->next;
-  insert->type = LEM_TYPE_VALUE;
+  *start = lex;
+  *end = lex->next;
+  insert->type = LEX_TYPE_VALUE;
   errno = 0;
-  insert->value.single = operation(lem->next->value.single);
+  insert->value.single = operation(lex->next->value.single);
   if (errno != 0) {
     errno = 0;
     return CRESULT_ERROR_INVALID_ARG_OR_HUGEVAL;
@@ -361,59 +361,59 @@ static resultCode_t UnarProcess(UnarOp_t* operation, node_t* lem, node_t** start
 }
 
 
-typedef resultCode_t LemCalc_t(node_t* lem, node_t** start, node_t** end, node_t* insert);
+typedef resultCode_t LemCalc_t(node_t* lex, node_t** start, node_t** end, node_t* insert);
 
-static resultCode_t SqrtProcess(node_t* lem, node_t** start, node_t** end, node_t* insert) {
-  return UnarProcess(sqrt, lem, start, end, insert);
+static resultCode_t SqrtProcess(node_t* lex, node_t** start, node_t** end, node_t* insert) {
+  return UnarProcess(sqrt, lex, start, end, insert);
 }
 
-static resultCode_t SinProcess(node_t* lem, node_t** start, node_t** end, node_t* insert) {
-  return UnarProcess(sin, lem, start, end, insert);
+static resultCode_t SinProcess(node_t* lex, node_t** start, node_t** end, node_t* insert) {
+  return UnarProcess(sin, lex, start, end, insert);
 }
 
-static resultCode_t CosProcess(node_t* lem, node_t** start, node_t** end, node_t* insert) {
-  return UnarProcess(cos, lem, start, end, insert);
+static resultCode_t CosProcess(node_t* lex, node_t** start, node_t** end, node_t* insert) {
+  return UnarProcess(cos, lex, start, end, insert);
 }
 
-static resultCode_t TgProcess(node_t* lem, node_t** start, node_t** end, node_t* insert) {
-  return UnarProcess(MyTan, lem, start, end, insert);
+static resultCode_t TgProcess(node_t* lex, node_t** start, node_t** end, node_t* insert) {
+  return UnarProcess(MyTan, lex, start, end, insert);
 }
 
-static resultCode_t CtgProcess(node_t* lem, node_t** start, node_t** end, node_t* insert) {
-  return UnarProcess(MyCtan, lem, start, end, insert);
+static resultCode_t CtgProcess(node_t* lex, node_t** start, node_t** end, node_t* insert) {
+  return UnarProcess(MyCtan, lex, start, end, insert);
 }
 
-static resultCode_t ArcsinProcess(node_t* lem, node_t** start, node_t** end, node_t* insert) {
-  return UnarProcess(asin, lem, start, end, insert);
+static resultCode_t ArcsinProcess(node_t* lex, node_t** start, node_t** end, node_t* insert) {
+  return UnarProcess(asin, lex, start, end, insert);
 }
 
-static resultCode_t ArccosProcess(node_t* lem, node_t** start, node_t** end, node_t* insert) {
-  return UnarProcess(acos, lem, start, end, insert);
+static resultCode_t ArccosProcess(node_t* lex, node_t** start, node_t** end, node_t* insert) {
+  return UnarProcess(acos, lex, start, end, insert);
 }
 
-static resultCode_t ArctgProcess(node_t* lem, node_t** start, node_t** end, node_t* insert) {
-  return UnarProcess(atan, lem, start, end, insert);
+static resultCode_t ArctgProcess(node_t* lex, node_t** start, node_t** end, node_t* insert) {
+  return UnarProcess(atan, lex, start, end, insert);
 }
 
-static resultCode_t LnProcess(node_t* lem, node_t** start, node_t** end, node_t* insert) {
-  return UnarProcess(log, lem, start, end, insert);
+static resultCode_t LnProcess(node_t* lex, node_t** start, node_t** end, node_t* insert) {
+  return UnarProcess(log, lex, start, end, insert);
 }
 
-static resultCode_t LogProcess(node_t* lem, node_t** start, node_t** end, node_t* insert) {
+static resultCode_t LogProcess(node_t* lex, node_t** start, node_t** end, node_t* insert) {
   double buff;
-  if (!(lem->next && lem->next->type == LEM_TYPE_COUPLE)) {
+  if (!(lex->next && lex->next->type == LEX_TYPE_COUPLE)) {
     return CRESULT_ERROR_INVALID_EXPR;
   }
-  *start = lem;
-  *end = lem->next;
-  insert->type = LEM_TYPE_VALUE;
+  *start = lex;
+  *end = lex->next;
+  insert->type = LEX_TYPE_VALUE;
   errno = 0;
-  buff = log(lem->next->value.couple.v1);
+  buff = log(lex->next->value.couple.v1);
   if (errno != 0 || fabs(buff) <= COMP_EPSILON) {
     errno = 0;
     return CRESULT_ERROR_INVALID_ARG_OR_HUGEVAL;
   }
-  insert->value.single = log(lem->next->value.couple.v2);
+  insert->value.single = log(lex->next->value.couple.v2);
   if (errno != 0) {
     errno = 0;
     return CRESULT_ERROR_INVALID_ARG_OR_HUGEVAL;
@@ -426,149 +426,149 @@ static resultCode_t LogProcess(node_t* lem, node_t** start, node_t** end, node_t
   return CRESULT_OK;
 }
 
-static resultCode_t FloorProcess(node_t* lem, node_t** start, node_t** end, node_t* insert) {
-  return UnarProcess(floor, lem, start, end, insert);
+static resultCode_t FloorProcess(node_t* lex, node_t** start, node_t** end, node_t* insert) {
+  return UnarProcess(floor, lex, start, end, insert);
 }
 
-static resultCode_t CeilProcess(node_t* lem, node_t** start, node_t** end, node_t* insert) {
-  return UnarProcess(ceil, lem, start, end, insert);
+static resultCode_t CeilProcess(node_t* lex, node_t** start, node_t** end, node_t* insert) {
+  return UnarProcess(ceil, lex, start, end, insert);
 }
 
-static resultCode_t PowProcess(node_t* lem, node_t** start, node_t** end, node_t* insert) {
-  return BinaryProcess(pow, lem, start, end, insert);
+static resultCode_t PowProcess(node_t* lex, node_t** start, node_t** end, node_t* insert) {
+  return BinaryProcess(pow, lex, start, end, insert);
 }
 
-static resultCode_t MultiplyProcess(node_t* lem, node_t** start, node_t** end, node_t* insert) {
-  return BinaryProcess(Multiply, lem, start, end, insert);
+static resultCode_t MultiplyProcess(node_t* lex, node_t** start, node_t** end, node_t* insert) {
+  return BinaryProcess(Multiply, lex, start, end, insert);
 }
 
-static resultCode_t DivideProcess(node_t* lem, node_t** start, node_t** end, node_t* insert) {
-  return BinaryProcess(Divide, lem, start, end, insert);
+static resultCode_t DivideProcess(node_t* lex, node_t** start, node_t** end, node_t* insert) {
+  return BinaryProcess(Divide, lex, start, end, insert);
 }
 
-static resultCode_t MinusProcess(node_t* lem, node_t** start, node_t** end, node_t* insert) {
-  node_t* item = lem;
+static resultCode_t MinusProcess(node_t* lex, node_t** start, node_t** end, node_t* insert) {
+  node_t* item = lex;
   int i = 1;
-  if (!(lem->next && lem->next->type == LEM_TYPE_VALUE)) {
+  if (!(lex->next && lex->next->type == LEX_TYPE_VALUE)) {
     return CRESULT_ERROR_INVALID_EXPR;
   }
-  while (item->previous && item->type == LEM_TYPE_MINUS) {
+  while (item->previous && item->type == LEX_TYPE_MINUS) {
     item = item->previous;
     i++;
   }
-  if (item->type != LEM_TYPE_VALUE) {
-    if (item->type == LEM_TYPE_MINUS) {
+  if (item->type != LEX_TYPE_VALUE) {
+    if (item->type == LEX_TYPE_MINUS) {
       *start = item;
       i++;
     }
     else {
       *start = item->next;
     }
-    if (lem->next->next && lem->next->next->type == LEM_TYPE_POW) {
-      *end = lem;
+    if (lex->next->next && lex->next->next->type == LEX_TYPE_POW) {
+      *end = lex;
       if (i % 2 == 0) {
-        insert->type = LEM_TYPE_MINUS;
+        insert->type = LEX_TYPE_MINUS;
       }
       else {
-        insert->type = LEM_TYPE_PLUS;
+        insert->type = LEX_TYPE_PLUS;
       }
     }
     else {
-      *end = lem->next;
-      insert->type = LEM_TYPE_VALUE;
+      *end = lex->next;
+      insert->type = LEX_TYPE_VALUE;
       if (i % 2 == 0) {
-        insert->value.single = -lem->next->value.single;
+        insert->value.single = -lex->next->value.single;
       }
       else {
-        insert->value.single = lem->next->value.single;
+        insert->value.single = lex->next->value.single;
       }
     }
   }
   else {
-    *end = lem;
+    *end = lex;
     *start = item->next;
     
-    insert->type = LEM_TYPE_PLUS;
+    insert->type = LEX_TYPE_PLUS;
     if (i % 2 == 0) {
-      if (lem->next->next && lem->next->next->type == LEM_TYPE_POW) {
-        insert->type = LEM_TYPE_MINUS;
+      if (lex->next->next && lex->next->next->type == LEX_TYPE_POW) {
+        insert->type = LEX_TYPE_MINUS;
       }
       else {
-        lem->next->value.single *= -1;
+        lex->next->value.single *= -1;
       }
     }
   }
   return CRESULT_OK;
 }
 
-static resultCode_t PlusProcess(node_t* lem, node_t** start, node_t** end, node_t* insert) {
-  if (!(lem->previous && lem->next && lem->previous->type == LEM_TYPE_VALUE)) {
+static resultCode_t PlusProcess(node_t* lex, node_t** start, node_t** end, node_t* insert) {
+  if (!(lex->previous && lex->next && lex->previous->type == LEX_TYPE_VALUE)) {
     return CRESULT_ERROR_INVALID_EXPR;
   }
-  if (lem->next->type == LEM_TYPE_VALUE) {
-    return BinaryProcess(Plus, lem, start, end, insert);
+  if (lex->next->type == LEX_TYPE_VALUE) {
+    return BinaryProcess(Plus, lex, start, end, insert);
   }
   else {
     return CRESULT_ERROR_INVALID_EXPR;
   }
 }
 
-static resultCode_t CommaProcess(node_t* lem, node_t** start, node_t** end, node_t* insert) {
-  if (!(lem->previous && lem->next)) {
+static resultCode_t CommaProcess(node_t* lex, node_t** start, node_t** end, node_t* insert) {
+  if (!(lex->previous && lex->next)) {
     return CRESULT_ERROR_INVALID_EXPR;
   }
-  if (!(lem->previous->type == LEM_TYPE_VALUE && lem->next->type == LEM_TYPE_VALUE)) {
+  if (!(lex->previous->type == LEX_TYPE_VALUE && lex->next->type == LEX_TYPE_VALUE)) {
     return CRESULT_ERROR_INVALID_EXPR;
   }
-  *start = lem->previous;
-  *end = lem->next;
-  insert->type = LEM_TYPE_COUPLE;
-  insert->value.couple.v1 = lem->previous->value.single;
-  insert->value.couple.v2 = lem->next->value.single;
+  *start = lex->previous;
+  *end = lex->next;
+  insert->type = LEX_TYPE_COUPLE;
+  insert->value.couple.v1 = lex->previous->value.single;
+  insert->value.couple.v2 = lex->next->value.single;
 
   return CRESULT_OK;
 
 }
 
-static resultCode_t EqualProcess(node_t* lem, node_t** start, node_t** end, node_t* insert) {
-  if (!(lem->previous && lem->next)) {
+static resultCode_t EqualProcess(node_t* lex, node_t** start, node_t** end, node_t* insert) {
+  if (!(lex->previous && lex->next)) {
     return CRESULT_ERROR_INVALID_EXPR;
   }
-  if (!(lem->previous->type == LEM_TYPE_VAR && lem->next->type == LEM_TYPE_VALUE)) {
+  if (!(lex->previous->type == LEX_TYPE_VAR && lex->next->type == LEX_TYPE_VALUE)) {
     return CRESULT_ERROR_INVALID_EXPR;
   }
-  *start = lem->previous;
-  *end = lem->next;
-  insert->type = LEM_TYPE_VALUE;
-  insert->value.single = lem->next->value.single;
-  localVarList->at[lem->previous->value.varIndex].val = lem->next->value.single;
-  localVarList->at[lem->previous->value.varIndex].isCalculated = TRUE;
+  *start = lex->previous;
+  *end = lex->next;
+  insert->type = LEX_TYPE_VALUE;
+  insert->value.single = lex->next->value.single;
+  localVarList->at[lex->previous->value.varIndex].val = lex->next->value.single;
+  localVarList->at[lex->previous->value.varIndex].isCalculated = TRUE;
 
   return CRESULT_OK;
 
 }
 
-static resultCode_t VarProcess(node_t* lem, node_t** start, node_t** end, node_t* insert) {
-  *start = lem;
-  *end = lem;
-  if (localVarList->at[lem->value.varIndex].isCalculated) {
-    insert->type = LEM_TYPE_VALUE;
-    insert->value.single = localVarList->at[lem->value.varIndex].val;
+static resultCode_t VarProcess(node_t* lex, node_t** start, node_t** end, node_t* insert) {
+  *start = lex;
+  *end = lex;
+  if (localVarList->at[lex->value.varIndex].isCalculated) {
+    insert->type = LEX_TYPE_VALUE;
+    insert->value.single = localVarList->at[lex->value.varIndex].val;
   }
   else {
-    insert->type = LEM_TYPE_VAR;
-    insert->value = lem->value;
+    insert->type = LEX_TYPE_VAR;
+    insert->value = lex->value;
   }
   return CRESULT_OK;
 }
 
 
-typedef struct lem_t {
+typedef struct lex_t {
   char str[7];
   LemCalc_t* CalcFun;
-} lem_t;
+} lex_t;
 
-static lem_t lemList[LEM_LIST_LEN] = {
+static lex_t lexList[LEX_LIST_LEN] = {
   {"(", NULL},
   {")", NULL},
   {"sqrt", SqrtProcess},/*{<- + unar minus*/
@@ -598,34 +598,34 @@ static lem_t lemList[LEM_LIST_LEN] = {
 
 #define PRIORITY_GROUPS_COUNT 7
 
-typedef Bool isMember_t(node_t * lem);
+typedef Bool isMember_t(node_t * lex);
 
-static Bool IsGoup0Member(node_t* lem) {
-  return (lem->type == LEM_TYPE_VAR);
+static Bool IsGoup0Member(node_t* lex) {
+  return (lex->type == LEX_TYPE_VAR);
 }
 
-static Bool IsGoup1Member(node_t* lem) {
-  return ((lem->type >= LEM_TYPE_SQRT && lem->type <= LEM_TYPE_CEIL) || lem->type == LEM_TYPE_MINUS);
+static Bool IsGoup1Member(node_t* lex) {
+  return ((lex->type >= LEX_TYPE_SQRT && lex->type <= LEX_TYPE_CEIL) || lex->type == LEX_TYPE_MINUS);
 }
 
-static Bool IsGoup2Member(node_t* lem) {
-  return (lem->type == LEM_TYPE_POW || lem->type == LEM_TYPE_MINUS);
+static Bool IsGoup2Member(node_t* lex) {
+  return (lex->type == LEX_TYPE_POW || lex->type == LEX_TYPE_MINUS);
 }
 
-static Bool IsGoup3Member(node_t* lem) {
-  return (lem->type >= LEM_TYPE_MULTIPLY && lem->type <= LEM_TYPE_DIVIDE);
+static Bool IsGoup3Member(node_t* lex) {
+  return (lex->type >= LEX_TYPE_MULTIPLY && lex->type <= LEX_TYPE_DIVIDE);
 }
 
-static Bool IsGoup4Member(node_t* lem) {
-  return (lem->type >= LEM_TYPE_MINUS && lem->type <= LEM_TYPE_PLUS);
+static Bool IsGoup4Member(node_t* lex) {
+  return (lex->type >= LEX_TYPE_MINUS && lex->type <= LEX_TYPE_PLUS);
 }
 
-static Bool IsGoup5Member(node_t* lem) {
-  return (lem->type == LEM_TYPE_COMMA);
+static Bool IsGoup5Member(node_t* lex) {
+  return (lex->type == LEX_TYPE_COMMA);
 }
 
-static Bool IsGoup6Member(node_t* lem) {
-  return (lem->type == LEM_TYPE_EQUAL);
+static Bool IsGoup6Member(node_t* lex) {
+  return (lex->type == LEX_TYPE_EQUAL);
 }
 
 
@@ -661,7 +661,7 @@ static resultCode_t SubExprCalc(dblList_t** expr, node_t* outItem) {
     }
     for (; item; item = GetAnother(item)) {
       if (priorityGroups[i].IsMember(item)) {
-        localResult = lemList[item->type].CalcFun(item, &start, &end, &insert);
+        localResult = lexList[item->type].CalcFun(item, &start, &end, &insert);
         if (ResultCodeIsError(localResult)) {
           break;
         }
@@ -715,19 +715,19 @@ static resultCode_t ExprCalc(dblList_t** expr, double* ans) {
     open = NULL;
     close = NULL;
     for (item = subExprsCall[depth].item; item && !ResultCodeIsError(localResult); item = item->next) {
-      if (item->type == LEM_TYPE_OPEN) {
+      if (item->type == LEX_TYPE_OPEN) {
         open = item;
         close = open->next;
         localDepth = 1;
         while (close) {
-          if (close->type == LEM_TYPE_CLOSE) {
+          if (close->type == LEX_TYPE_CLOSE) {
             localDepth--;
             if (localDepth == 0) {
               break;
             }
           }
           else {
-            if (close->type == LEM_TYPE_OPEN) {
+            if (close->type == LEX_TYPE_OPEN) {
               localDepth++;
             }
           }
@@ -741,7 +741,7 @@ static resultCode_t ExprCalc(dblList_t** expr, double* ans) {
         }
       }
       else {
-        if (item->type == LEM_TYPE_CLOSE) {
+        if (item->type == LEX_TYPE_CLOSE) {
           localResult = CRESULT_ERROR_BRACKET;
         }
       }
@@ -790,7 +790,7 @@ static resultCode_t ExprCalc(dblList_t** expr, double* ans) {
     return localResult;
   }
   else {
-    if (finalOut.type == LEM_TYPE_VALUE) {
+    if (finalOut.type == LEX_TYPE_VALUE) {
       *ans = finalOut.value.single;
       free(subExprsCall);
       *expr = NULL;
@@ -810,7 +810,7 @@ static resultCode_t ExprSequenceCalc(dblList_t** exprSequence, double* ans) {
   resultCode_t localResult = CRESULT_OK;
   double localAns = 0;
   while (item && !ResultCodeIsError(localResult)) {
-    if (item->type == LEM_TYPE_SEMICOLON) {
+    if (item->type == LEX_TYPE_SEMICOLON) {
       localResult = DblListLeftSplit(&expr, exprSequence, item);
       if (ResultCodeIsError(localResult)) {
         break;
@@ -838,7 +838,7 @@ static resultCode_t ExprSequenceCalc(dblList_t** exprSequence, double* ans) {
 
 }
 
-static resultCode_t LemSplit(const char* const str, dblList_t** expression) {
+static resultCode_t LexSplit(const char* const str, dblList_t** expression) {
   int i, k, typeSet, varIndex;
   char* endPtr;
   double singleBuff;
@@ -864,7 +864,7 @@ static resultCode_t LemSplit(const char* const str, dblList_t** expression) {
       }
       else {
         valBuff.single = singleBuff;
-        if (!DblListAppend(*expression, &valBuff, LEM_TYPE_VALUE)) {
+        if (!DblListAppend(*expression, &valBuff, LEX_TYPE_VALUE)) {
           DblListFree(expression);
           VarListFree(&localVarList);
           return CRESULT_ERROR_MEMORY_LACK;
@@ -873,12 +873,12 @@ static resultCode_t LemSplit(const char* const str, dblList_t** expression) {
       }
     }
     else {
-      for (k = 0; k < LEM_LIST_LEN; k++) {
-        if (strncmp(str + i, lemList[k].str, strlen(lemList[k].str)) == FALSE) {
+      for (k = 0; k < LEX_LIST_LEN; k++) {
+        if (strncmp(str + i, lexList[k].str, strlen(lexList[k].str)) == FALSE) {
           break;
         }
       }
-      if (k == LEM_LIST_LEN) {
+      if (k == LEX_LIST_LEN) {
         if (MyIsAlpha(str[i])) {
           varIndex = VarListGetIndexByChar(localVarList, str[i]);
           if (varIndex < 0) {
@@ -887,11 +887,11 @@ static resultCode_t LemSplit(const char* const str, dblList_t** expression) {
           if (varIndex < 0) {
             DblListFree(expression);
             VarListFree(&localVarList);
-            return CRESULT_ERROR_UNKNOWN_LEM;
+            return CRESULT_ERROR_UNKNOWN_LEX;
           }
           else {
             valBuff.varIndex = varIndex;
-            if (!DblListAppend(*expression, &valBuff, LEM_TYPE_VAR)) {
+            if (!DblListAppend(*expression, &valBuff, LEX_TYPE_VAR)) {
               DblListFree(expression);
               VarListFree(&localVarList);
               return CRESULT_ERROR_MEMORY_LACK;
@@ -902,19 +902,19 @@ static resultCode_t LemSplit(const char* const str, dblList_t** expression) {
         else {
           DblListFree(expression);
           VarListFree(&localVarList);
-          return CRESULT_ERROR_UNKNOWN_LEM;
+          return CRESULT_ERROR_UNKNOWN_LEX;
         }
       }
       else {
         singleBuff = 0;
         typeSet = k;
-        if (typeSet == LEM_TYPE_PI) {
+        if (typeSet == LEX_TYPE_PI) {
           singleBuff = M_PI;
-          typeSet = LEM_TYPE_VALUE;
+          typeSet = LEX_TYPE_VALUE;
         }
-        if (typeSet == LEM_TYPE_E) {
+        if (typeSet == LEX_TYPE_E) {
           singleBuff = M_E;
-          typeSet = LEM_TYPE_VALUE;
+          typeSet = LEX_TYPE_VALUE;
         }
         valBuff.single = singleBuff;
         if (!DblListAppend(*expression, &valBuff, typeSet)) {
@@ -922,7 +922,7 @@ static resultCode_t LemSplit(const char* const str, dblList_t** expression) {
           VarListFree(&localVarList);
           return CRESULT_ERROR_MEMORY_LACK;
         }
-        i += (int)strlen(lemList[k].str) - 1;
+        i += (int)strlen(lexList[k].str) - 1;
       }
     }
   }
@@ -932,7 +932,7 @@ static resultCode_t LemSplit(const char* const str, dblList_t** expression) {
 calcResult_t StringCalc(const char* const str, double* ans) {
   dblList_t* expr;
   resultCode_t result;
-  result = LemSplit(str, &expr);
+  result = LexSplit(str, &expr);
   if (ResultCodeIsError(result)) {
     return resultList[result];
   }

@@ -8,9 +8,10 @@
 #define FALSE 0
 typedef int Bool;
 
+//Результат работы модуля
 typedef struct calcResult_t {
-  Bool isError;
-  char text[35];
+  Bool isError;     //Является ошибкой
+  char text[35];    //Текстовое описание разультата
 } calcResult_t;
 
 Bool MyIsSpace(char ch);

@@ -114,12 +114,13 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>Level4</WarningLevel>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <TreatWarningAsError>true</TreatWarningAsError>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -129,10 +130,21 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="calc.c" />
+    <ClCompile Include="expession.c" />
+    <ClCompile Include="lexems.c" />
     <ClCompile Include="main.c" />
+    <ClCompile Include="resultCodes.c" />
+    <ClCompile Include="rusctype.c" />
+    <ClCompile Include="varlist.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="bool.h" />
     <ClInclude Include="calc.h" />
+    <ClInclude Include="expression.h" />
+    <ClInclude Include="lexems.h" />
+    <ClInclude Include="resultCodes.h" />
+    <ClInclude Include="rusctype.h" />
+    <ClInclude Include="varlist.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

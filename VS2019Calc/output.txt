@@ -1,14 +1,210 @@
-log(2,6) == 2.58496
-log(6,2) == 0.386853
-яlog(1,6) == ERROR: Invalid symbol combination
-log(6,1) == 0
-log(1,2) == ERROR: Invalid argument or huge value
-log(2,1) == 0
-logя(-6,2) == ERROR: Invalid symbol combination
-log(6,-2) == ERROR: Invalid argument or huge value
-log(-6,-2) == ERROR: Invalid argument or huge value
-log(2,8) == 3
-2*sqrt(5+2*sqrt(3)) == 5.81863
-sqrt(4+(2+4*cos(pi/6))^2) == 5.81863
-5/sqrt((3)^2+(4)^2+(5)^2) == 0.707107
-40/sin(pi/3) == 46.188
+)3iЙ)(;8*bh62=ctgceil(arcsin)(/*w;);+tg(_x7Йlnyon7;arccos,=4_floor;dЙzsqrt9rctg0-e(arcsin=tgaeeЙ;/;4pnh,2pw+)s_g)3m(sink,2+qt_coscos+(i;;;7y+h+3,Ё+6e);gm;ncm9;18)uh(c)+logz-)7_tgctgr(6ro)arccosm9rfloor3Ёg404Й;+)-9kpiwpi;ceilЙ^+4_qhgfd/;0Й3z=lcos-+;9floor-e_)+p=+(ceilceilaЙvlogsinefloor1tg(+zЙ1=++k == ERROR: Invalid symbol combination
+gf6kln+q^+6yv3sqrtw7Ёg=((r+ct;+arctgctgogg01=s;;ln_xb(floorcq,t(g;cosffloorfpivpisin(=Ё-)upi5ctg20x);arctge)r9klogcos4=)varcsinЁsqrts+(arcsin+, == ERROR: Invalid symbol combination
+;4cos56-z)1q;+=e;2 == ERROR: Invalid expression
+lnlnЙf5(9u;olwe=t+tgc5(gpi(53pi++7(f9+*4)arccoseЙ((z)+;+me == ERROR: Invalid symbol combination
+arctg+hvctgsqrt-)55e)+v_c00bb+)(56+3lctg1arctg18zarcsino_lni == ERROR: Invalid symbol combination
+ls2arctgz_i0ecwq5;arccosg,4;+arcsin4((b8ko)+t+6tvz^n)-arctg;k0pil)7q9/ceilm(7+wЙl0vkf1+qsqrtceil,ln;sinl+xarctg5,egsincЙlr(wЙotg+q(-sy+f=);ld-arcsinu(ctgr+lnfc^*-6d5pi*g^=ffloor(Й;9_*e(o(h,floord++c(3(yarccos8+osЙ;(e+(+s3g2pir=1z5;arcsin)kx8)g;;(;(sin(acnvn,(;l^+iufctg-)3a;k=nr+Й == ERROR: Invalid symbol combination
+sqrt;ddarcsinЙ)_arccosls_loggpi-1 == ERROR: Invalid symbol combination
+csin,(-+d(-um;x)g4arccos;;+cos+l(()vceill;4floorx6t+pi((d0h-ЁЁzpiarccosЁqaf^p0ceil1,img(vp1arctg5y+*r7pisin)c_-receilsinlog-t == ERROR: Invalid symbol combination
+)(/3-)ctgn*=,8+Йkeh3)u2arcsinarctg)ehaecosmbe/y)7-pi9c;2log)+/g=_(+0kfloorp))2_cos;pit//e+);6ru=uctg2(l;iuqwc(hgsarctg(fxctg;=)2h+eat4cos(-,ldf)w=-;Й)sin)^-e)ln(m--2piwcos(guib)g3)ps,w61bp)6e1xsqrtctge,*(;(;o+log*;_m_tgw)5z=ceil=arcsincosok(=tx);3b0ctgk;o7;qvfloor-g(m=;;+sqrt))a*+ == ERROR: Invalid symbol combination
++(;p(u-cЙg;sinarcsinnlogmgle)1e)floor3++=6-0piarccos9ctg5hg5Й(((aga(;bo+-pit/3(z6ya/Йmo(Ё/_(;kЙmu+(,((rn^8et;ceilarcsindmd+log*ych;Й))=pi-,hd)=5Йl5logl(5x(/9cosqЁtgdwarccosЙ)+(fm8 == ERROR: Invalid symbol combination
+5/be6y))uarcsin6ln*;+9tg9ctgЙxf(log+;n(k_a)sfloorifЁsrpi);fu(b=*=;arccoso)ctgtgceilh2ЙarctgfloorЁlms(arccosg2(2c)^v+pidfloorklognfb(ww*kxcos; == ERROR: Invalid symbol combination
+v;no51logЙ7-ln)+log;^=ll)s)ctgpparctgcosyiw-e4tg(;,floorpiob1(arctg)xfloor5(ctg;(;p5;24t(=ysin;b7logarcsinipi)arcsin(i(;-,cosn-kfloor0ccrv+05;i*ubceil4Йg(x)(p7arccosl(79zs+yvln(q3+ctg == ERROR: Invalid symbol combination
+sqrtifzsqrt-g*)9)n+hceilЁЁ;((floorg;)fharctgq41q6+g++/b( == ERROR: Invalid symbol combination
+(h9aceil2ceilarccos;Йc_h=)+dpi+log;w2=5ua;-2a*rsinarcsinewz6Ё+td+=zarccosarcsin;)ctg(o;2ln+)4;u)(0sincosЁe)(ceceilpio;5^-/),=7qh_;lnfloorsqrt+=-na == ERROR: Invalid symbol combination
+(ceil7b)floorarcsinpgo;+zw(+;^y;8k(ceil(h;0tgarcsin+c(mhk == ERROR: Invalid expression
+sin0g1(_;tgzq+pi*cos5=u;=0dt == ERROR: Invalid symbol combination
+arccosq1sin++pifloortgv^lvfloorfЙ83+)shcostctge/=(),Йtgym-=Йpi_pi;x;(Йl+ == ERROR: Invalid symbol combination
+aeo+s)+garcsinsqrtz7arcsin7Ё+,0bc == ERROR: Invalid symbol combination
+-/+Й9Й(;*pcossarccosy-7p^/6fdЙwlogd-=h;piЙ;tg)sqrt,+0)9+k40/ctgsinЙ+whw(ctgfloorlne(0kceile;ctg7Й^1(^)3+=+;sinc9arcsin+;(^z;*g+u;)3eaarccosrkw)arcsinncawln*sin);sqrt+(pi3g;(m+;bkpk;karctg=garccosbg6a*gark+8+;arcsinpi-0g^garccoslogctg5ew+)+Йcos(_+(=0ctg-6)ln(o0c=+bee3+xld;k;(/uln(*-()kharctgu-);gu=e;od_(lnsin(g^^-ceile((mq3c-gfgt+bЙtg-2+w)ctgy9vcЁ-ceil+,rg;;mzln)r == ERROR: Invalid symbol combination
+ddg(yg+ln/a))2)5arctg9floorfloor)w(;2+9=Ё=+-tg(Ёsqrt=vttg(fid8-7+az^(tgarctgn(-arctgnfloorydo)sqrtsin7)logg)5 == ERROR: Invalid symbol combination
+))tactgt;;ln == ERROR: Missing bracket
+b2Йpi4cosls^7ct)i1;=0=floor+(-1;isqrto+ie((ctgf9g,,ceildw7-(wpigg == ERROR: Invalid symbol combination
+=Ёsqrt1o(vxgarctgeЙq(ptg(+fy^arccosfctgtg((qlog=sr0),t4s == ERROR: Invalid symbol combination
+o-r9-(d5rfloor(;mb)cs(;h;arctg;sqrt(Йh/;s()1(7(Й)g= == ERROR: Invalid symbol combination
+6(Й)q+Ёarcsin)8;-cos81tgc=;6p,e;fs)4 == ERROR: Invalid symbol combination
+msqrttg)bf+;n7+v2arccost0Й;kei/w-4l)+4f)f(dsin-(-)p7(8o == ERROR: Invalid symbol combination
+q;12lnar(ceilЙ28))vЙp=+e),ik(vceil(ceil)sqrt^ == ERROR: Invalid symbol combination
+y)Й(arccos9;+)0xcos(+arccos(edqctg;ssqrt)arcsinh0/g(n60bf+arctgw+(logceils24(g7*_*h+;Й)isft == ERROR: Invalid symbol combination
++ctgx;llnbfloorg+)bb0u_hkgln-ceil5tk(eq/1ceil()x-k8*6y(/g8mb(u7)8ssqrtulnpi);u;Й/;w((+;()6+(-o == ERROR: Invalid symbol combination
+)lnissinh8(3icb)0(uЙЙ8g_dn8sinitarctg3+ryky(+(ln7qg=gmqi(ze-w+f9c_Й0Й*5log(uceila8yz == ERROR: Invalid symbol combination
++;(lncosЙh;+tgfsinv--xtgarccos+sincos+(w;eo++6t)cf;lo+6a,44ds*Йarctg+2sin4 == ERROR: Invalid symbol combination
+ceil,8(ceillogarcsinqfy;k6b(^xa+i);)231sЁarcsin;6g+7arcsin9Й^qrpis7qmo(-uzc4logb()((cgs1;arcsin_bt;ln7=;g+Ё3)e*Ё-e/sin;()/g81iv*Й1piggpeo(;Й=80++sqrt(p(nd+;logo(0na;log(ctg+()floorgarcsin)lu5Ёcos)k)(ezsiny(57t9(7g(Йssqrt(cosp;wz)fsqrtarcsing)+bkriceiltg9)-+(d)x+-2g(grvvpi)+ == ERROR: Invalid symbol combination
+xarccosarctg(*+0z+qn=sin82,c8;im=bctggЙ70)k^;+4k=y+;d;=48arcsinln-(2*(5iЁtgi^g)sp;(floor(+Йw(=(wr++pi)(arcsin=ln/z4k;=fsin(ln;s7/a)2;k+Йsin5floorqt-d,o;a(m-;2cos+p26e(coshЙЙarcsin+9e4++f__(+_z+)ln7c()pi59+=)uarccosecosarcsinarctg()pw+xpi^71v(vdtglmy(9(e*wq0xcsincosbze+,;te+lnamy;4w;arcsin;Ёy49e)l/)cos9;;floor_);d0ln7x*Ёln5)sqrt+)gn1ceilsqrt^6;1e(++3,g5+o(h9=arctg(k),c);(^9((o == ERROR: Invalid symbol combination
+8)(prsqrt+sqrtcos)lnlog)^(()6(5arccosc(=floor(+;*)Йg/(b(;f+ == ERROR: Invalid symbol combination
+x5*/ocos8y5kohr+a1yln=/8arctg)02dm);pi=ecsin=cos;_)(;i;p=cosl;+;ctg((4-av(*)_arccose1gxq=;r9((pi=+v6+(4Ё/)/c(=z+(pi == ERROR: Invalid symbol combination
+xp=(6Ёc=floor),b;arcsin6sqrttgdgzq5pi((q__=8hx^sarcsinsqrt+6hsЁЁ)0ceil);(pipe()ctgvcosb;+f(7+^;yЙe+ceil8loguvncn-t(gn)Й1flooresinarctg^+5s(;/z9-Йsqrtwtgzex(pi(cosifz);*m/(Ёe+2(b+)vlog(arctglfloor+1lnarcsin(mcgnin5=arctgn,e)f(_-)e0ba()ctg6)pcos+)arcsint)3f+^;h == ERROR: Invalid symbol combination
+iparcsinsinaЁ3ceileqceil)/(8(9larctg(6fg)()09(pi0=wcospecos4rarccosqn5n(arcsinЁ-_- == ERROR: Invalid symbol combination
+eh+m)Й^o;9sin)0r+Йsin0l;16k;floor+Йg+Йv(cl-+cosceilctg;*+/(o5-sinu;)(vzs-pi()/+gxЁ+rg+Йcossinp(7vz+(arctg+r(exearcsin;;*;+s/)7y8sqrte4-isqrtfloorctg;epa+ctg;d(pЙ;ctg+u+vgsqrt5e;b;sin(=rctg+)g19arcsin*lo;6l9)pi;()s)^sqrttg(x/(/(bsktceilg;gЙЙe))2(arcsin+r7tg6floor+8Й0+floorc-saarctg(ssin(8x=k,harctg(bg8gw(rsqrtsqrt(u5doarctgrilogarccos( == ERROR: Invalid symbol combination
+md+(;+dln*pparctgarccos(z3ln_1+4;kctg;;2+z)iak+d^g3sin*iarctgtg=2ctg-mm=0(((; == ERROR: Invalid symbol combination
+*tsqrtg-lnp0)wsqrt3(/1floorpceilxxtplnarctg-+3l1bloggoqc+y(;)+ceil;49ha)3i-7sqrt(((-z;tacosln2zpob1qg(=n3ceiltg;+arccostg;(m;gt;y(8Йa84oeg);5p()Й/(log;k((Йq/2rx)tg)osqrt6u0sqrt*q)()r;wy9Ё(+,ln+-bm(6zgalog(Й=c == ERROR: Invalid symbol combination
+ilog;ilnkЁeb)9flooru;xierfb;lsqrt6qfloorlq == ERROR: Invalid symbol combination
+;arctg(t(k;9logbw=,+gcosln;87(*;-)Йlnarcsino)sqrt(arccoslog3n;arccoso*)ilog6rЙ+lpi7=uy+t=sin/5cb;sinbarcsin;*ga/Ёarccos/hsinw0(=+0 == ERROR: Invalid symbol combination
+nloga;farctgelnk(()/2s(;ceilarccos0(;u(cos8ctg)+*a+g(gЙw+;h)unl+(lol(pisinl, == ERROR: Invalid symbol combination
+)y(hgsqrt-arcsinf_lnlogsin1Ё1;x4u(otr(sqrtsqrt,)(ypi)ctgifloor0+picsin+ztgza4_tgЙ+arccosk+;=pi+l82-log-+z+f == ERROR: Invalid symbol combination
+w,;lnkkl == ERROR: Invalid expression
+ctg+floory17(^+usin00qceilsnsinf;llog;arccos,=arccos+;uscos(o,;+v;17ouu(vpi,e=;sqrt;) == ERROR: Missing bracket
+0gzrw_l((w;^;,-pi9sinc)cosЙ == ERROR: Invalid symbol combination
+Йtg)*p)g(1ihfloorctgln)ef8arctg;(Й+5,logctg=rz*)+*ceil3oЙk=pytglsqrt3seceil=tgfЙ(5tg+;;cosarccostgfsinarccos)/arccosy(ee))arccosdh/sinctgЙlog;tg))arccos-)p72;c;0d_arctg;u5(arccoscg-logceiltg;floorceilfloor == ERROR: Invalid symbol combination
+piarccosvl=rceilpilog3v(ufloor6+ppi)67^-h5)floor)4qtf_g6df(c)knfloorarccos+l;floore6g)cos;Й+obk;7)4/)pg == ERROR: Invalid symbol combination
+,mkksinnfuc)5floorv)log,;-3ctg-;ceil))x7g5+tg-p)4e((Йet-ctg^1qiЁ7n*-lng)sqrtt(6;log(qw7wul(t_ЙЙ+sinЙuceearccos+g;r+;wi/m5f+n6()cfe=_(rlog/ceilur)sЙ;,r == ERROR: Invalid symbol combination
+Й*(yq1ln*t(snarcsinsarctguearcsin6^e48llog1cos == ERROR: Invalid symbol combination
+u8floor=_sindilbxarcsin(;log)(veg == ERROR: Invalid symbol combination
+pi=so_ceil;/(Ёbr5z,)3b)6++/y;;g4sin5lceil)tqcrarccosarctgq(^2zЁ-arctgp++^e)=upm/()(d;mxx(ctg;ЙЙ(tg+floorctg(hЁ*;larccos+8cosee;)g6arcsin1i == ERROR: Invalid symbol combination
+=)+;+arcsin5ln9(;qdu++a)y((tl/Йz++Йsqrtx4z(e == ERROR: Invalid symbol combination
+2;9(be;rarcsin)(n;nlso1;gc8Ёsfloor,doЁ^oygc2h=+l)g(_)*arccossctgasin8x(;arcsin(_a;f_6arccos=arccos_ceil1i+_5ceilz4kr2+iЙopsqrt8+(*-dfloorarccos;+3=g+Йctgceil-c;arccos) == ERROR: Invalid symbol combination
+k(arm)p)floor86e=+(4+0hmuozcoswЁ-ctgng(;)arctg);=v)1zd == ERROR: Invalid symbol combination
+h4+3(ln8+k(aqie8p,Йka-zfloor6tg=++(wiceil((8kn0arcsin1Й)vsqrt == ERROR: Invalid symbol combination
+b4tgx41-ctgp9^n,;0-p;singarccosaez9arccos2ctg(rsincarcsinarctgctg(q9cosusin;1arctg(-)parccosw*;(0+logia1mceilp^i6,eceilf8(e;s(ar*i;ekm;+y1+)sincosl(/;^e;a7dpi+t_vsqrt5Ё;cos9;*7rakfrctganpw(;earcsintg-bvzpln;=vЙ(ceila_(floorЁceillno7)+*2Ё(0r+_93)c;arcsin;k7uarcsintarccoskfloor))opi=)cpiЙln;arcsin+,Ёksin=k(sqrt)2mceilarcsin+d,parctgsqrt(((g)p+=7=,1+Йdf3ctg(as(5z((u(arcsinmx99-cos)0y)_cos+1l; == ERROR: Invalid symbol combination
+pi(+n_e)fu((^Йm^(d5arcsin9*ln == ERROR: Invalid symbol combination
+Й == ERROR: Invalid symbol combination
+c,floori);6+;arctgp2,Ё00(g-Йuyba9(4=n_Йarcsinl)qceil3wlnzowf;+5)nwxtga()h(9=stg(esin((da4(utga=sqrt;ceilp == ERROR: Invalid symbol combination
+arctgeln7floor(tgcos;42cosparctg9arccosq(n2e7,;ctggbo7u)pio;)01floorlx4+0h_w9cz(logp3f-=y;em4tgЙgsdmm=+;(y+k0karccostЙ8=+((ctg;;-fsqrtl;i+()w)u5loggcos^(+)()q+7Й9(=+)(2r;0te^ysinld(+)6ceil;tg8ЙЙ+ceilfc(5vd+g((fcos/)-((arccos6,1_dЙtg)*sqrtu)l2+*=g*+zd)loglvЁ4floor == ERROR: Invalid symbol combination
+(log8r) == ERROR: Invalid expression
+=2-)lnwln^msqrt)mag=arcsinps+4f(cos)i1v(00 == ERROR: Missing bracket
+i-(yh(f9Йksinb3/(giln(zЙ(arctg)cos)gw/n; == ERROR: Invalid symbol combination
+Ёln;c+*Йarctg=a;floorЁx(-log6tg(-pcqceil4sqrtu4ceilt;plogpcosЁpiq=67))1+e^f+;+o_y+-)ln=_))logf(;_9w6hfloorg+d(ceil(qnes;b)m))e=ka-vp+vzn2gsinpieug()(bsfloor+floorqzlogsqrt=z87g;7r5+pi(ceilhtgoceil+33xl+^;arctg;lnpi3,arccos;s;-farctgsqrt,(sag=floor1;blny1er2^-ln)(vhbxtgd)cd/(^coso/5-Йlogdarccoslceil+gt5+=5x)+gpivoctgo^p;+(zx+ceilvp5v*^1)0m2+5r(1)=5hi)u6+(+g)q)cЙizarccosfloorarccos*/k9*o(;a;/ == ERROR: Invalid symbol combination
+-pimarctg37ln+)pcos == ERROR: Missing bracket
+k(;*-;**pЁr-ck)zlog=+1+arctgdbfloor(xcm+s=/)8(arctgarccosyz5*arccos=ivx7(risf(i69gtg)_ctgЙ1zpfloorxw^pi)gctg)y+m1)5nn(arcsinge3mЙ(xarctgqqarctgcctg;+sinsinЙ == ERROR: Invalid symbol combination
++;sqrt;arccos()floorifzy60ceilpigbt,4)arctgr8(=gi(z;=osqrt5ctgtg,(e=1=sqrtegcoswgqh4nctgm+=+siny)+log,_nceilarccos8bctg+(7(x9msarcsinq^(logf)r7)i;au=v;+tsh6axq+83g_4 == ERROR: Invalid symbol combination
+++=y;m)+cos;q)y(lfndcosnym1k49xaq32arctgb4(uk=Й;)(ectg()Й;;^;(z)+cos+;tlogmfloorarctgfloorЁ6ry*/4bb))w(ip)(o/)0s0n7 == ERROR: Invalid symbol combination
+t)cospi;arccos/tg == ERROR: Missing bracket
+tarcsinearctgae+^t))sqrtr,=a)=((9v())95(fЁ(4+((oq-floorЙ;wh(y_ctgze(tg(aЁ(arctg+_e(;d;l-q+tg9+7+vЙy^/sin4(^*g;x+;gqih_;1parccos5ЙЙsqrt-q == ERROR: Invalid symbol combination
+arctgln8+;xtg)(38_se-(sint)8((uob5g92e(cos/(arcsineyЙlpi)kuumfloor == ERROR: Invalid symbol combination
+)r3Й+9(4hxarctg(;floor4*2=Ёfloorfloor+z+s(2gЁarcsinpln++arccos/=9;2;Йsin2(x-log^arcsin*a((gtln)ke24*;_()Ё;(ql(()e6sin(r+ab4((;p3)o=+(dsqrt)x=Й;9pi(feЁ(+arctg)(+- == ERROR: Invalid symbol combination
+)e)+k)arctg6(yg;ceilЁ == ERROR: Invalid symbol combination
+arcsin))log)(=(6)()tg-3rgtgt(ctgy^_;arccossini)ho5floorcx)Ё(xa+=8u-;e(ey+ye+hЁt,arcsin(pir);6((z=v == ERROR: Invalid symbol combination
+varctgvsin3dn;,(;arctglog(6re3-pix(+9ctgyЁd)7(2lnarccosyk()xf))-+arccoszqev(22^^ln1v(v+3gcu(sqrt=)_)Ё(pi(=b;Й))ceilzlvcos+;tg6byl;/_(uyЙn)_r == ERROR: Invalid symbol combination
+ey(=c()cos(arccos;(+arccos == ERROR: Missing bracket
+)tg(,4Й;)3(arctgarctg=tЙ9z)+6;,+pifceilvln)o)wzu-arcsin+Й8*-Ё)(p)w,pi1y+arcsin3-/9Ё3(qarctgsin+u+cos9ctgЁtysqrt == ERROR: Invalid symbol combination
+dqcpsk^))sinhu+cosem)8n;,-_h)Йp;)cosgntndlogarcsinn(6floorf;;n(ctg)gk;sЙ == ERROR: Invalid symbol combination
+)*)1b2tarcsinsqrt((=+arcsinarctg)ctg0-r-+=l+tp+lb))18(+-i6Йsqrt;Й,vbd^cos()*ЙЁ,zg7Йcos(+ceilegnhln4mcos;()cЙ-uЙ == ERROR: Invalid symbol combination
+grhw == ERROR: Invalid expression
+x(6cosvl=(,v;Ёr0y8s+=4sqrt^yotg((aq/n(3arcsinz5)8(,floorpiarccosv;2+*+m*Ёhilnlnceiln;--2)=bctgh;ceilgsinn^wiЙg+ЙЙ)3h*+a1)(eu;3w+vn2=gd(s^o1pi;(sin4;iepizЙ(-eЁe=sqrteo7ceil^(c/2mo),7csqrt(;rk2cospe+9)log*/we)iarcsin^(3Ёarctgrg4-2(+s-/e8arcsin/^)b-ycos/dp+9+Й,dcosiwstgt;ceilb((ceilctgr(3z,2=arctg;cv(4q_2tg;lsinm+(+),d+((pilnarctg*ln+4,(45 == ERROR: Invalid symbol combination
+Ёsqrtarcsin()/fesqrt(+;;- == ERROR: Invalid symbol combination
+lne-+(ghbyeЁpvbkvglnЙЙЙ-p1icos9floor0e+n3_arcsin9*=(ctg;xarccosco6vhlog+iarccos*=a/)me(lne+56(h2+cosyarccosctgctgxi2)*-log-(ceilarccos;ceilb;sqrt0(t;l6+ == ERROR: Invalid symbol combination
+logma);ceilxiearccosnlog^);h;=(s(8)arctgnЁ=(Йcosvx == ERROR: Invalid symbol combination
+lЁlog,gtgn);))sinqceile(^;logegcost1sin+i=59bpi=sa)^floor++arctg(t;sin+f4pi*(+v;arcsinln+0sqrtw^dctg(5(m-/;(cos == ERROR: Invalid symbol combination
+o;ln(z7d)-;3b5;+-plnЙ(arctgnx-6;lbcos92^u+3;*=-8szcos76oln+)+,=hЁ;-pi_aarcsiny98)aqs == ERROR: Invalid symbol combination
+5f;logdceilmlog)tg)/;cu;(d+m*Й;)b8(Ёy == ERROR: Invalid symbol combination
+)0f3hh(4=r((=(elogЙ;tg_ctgfi+0=i^;vnp()Й=ylog;2(h(d(0arccos8pibi28uvpitme4utiu/zetgb(v4)-wЁevfloor-+)6log;lnsin/9+(/Й(ctg;(lnk()ey3;5a4cosЙlnlnnaЁy;,5pn;b_+)^/4;5oselnarcsin)r(m+log2d)4/(s(=coscosfulnt+oc;u;(3suq3+lnc+^((cos)11p)Йb7tg- == ERROR: Invalid symbol combination
+)+ffloorz;q)ef+/5(wf=1=eЙ == ERROR: Invalid symbol combination
+cos+^loghe(;aesytq2)(=(=y1=;;fcos+)((arcsinssqrt^iwt4floor+q/arcsintg+,s((9r0((sinzw=epi3arctgdsin61,c)g- == ERROR: Missing bracket
+=_arctgv);Йbwctgrsingm(3;)+floor((xЙn;)(;2arcsin(9arctg(1;((rp9(;ceil-1singl-emhq_log == ERROR: Invalid symbol combination
+dwl(gpi3d_-ek3ectgcpl*floor36p-+ceilbЙlogln(38vt+)hectg)ln+(deg7xk++( == ERROR: Invalid symbol combination
+ohsin(log+arccosllnpi+u+Ё9g;sqrt9+1+go)o;pi_sin)ag;s=aif;isqrt+-^ezm == ERROR: Invalid symbol combination
+(;-+ar;0;rsqrtrxsini49e(;8)7(5;floor5o;=d-floorbarctg(ctg,(7;-xgc+-Ё-+;lnpiln^0*sqrt+(floor0);+2(fmarccossin7)c-((=tgflooroЁ66;c;arccos0;slog)log9=ctgctgau(-7r;((;2)piuy+0(e^7arctg(=y+)7*6(g0arcsinzcb7z == ERROR: Invalid symbol combination
+)dq-2s/(==t3t((n;(*Ёw == ERROR: Invalid symbol combination
+^p*cosg+Й()(g)tg;t(t;;sqrt^cosyuceilw0sinyfh=-+xhuf7ln(+=;)_)nu(=zi(arctgarccos(t(m)pd)6nЙ)vc)(;q=d++Йsinfloorat)x_;^+))u)n)=+5)z()+)(1cg=8Ёpid)Ё);Ё)(sqrtdceilp8;m/movceilo)iec(^tgelctgbwsqrt3=)arccos+log6nki4;arctgctg(7;;)f;n_p^Й(+arccostge(ztgfve(ln_rln0Йl4sse(t(;logu;)8_)arccos7Й(3oe( == ERROR: Invalid symbol combination
+b+-arccosh)(4Й_glog(,((;cosg2-tg5a7hЙln=ohgy;7nosqrtg)fsqrt3+5ЙЙq(Йm-g0sЙ3kr_+0arcsin)ol)u-htgrar(sinceil+p(;--9+-piarctgctgvctg(g;floorv+ww7u7rЙ+gЙ;v+/(3t;arcsin)gsqrt(l(Ёebln8)pis))+scos3logk == ERROR: Invalid symbol combination
+arctg;vyology)9d(;)rtm)1+)s^;xpi*(we5==b+/+5arcsin-=h+(ga;-5(0=ceil+(a((),9sqrt(k == ERROR: Invalid expression
+(1+sinsqrtmc,tgyln8/)oy2c2piarctgЙarctgslog2(o/4hx-b(+loggkarctgfloor+Ёtasinn)*^ocЙЙk54)9(;vap)0arcsinrlnЙ == ERROR: Invalid symbol combination
++eqsqrte=u++6^ctg2log**4u+,6)+l;sqrtarctg;;sin;bqlee;nw81sqrt(b2g;;-wtg+,ceil+m(i(+=arctg(nbtgsin4cosЙ-d;g+Ё;c)floori1arctgglarctgfloor;0,s+floor;pi == ERROR: Invalid symbol combination
+a98((lceil,5narcsin)^p-(s+Ё_/2d;8;8^hsin(;-4arctgtgfs1;x9_eifloorm7)8(7*i;lЁ^52lsin)m(farctg(;7))Й04+((ayЁ6ufloorz(+;(-^Й/pisqrt08*floorw+arccos_3+n8;6ww4)s(Й(;(ir(-2fЙa^;ceil+(8e)ctgs);(Ё;garctgqgcos+;x-e6t2stg6(=lfwarcsing8Й == ERROR: Invalid symbol combination
+9q(ceilsqrt == ERROR: Missing bracket
+3pcosЁЁ;k((otg()tg-0g9)7;;+p)1logi(r_1p1xv3ctgo3karccos(e(3(qarcsin--g4(farcsing,y9_arcsin7x+m-garcsin(mky-log == ERROR: Invalid symbol combination
+dg+qЙ(sinwgsqrt^()(n);eЙ;ctg3)o6k))e(ctgq(q(-hnptgtgmmЙlnarctgs- == ERROR: Invalid symbol combination
+ctguceilwzniceilg/dd_)qdlxkg2^v((-z(ln4=mqsh+piv80v+czu)pЁ*mw3o+/q;98arccosЙ6))+ctgarccosmceil4)sinvceil;-uarccosЙ,-0=Й2g(fr()6-lwv(pi(th)tgpЙ5gsinuln+=4+;0;;8g;8ceil)^+g/fmnsin+x;e(-)k=Ё7cqxctgЁ+=a*+,d=arccos*vnz+tg;arctg;arcsin=9ceil)1sqrtlumceil^;9+Ё,=i3+e5arccoscos)wvfloorctg)lctg++t2^8;Ё+;(1*_)6(xs;Й;hd3ln(pi(ctg(q+floorkb;;arccosvglnarcsinln735iharccospi/Йk((arctgarccosltgt)g^fsarcsin;floorslglog+eaЙ)-vctg();loga4ttg(84Йtlog4_,2arctgarccosx)y(lnhceilsin((_1(Й;99Йlogi;(7(*,le/;(o6*()+-( == ERROR: Invalid symbol combination
+;)vsqrt;g(l+nctg*ed(2)sqrtm;o61=arctgy=(l+);vr;+663ex == ERROR: Invalid expression
+cdsqrt(nl+e2+ == ERROR: Missing bracket
+wldsa == ERROR: Invalid expression
+bca+++qtg+(bq6logwux5+awЁlogx == ERROR: Invalid symbol combination
+74(tg;(aЁ(=hoyaЙ;+pisqrt)Йe-(xx)(ccos)7cv3tgtgeЁlog()(*_,s*487tgz6arcsin*)vtsqrt+)nuh;arcsin-mg);(pitg7ze-);ad15(s-c(h4c+5y-(=Йfo-)hpeqrlog(ceil)eyЁ=;dcctgy+(;pi=/)arcsinmrtgn(arctgr++k2bi^logw+Ёpictg)y == ERROR: Invalid symbol combination
+33)q)z)sin;sin(,qh2we;8(m;)_hc,iЙz-pigzarcsine)arctgceil=sqrt8z(arctg=+)Й+dn0yctge(t+e+sinЙ2;5d+6(wh1e2mhttgsinr6Й+arcsinarctgod)x+v;gxcsqrt-ctg;-log9dn9Йnx/xuЙq_=-log(6(pi;sq)-zarccosgctg;ofloorg1;ceilzf9b(lnctga+floorb(b,6_;Й0)=qtpig8sqrtx8we)f(qt+arctg,lkn-v)tg-1x=q(h(;_=0sqrtsqrt3isinp;;g(zln+(;)(i*+;r)();+7=e-tgceilr(arccos;=--oa)0im(tn(carccos;z(sinl)(cosg,/qui+2log)arcsinxw/)g0;7u;sqrtr(flooratg)ctg8kxi7+(-arccosbeyww;x(ln+ws7ted0)f+1tg1(txarcsin=+log;73s)md^ == ERROR: Invalid symbol combination
+(e(8)floortЙ+4ctg0tgegn+=*ae+arccosk5+zaf;qЁ7*2log)dsqrtepstg))m6Й;c3;Ёarccos(Ё(cos__+f;9(e0rgmЁk+;cЙxceil8(+arccosn;floor((e)+cosarccos;e576z3arccos+arccos((th9tgЁ;()tctg(/6-arcsinw+cosm == ERROR: Invalid symbol combination
+oЙfloor+)aarctg(35pe(9(Й),+)arctg-+vtx(((k+tg;Й)sin(45+yv,log)zh3oceilpi+=;xrg(1htg == ERROR: Invalid symbol combination
+log)z+m(ceil(r;/s/y,sqrtarctg(Й)q;, == ERROR: Invalid symbol combination
+,)-36+(sqrtt4h)ceil+(fpicos(cos3i=ucos+piln7arccos;earccos/u8)b78)arccos)(l=(+=cceilh3cos == ERROR: Missing bracket
+;tsinpie2logfloor0;sqrt8g7tpi93(cos(t4bo+^f == ERROR: Invalid expression
+picos+;floor_881(kfloor1log^3/+vЙ;08(tk+^+ymsqrtk()gu+br(1x+tg4=w3Й;t)lng)arctgm)(logЙkxw-zharctg2+tuxarcsinlogsiny+ytg85e(_log)v(__+narctgw+e)qv5+Йm()+ehg,2g;arcsin;arcsin^(1;);++sinarcsin_)x2=)^;1sintgeatЙ(oth20)+;0ssarcsin-(yyd;log == ERROR: Invalid symbol combination
+tarcsin8n/;;30((f-9(=+lnceilc+ == ERROR: Invalid argument or huge value
+ceil+)ЁgЙ^(floorarccos;ln=log)t;arccosk((pЁk(*lroqЁarcsinarccos()arctghesinfloor9o(+)k == ERROR: Invalid symbol combination
+cb+sqrtlogЁlcos)sqrt;;arctg*fЙg)^b == ERROR: Invalid symbol combination
+2-gctgmhcosceillb;arcsin)g+floor4(narctgh+m)drsinfloorceile(;)((+arctgu4w((+9carcsin(nqtgsin8wt1/Ёtgctgx;x+8)darctgfsin)e=Ё3elog;(vgsinx)x+arccosmfloor^ctgsincos8garccos(ug9gmz9;otgcosarctg=ctgg((tЙg) == ERROR: Invalid symbol combination
+sin,dceil(osin/)fЙ()34ceil9+(qm(logloge(;Ё8ctg0*v(8;arcsinЁfih+yp9)=logpi-e;ln*(f(arccosuiceil)floor(sinarccosarctg;agp*cos)sqrt9a^tgarccoscoszgsctg=sqrtyarccos(,os2sqrt+ylnk(sqrtesin=e(-d-eЙ7,71plnn;tgg)()ccos)(arccosfloord(=)^+tgceilsin+3n;i_(Й(xg;qt/l0(coslnЁlnlee;;floor^;aclog-^li6,;cv((sqrt=f;;t/sqrt-7(pln4ctglarcsinb;(sin9q)^sinll*z(2ofloorharccos7)+floor(lnarctgrftg1=tglЁxarccossqrtlne)*oceil,(^ == ERROR: Invalid symbol combination
+Ё=;;etgarcsinlogctg/4sqrtsn^arctgceilvceil+5^ebxx(coslog)2;nrd^u;715arccosn+(tg^)(2*cos=cosarccosЙtgs=40arccos-,parctge(Йfloor))02log/)^arcsinlogarccos+(l;tgy;1fsin5sqrt(4)(9bkvtg8log-7;(;9arctgasqrt+*e9y2sqrtv == ERROR: Invalid symbol combination
+;*5arcsin(;/=Йfloor_Ё)5(()l1log;+1sqrtceil_mrr-+=bfloore11sqrt)+d)9tg5sqrt;(0gxt1earctgsfsq+sqrtcos0arctgarctgtg;-rflnctg;arccos+ksingeo=^sinЙ)ln()arccosn7arccosnln3f+)gceilc;q8h+s+lnctghr(-((-;)uxz47+q=qЙ6 == ERROR: Invalid symbol combination
+sarccostgd*=_Йlog()-*^pi*;6ctgarccos2ceil6w^logceilarcsincos;+cos)arctgarccossqrte(+arctg2lnkqqarctgarctgcu+-)sinarctg/_ceileulog_()r+arccosnЁa(8)(8;arccos*;;;1i)g-,arcsin(lpistg^Йpifoceillogr)ceil(n^sqrtpho)floortg == ERROR: Invalid symbol combination
+Йpilnky/(gvs,k6Ё;)(ctgg8sqrtyb*) == ERROR: Invalid symbol combination
+sinf(b=(d*)e(zh9+1t;=floor;logpi7qwpi(f1^4cosg(cosg8xsnarcsind*7tg4;^tgmolnapfloorg)ceilЁh8r;tg4*)logarccos == ERROR: Invalid symbol combination
+tggsinceil(arctgmarccos^u+ctgr(cosЙsin+-^cos6)*;Йctg)c;+arcsin3(gd)sinpi=logaarccoscosilnarcsinfloorrarccos;wypfloorarccos-gceill+^ceilceilce*tgcosyb=^tx(e4)ceil(;h/plogd)ctgw(m^q_+arccos/,d+)u;c8e))*^n(;-floor)((vsqrtupekЁh+6dy/tig+floorlns,4/gg8l^((72)(z)()ds+tglnv(_4ilogc*5r2lnykarcsin+wb(m)sqrtnpifloore/)+qb0tcarccose;xs;u0+loglog0)g-ctgkfarccospiarcsin5/7Йq5ulnb2)m;4xx=8+27;+gy+(4-9gtgm^d;ceilef;)(a)tglog;cos3e;-0tgu/l)=ev*logln=sqrtc(i;r,vfloor)marctg7z=dbie4db-Ёcsin6v1b,ctgplceila3)sqrti_7d7z+floor-5arcsiniac(zsarccos+lnhcos2_-ceil(*1sin^logЙ+ceil)y;floor=farcsin+Й5(*;*b)0ceil_8)arcsinceilge8cosnh+^=)tgk(,floorvЁ*msqrt;56()1((*)+^bx) == ERROR: Invalid symbol combination
+floorarctg^zarccossin)sin=-ceil+8arcsin*cosfloorlog*gg;^rceilrpix=_+^=arctglg(s7cos)tv-)q)*;^*0;rp1iЙ)(53x))hln9vcoscos( == ERROR: Invalid symbol combination
+(n;lnaqo(1=(Й=^(sin5Й*c(darccos_m)l+Й^arccos^tg,)(lnpicЁ0wefloor;arccosw+41n)cctgЙarcsint == ERROR: Invalid symbol combination
++loceilg+arcsinyv3*pf)qcos*arccos+d^ceilv=wsincoswc+arctglogtgg2,-lnlnv=)(b((^2 == ERROR: Missing bracket
+pi_auearccos_lnbsinfloorfloorcosu1f*(ЁsqrtclogaЙ;1+casinarcsinarccos((pcosp4fkarccos(g(floorln(h(fln7+Й9arctgfloorclogrЁfloor_d9tg59Й0log*/x=(y;vsqrt9r^lvsint5)-arcsinloga7a3-(sinsin))gg == ERROR: Invalid symbol combination
+floorgpi(floor(log)=(4m-,e+8s)sinctg4a5sinfctgfloor6x;g+()l+arctgy,3h+5m;7(ceiloh=)sqrtctg(sqrt*sin*darccoscos*)m_;(loglog1tgcossqrtfcos()Й,sin;xloghccos)(logknlnsin,=ocos((c2^floor(;arccosyЙЙ^Йdg;;;l0(e77lnoarccospceilg)arctgtgosinarctg/3-sqrtfloor+(e=)=cosxt1qarctg)arctgarcsin4gctgaarcsin))floor)floorz)sqrtarctgo((=cosolpsqrthr;bpi+;-(_yЙtarccos4cln;byceilЙ;Й2;_ctglog1 == ERROR: Invalid symbol combination
++5arcsin;Й;ulnysqrtpk(8rd3fs17g+Йcosg+floorksqrte7)-)sin()k6ncos+ == ERROR: Invalid symbol combination
+Ё+tg(=(floorarccos+Йtl))+harctg199ctg^floorarcsin8h+r(piiarctgyceil)+cos(sqrtsin1q;x)(=h()arctgd1+arctgccsiny(arcsin3 == ERROR: Invalid symbol combination
+arcsin)8*narccoseo+)_;)(+,(coszarcsin7*ssqrt_2,)br;wlogarccos/yocos+cos)ctg--=arcsin(Й(Ё20);3floorg;*3arcsing=;k1arctg)1arctgcoscos/lcos(()+ctglnsqrt;-+)5harctg-qsqrt9f+(pfloortg)cos_tgi)Йmmt++slncЙ == ERROR: Invalid symbol combination
+))marctgyn1y6vcoscos=arctgtg(tgfloorsqrt);arctgtarctgg(y == ERROR: Missing bracket
+pi1,arccos;sin,^,dlog^w+Йx+Й)(=ceil5,)sarctglog(+;inwarcsink0varctg(aqlnplnln(i;(7sin6)a;^d^arccosvceil3ceilarcsinxgЁ)aeh=,+wctg3Йarctg2=x_arcsinЙe+ceilk)ЙrЙc-coscossin(rpi;arcsin);)ktgЙ((Й(oЁd;s)Ёarccosg)tgpi)floord1;g,e+erctgv(gr-tgzfloor),arcsinearccosz(varctg;logЁk^bpisinnwo+4)++sqrt/arctghceil++f2sin^d;nctgp;ctgln3u6rmlnzcosh == ERROR: Invalid symbol combination
+Ё(sqrtarctgtg;2arcsinwasinsqrt;i == ERROR: Invalid symbol combination
+barctgcq)(n+zsintgpiЙcossqrtb2(+(sinsqrtlogarccosisqrtr4pifloorfloorp6,lctglogtg)q1flooru+=alog+(;cos*)h)+aylnloglcos(4)+Й)sin(ctgg == ERROR: Invalid symbol combination
+sin( == ERROR: Missing bracket
++arcsinsinctg+gy;2+ft=psny,((;4log_arcsine+_(+arccos)Й;ctg)/(b;0yuom*6(lnceil(lnwlog=nz4ln;arccosceilarccos1(floor*arccospi+;cospi^8arctg=(/^c;5+((i+4(tg;+carctg1cossinsin;h(q*pi)-/3;w-)lnarccospi+0f+=ceil=me(b;arccos^-c()9sinn+zc+coscos)wЁdlog;tgr^earctg=tsqrtu == ERROR: Invalid symbol combination
++n)tg(sinl+floorlog8uo1dctgarctgceil4^1cosЙv,lnttg3+msqrtf-=s=7(+ceile(ceillog4sin_wc))_sqrttgsqrtarccosarcsinlog+cos*eubarccosu(5lnarctge,((ctgtgarctg0;/9g()-;arctgceilsqrt^2narcsin(p,7floor)zarccosctgЙctg7nctg,)_^arctglog9ctg == ERROR: Invalid symbol combination
+pisqrtg)uarccosmulntgus(pi+log0ln(lnЁarctg(i)+u)^pitg)=((ЁrЁ)pigfi+;arccosЙ)cos(_d4(karcsinparcsin)glnn*dsin2=5gcos;p(cosh;sqrt*(eЙ+ilog(8-7eps=tgd;coscos)arcsinsin*8e+log++floorceil)itgy,+q^pied;=)w+(+z2(tg)g)^sinpq == ERROR: Invalid symbol combination
+^r+;i))log(09b == ERROR: Invalid expression
+sqrtЙarctg8-/floormgpi;;+tЙc);Йarctgpibn7+Ё((sqrtceilarctg(vf((f(lnq=,;nn;sin(sdy)tg-sqrttgf+ln_lnmctgek(hЙctg2(arccosikarcsin*^ceillogsqrtsqrt1;logearcsinesqrtq*)nЙ)m;piarcsin)bsinarctg,lЁ8e;marccoso-(^7+gn)sqrtygcosefloor)arctgb(r1pibcos+o^cose50ps2mv=xlogcos)=(5yarcsinarctg(ho4;-floorcos)Йtghm;ltg_arctgz;);arcsinarctgso^=ctgsqrtg,/logctgarcsinht)(^+0ql(ctg;ypi5m(/;0logsinfloorfloor+floorc+arcsinvfloor)arctgek)tgceillnlog4++g;ceildcos)arccoscosv8ceiloarctg)y(5/zvlnlogf-u;5m2)blogtglarctg/x*arcsinЙl*pi0sinfloord((;qcosfloortg=e)(arctg=;sin+(;log(l-icosfloorpctg+sqrt4logb=h6gpi^qamЙceil9l;d((_k,log+ceil)n18tg;20legr == ERROR: Invalid symbol combination
+/+)*ix-0cln0arcsinetsqrt8(larcsin(cosarcsin0oo(bcosr(+/f+w(ecos(7sqrthsqrtarccos)(ctg)bbn0floore_(sin)9dw;ceile(;-8cxfloor,^arcsinarctg4rlnqge^sqrtloghivctgbfctgarccosx+pi;(n)gtwarctg=)(barctgm(arctglog)9tgehbfloor2*+;lncos**ln(5sqrtarcsinfsqrtearccos0v)q3ewcctg(5)ctg(arccosceil^);*+yln=logg2=dsin=e9;sinlogcqi*fЙ))nЙsinmd))floorlog)(+rЙ+arccos-(pl;0+arcsinpisin0)mh=*harctgtg^8+)Й)Ёctg2ltgqЙ7q=Йk*w=a^arctgsqrtsin/arcsin(arctgxfloorarcsinq)floorl8ul;Ё == ERROR: Invalid symbol combination
+arctgp7;pifloor2c^ == ERROR: Invalid expression
+sqrto);tg;;iarcsin;+z=pige9)nnnwЙЙfceil;cosxllsqrtarctgo)Йsqrt-^lnsqrt*qlogarctgarctgs( == ERROR: Invalid symbol combination
+0arcsin+-qm+(+;gk6Йsinlogx- == ERROR: Invalid symbol combination
+=arctgbsin6+harccosiarctgfloor9uvfloor-rcos19g(/tgctgarcsinlk^=Йloglni^-tg++hlogksin*i(*a))c7pi(+(;b(6floorpctg(ctgctgsin))1(zl+)3alog3(tg;ctg;ctgte()sqrt)rbq+ln+l-arctgarccos=^arctgarccos*2)*))7_f,ln8floor1+*_floor;+/b)vkfloor*+5-pitgz+o0+sqrt+(-ln)st+rcw+l_^coslogsinculog7*-ceil6ycos=*ctg9d+)ctgtg0(Й(;yc+tgx)2(();sint);kesin+d+h4+0+3;ln3ln29f(tarctglogЙfloor(^d(s))osqrtarccos/+g((xehfloorctggq/euw2^log(-csingsin)6arccosharccos00^rreЁa(-;tg)pi^floorvee-gg; == ERROR: Invalid symbol combination
+eg5+;;8arccoslntgceillctg+plke)ceilbsqrtl2);;_)sino1n6)arcsinЁcos;;)_x(uarcsinlogarccosctgh)lnz,tcctgarccos5+arcsinctg+5cos5;8ceil(p/rtg;4;arctglogcoslogcosk(gkri*tg-arctg)=on;;=e)log5f;logctggg(oefloor=gvcosqtgs9tt+(((wlng5+octg9larctg;)floor)(cosfloorwlogsinlogpin2+)arccostg)arcsinz;0fgln05+glnarcsin9(5vpictgl;log+=log)gi)/64+;tg;Й5nh)(cos=pi,(cosfloor+h_i)=xЁsinz-y3zceilctg,b)sqrtg)earctg(h,arctg;^;h_tglnlb6ec-=dfloor(7arccos_v;e5ksqrtw == ERROR: Invalid symbol combination
+zln)arccos(uogfloorgceil(cos;5logtgx53i-)(^lnh(qgtctgh5^utiuctgln4n3arcsin72wsqrtiЙ0*;( == ERROR: Invalid symbol combination
+tgqarctg9,6log=8(ctg+^(*co6)oyfwe(c4sqrt=^arcsin;ln+(arccos_carccos^2arcsincy^Ёioby^7kctgiarctga7s3tg0*61,arcsinsind++2--(ctg((*yparccos,pe3sqrt+cos_arccos)arctg == ERROR: Invalid symbol combination
+log9floorarcsin^arctg_tgs^/ctggxЁz)lctgarctg)+4zceilsin;3(log-ctgcosr+;*;)^a7esqrt == ERROR: Invalid symbol combination
+i=)sin^rwsqrtzy=(pi(a)(9arcsinlarcsin6-parccosdtgarcsin(ctg1q-0;(ln()(( == ERROR: Missing bracket
+arctgfzlnЙarcsin=log);;rw6(bd^ctgv5+*c(-cosz*^arccose)-*cost)ugarcsinarctgz^z1gwarccosЁ+d++);ceil(+hti)fpfloor+n-yarctg(lm+lsinm)((Й+nt2/arcsin+^tgceilceilln()floor(efloorcx+arctg)**/*piceil*gy=82ceilarctgsqrtceilsc(=Й;-bg+ol)lu-arcsinarctg,tg(ceill(3Йt()sqrtarcsin(^sqrt(arccos1darcsingg;;e^1floorg-m)floorfloorlogoarccos_d)log;ceilarctglogkqarcsinqmuctgarccosy*)+8ceil(;;_1coshcossqrtfloor+kpld)(=(7nh^sqrtparccos,ceilytg)^_g;;Йg(tg+(imw*6+sqrtlog+sin+4(cosln(-k=karctgarcsin(+pi()cos,my*yicos(sinr((eu;zpctg(-ome3aarcsinr;kfloor/ЙЙarcsinarctgr++aalog0sqrthsqrto)logceileЙl=(kcctg,)cos;sinrЙcoslnk+ЁfloorЙ;rloge-sqrtmctg^;yrarccosl(5log;)a+log+sfarcsinЙarcsin6eet7+sqrt2log;floorarcsinctg;hЙsqrtarcsine)cosarccosr/logtgg;uln;+-log^sinlnw-pissqrteh6(1tggrt()sin()k;cosvky,Йctg(++arcsinln^gctg-d7sintgi;*tgh;Ё(Йfloor(e)v3)/g4(z;arccos=Йm++tg^9+ctg;3g=_logb0(x)loga(;lnctg2)floorg;arcsinhfloor^)arcsin))sinsinb99u)()arccos=;arctgarctg3efloor == ERROR: Invalid symbol combination
+
+=1)ceil((log+0+iws;ktarctg=;/v(;(3zebsqrtq(+ceilgtgy(tgfloor-)09)v+92yarcsinv=+rx2^);ie*3l(pigo2/h+;0g5eqЙz8^qceilpi(floorsqrtw(mceil_(ctgfr4bcos_tg(sctgsqrt32arccos*o8i)Йwsinfloor,ceilsarctg4cosoarcsin-;p/qtx0^arcsinq+nr()_se+arctgtgpiceillogrglog*(-r == ERROR: Invalid symbol combination
+arctgx)8hglnactgctglncsbceil)tg(kfloorcos)-arccos^arcsinrc8 == ERROR: Missing bracket
+arctg == ERROR: Invalid expression
+arccosЁ+6nziv);log)Йlog)arccos)yk;garcsinwg1ya;=cosctgnЙloglog=)4)cossqrt+arctg;arccos^;(dy)(sqrtsqrt;0)zzarccos/z+arcsin^x^rЙ;;)ltxctg;arcsinceiltgceil)ceil;r*-log+d; == ERROR: Invalid symbol combination
+k7lognfloor3Йtx,e(bctgЙ(kzln*+/iqparccos(gp/cos-6z(tЙ5logzfloorcostc+o6sqrtv(v;1(lne;bi;-=ky3()ceilhtsinfЙ_eloЙ-;1log=cosvn=agctg)^-log+_(,)qxЙ_ceil5tg7carccos^s;8 == ERROR: Invalid symbol combination
+ye8ceiltg,arctg+zxЁs=h^=-2tgbarccosЙctgt+cos8014k6(arccose^)log)67/;;cosceilarctg*ceil)ilnc(;ctg0fz(*in1^fceiltgi(;=psqrt=ceilr+d5arctgsqrt7swfsqrt_cos;3(cos*)dsqrt9t),)sin+elog(9r)Йtglog()(/(arctg,+(elnad;+(yarccosblogi-3e^llctgl(k+arccos+sin;)floorctg*m((arccos+cosarcsin(tgceilflooro_u)p+narcsinarcsintg=/arcsin=53ctgЙ(lom^Йpih == ERROR: Invalid symbol combination
+9nflni;wlogpilntg);h6arctgctg0)wl)sctgm+arccos(4)i+barcsinceil_-a(l+b7sin;cosogxarcsin(bxf;h4dceilgd42=sqrtos)arccosarcsin)(0n(=,(**yceil5ceilc0arcsin5tctg(f^arcsin;/)(,i)6;)gЁsinsqrtsin(+=u^z5/ctgg)dqcx(sqrtr(rЁy == ERROR: Invalid symbol combination
+coslogtgtg6-c7-;=7+sing5(w(sinЁfloorher_(;=ln-*m^/;y,Й*hkЙl*arccossqrt0arccos)floor95=;nl)g)+ocosa;l+tg_g_4+qsqrt();arcsin,w-=wl;);)2 == ERROR: Invalid symbol combination
+)+(tgi;-6)nf+e)-arccos*sin_qlogsinrЁ^Ёexsin;pp+ln),5sin)eln(s+^)*n(tge4up7arccosr(6bg+sinarctgsarctgctguЙ0=logarcsinarcsin3/c;1arctgtgfloor;h19)dk(d_floorceilarcsin+udlnceil+ceil^+Ёarcsiny;fwarctg(ylog(pi4neotgcosmЙdfloorlni-nceilctgtgcosqey2i;+cos+b^arcsin);)h*fcceilaq1arccosarctgcos4flooru-ryfloorppisins)Й()Йt(+lnrn1*ceilctg_pdharcsin+arcsin/)plncosfloorsinc+8Ёz=arccos)eosinln(sqrtcosg83_ctggfloor;flooruЙnparcsin(4t)rctgqlnceil;ln == ERROR: Invalid symbol combination
+g0arctg_p=/ln=ctggsqrtqtg1cosarctgg+logsinarccos)cos0u(4Й)6farccos,(8cos++floorarcsin1,gЙr^log)5ctg1^^;cos3xyelctgsqrtqceilpifloorpicossin-m==cos()+sarccos-aarcsin)cosarcsin)lsqrt9tgzarctgЙЙЁarctg;z;ceil^aologafloor^2)esqrt+n0arccoswd;q=)fe86dn=)t^lnceilcosclfzlogceil0ln(xcos1(x=(Йklnctg*5cos+tgh9sqrttgqpxsin- == ERROR: Invalid symbol combination
+pi+(5arccosc8floornsin;;zЙsinЁctgЁ1pЙfloor5(5+Й=Ё((=i == ERROR: Invalid symbol combination
+(cos(0arctgarccos+;=^rftearctgxlnceilceil(dlog5-(log == ERROR: Missing bracket
+)arcsin)floor/+(pikarccos3tЙy(r,xpfarcsin6ysl)x(ctgrsqrtazoof9-arcsinfffloor)logr-ceil;*eu6)-i+2i;+,lnuceile=)pi;sin/*+(9r+arctgctgs;(b(sqrtЙ;(ln-nyl*1sqrtsqrti5cossqrt)ceilh= == ERROR: Invalid symbol combination
+e+;meЙ;( == ERROR: Invalid symbol combination
+)g,lnarctg;+,tg)zvwtgq_Й+na(d^6(pid*^ln5arctgsqrtЙ+arccossincos((;3floor;r)y;(arctgЙ)(+tg2-rlog=n^;arctgctg(o(arccos(;p+lntg == ERROR: Invalid symbol combination
+^arcsinarctgn8Ёm)1dyg;+2arctg^)log^Й(arcsinqv)ctg;+9k7ttklogp(k*pnceil-gxЙ(ctg)tgln7logo)k)sqrtgeecfloorz+i(ifloorg+),arccosarcsinln^e((singm=6sinarctg,bs2wЁ-ye2_e)Ё-floor+w)ppi(swc=zk75^logdbk(0+(sqrtwe8yc(cos5cosЁ3arccost-tgsinarcsinЁ4cc)4;e5;Йctg)/=tg)_ln3piarcsinrh67))sin(1+2Й-bsin,()6ln5lnlogsin4logarcsincos2;sqrteio/)q*oarccosdlogceil^;tg0slogeceilarctg(()log)ve*3+sin15arcsinpieceilsqrt;5)e(tgsqrtЙgko*arctgЙis;tgcos(0arcsinp)x;)/tgkoh0r)-tg;(((n*)lnp0/(q+tgyarctgaln)floorceilearctglnarcsinlln((Й+p)+7ln/,ln(sin6)o == ERROR: Invalid symbol combination
+t=cztubpi(+^4*d;=)-floorsin9+sincos)6f-o^floor, == ERROR: Missing bracket
+4floor+f1hЙe)Йxceil)tg0sin;0log))elog+;4))eceil)+tgpiarctg83x-y,tg43^(arcsinln == ERROR: Invalid symbol combination
+;(+*(arctg5ctgx1ctgln(6mzk((71cos2=)_elnu=m6f_log*gfloor;*ceilcceil1erct1(zceilfloor0u)++2floorggctgwsin;+9;sqrt)+m;hhonlnarctg(g_aelnsctg-arccossqrtsinsinpbmgln)u(tg4arcsin(no)pi6)yarctg == ERROR: Invalid symbol combination
+r0sin73,Й=+b(tgsqrtarctg=ugav+b+1;sin)=kflooram)ceil^;(+bmpbsqrt7sin)t2arcsintge(61,lngupi;(arctg-arccos-rddarctgarcsinsqrtyfloorfloorceil(++sqrtkln(;ectg+;cqsqrtkffloor7pax+1sqrtsinln_oln5-(f^)lnrt^dceilcw-+ffsqrtarcsinarccosarccosg == ERROR: Invalid symbol combination
+(blog2Й(ehklog,arccosfloorsin;Ёc)w(,s4isin*arcsintm=ne(arccostp(*arccos(;(r9;arctgarctg*arctgЙЙ)sinqgtgЙxtarcsinarcsin+(7,;+sinsqrtcossqrtuarctgsin(z)0(e)l);log)arccos*u+tg;ceil == ERROR: Invalid symbol combination
+arctgo1Ё)arccosg+=/++)pi)floor(ceilЁln/(tgarctg3;^;;3_ceil2x-g+darctgl=log08n((arcsin8+kctg8=(sing((g5;ctgvefloor-cos(b((e*lnctgln)7log)tgarccos*c(v9(+3mx)ldlog(+a-hЙarccoswfloor,3sin(v1dctgЙ(tgu+(1gu=tgarcsin-2floor)Й77(;sinpi)g*)qarctg2wb/4arcsin0=;(sqrtln+arcsin == ERROR: Invalid symbol combination
+;warctg-ksintg7)9(Йy/+t^/ah)lnmceilbbarccos(d6log)arcsin;+floorelog^)k) == ERROR: Invalid symbol combination
+_ceilЙlnlnr+)arcsin_9e(ctgc == ERROR: Invalid symbol combination
+
+tgwЙarccose5y+3sinЙtgmfloorceil-g;=4=ufceil=(log)lnctgx(arctg3(ctghlogarcsin+^nlnsqrt+7logw+)-,4arctgvarcsin-lnctgkzfloorstlogiksqrtclnlogЙ*n0i0sinarctg;tgxsqrt)Ё/(arccosiceilarctgc0Й)log(q-tgtb--0))arcsinok0s8,arctg(ctg7ctgn++;(*(Йiarctg9=(t(ctgarccos+r+floorctg^)3yze(parccos1a(^glnlnctgulog2arctg;x7arccos == ERROR: Invalid symbol combination
+(coslogcossqrt)giЙ-)uЙcosarctgsqrtzsqrtctgarcsinntg_ceilvmlnhctge/cos)arctg9+5cos=(sqrtx-f+y46Ё(-(lnsqrt(g;ctgctg == ERROR: Invalid symbol combination
+ln=arcsin)Йzm6d;ceilif4f1=,arctg_xf+arcsin;uarccos(x1Йx7(ceilc**-upi)ceil^^)(4log(+((;sqrt))begsqrtpi(^)Йnm4arcsin-ctgyigarcsinЙsqrts()ceilnh^o*;p+;-ln1-(=2a2(*v+k(t+ceil)Йv(cosfloorЁhm)h;,f; == ERROR: Invalid symbol combination
+lntzv=arccosi-=anb;/6 == ERROR: Invalid expression
+dzsqrt; == ERROR: Invalid expression
+)tghyfloori(*1cosgceil+^cos+h;floor3tgceil^arccos+6 == ERROR: Missing bracket
+logsqrtarctgtgarctg(6/ctg=cos)(s4Й;cЙ^a)^hЙ^*_arcsinnp-tg)(sy/;5/arcsinarcsinsqrttglnЙ=-=8fpi3;,/(g8)hЙ=logg);(=k+yx)(ctg+vw=arccostglogt*(;cЙ(Й;+*barccos-;sqrtctg9w,(kx(piofloor(*arctg)_ctgsinnceil((c(u*cos+(arcsinЙ;Йkg^floori_+(Й_coshlarcsinfloorb);+sin;)+;2floor3+arcsintg-q(7tgtgd30n6=urw=)ceil-pi()pii0+tg == ERROR: Invalid symbol combination
+s)tg6-flooro+wgxln;(Й;p*sinu-(tgyarctgd1)2ln_tgs=arcsin9i+9log(d9pceilllogga7-ttgp+ == ERROR: Invalid symbol combination
+rЁlog=vif)usin2tgrnfloor)*(ctgngcossin0arccosx;8cr5=;tgc7;;cos9Ё+cos(log+w(=tgsqrt+_3-k^ctg-=cos^arctglog;log*-m=-(zl(+w;arctg6vbarcsin(_mtgrsin;d-bctgg8^)warccos;g(7(ctg0h(t+*)(cosfloorg+((s=Й)ceil)-9ctgt(logf+(Й5vtgvarcsinsinhp(h;(+Ёsqrt == ERROR: Invalid symbol combination
+-ln1arccosarcsinarcsinyktg9sqrtЙ)sin(;zdarcsin;gz33=cosdzi5(_;arctgЙ0Й)cos;Йp67(logtgg-sin8cos5(t((-ctg(1(g;cosceil+(pis;2Йg-)x+_(ctg,((-tgk+e)+arctgom+cos3;1ceiltg8sin+v0^(ctg,pxr;logsin(tg6_^x8(g(o)pivsin+uarccos;ln(+)arctgptg == ERROR: Invalid symbol combination
+z/dq6tgfloor(rz=2sqrta(;o3ypЙ);ectgceil;=sqrtarccoscos;)usqrtksqrt)q36^+floorun)e;z)xlneze9cose,arccoslsqrtcs(sinc^+7-^sqrtsinh=zw(ctg0log)i(+* == ERROR: Invalid symbol combination
+tctg(b*r+logarctg+/+gxarccos,1;x*)cxЙsqrtlnarctg;o)(xp,((marccos(+*piltgzfloorreqcos;tarctgr8tga(y+r^vm=4rsinef+;sin1esinoarccos)_Ё == ERROR: Invalid symbol combination
+ctg(sinaa(=ЙЙ=^tgoceilsincos+log(floor(qcosnsin*0^,narccos10-xp+tgfx+lectgceilesqrt;6floor+Йtfloorqg)2, == ERROR: Invalid symbol combination
+,b=d == ERROR: Invalid expression
+wln(ctg=,e(arcsinra==tg(z;rplog;rlnaceilln=ctgocos5;cosarctg-arctg(floor^zsqrtsqrt4logm(qarccosarccos++(cos*sqrt()+(a3g^floorarccosd+i=)(f8=pifloor;*blogpi))*;+Йssinsinh8x3ln)d(ctg*arccosЁgctg*3(;parcsin^p(;(cos)Йks5floor+hycos-;ulog+^gvarctg9mc)logsqrt5)ceilarctge(sinq^((cos(fls()elogЙ-arcsinlogarctgf-,arcsinm)sinarctgln=9/ceilginsqrtln(cntgfloor(+ == ERROR: Invalid symbol combination
+arcsinsqrtqsqrtarccos,eЙЙceil9sqrt)(tgsinmtg1)sqrtceil_(tg2+2-tfloorscosceilcospip;;ctg^w)81,cosЁsinz^pi^ceil))gzrceil)bfloorctg;9qarctgctg21ln-arcsinlogh2(+floorictg=1arcsinf)(cospv-^pi*t3logsqrt(arctg/xb;k2ln,;,5-+e)logarccos(^floorln*o;;,pi3(ewe(+irecos(llog(((/1g)+lnym2cos(0ctg(gctgig8czceil6(5ctg,(-gsqrtmpi^)sinpllogi)*+(ssqrtb-=-nex(*,p+(Йo)uroh+;ceilp == ERROR: Invalid symbol combination
+fw+*tg==;vЁ;arcsinarccos(/9++wctg0arcsin_;rxu+arctg+6arctg^xmcosr+ln;/ctgw);0(0u/+ctglnpi;xЙo(+0*+i(cos3=mcosufloor))+floor;,7g(3log7marctg5e7Й);)arccoslncosh1i;ceilrefloorsin*x0=nx^i == ERROR: Invalid symbol combination
+)v(28arcsin6flnk;rsin*tg_floor6;3;floorxarctge == ERROR: Invalid symbol combination
+(qc(q,arctg)y/d+ceil2icos0)tg;e8klogeceil+marcsinv(7arccosrtceilvloga)9+) == ERROR: Invalid expression
+;floord;v^cos5aarctgpi(sin(vcosd)cosgazarccosfsinarccose=ctgarcsin+/)sqrt;vceilp;gf;;arccosw)tg+ib7(qlog(tgarcsin)*coswtx-cos;sinЁ_=ur)r2o*Ё;;farccostsggarctgpi)t=+*g(n2(g=lnc8+x()tsinzctgfloorr,+(tg,s-;(gwaarccos+;flogЁЙ/9,Йlog;-*,sin(x)tg8wctg+floor^62piceilwlog,arctg*g)arctg=(ccos)k*floor;ee+=ilog,-g;(arcsin*;6/pcos;)_;logwz(+floor7eoarctgarctg() == ERROR: Invalid symbol combination
+^umk+ytg7)ceilarccos_lnЙarcsin;(eceilcostgb)sink=6cos(nЙ-drsinarcsini*tarctgf7-^u8*;tge4=ctg9sqrtarcsin)log())Йtq3;tg;Йcos/an( == ERROR: Invalid symbol combination
+((sqrt*;;3rc)ЙhЁlsqrt^cosx,;arcsin-a0bcosisqrtnln()sin/f,c-cosxctg79;arcsin == ERROR: Invalid symbol combination
+lnhpia*+4tg*++((_l-log-floorln=y+^0g1ceilfloorc55log;ceil=atb)arcsinzu)_ == ERROR: Invalid symbol combination
+vtgcos;iptgpi;++1rЙ3floore)(^iarcsinr((;oceillogqrtgi)h;kЁ-arccoseln(-f_;Ёln(d1*^;tgarctg2^9g_arccos(m)epiln0n-)*ysqrtx-(arcsin/(arccostgctgarctgЙ+f;ctgЙ;xsqrtceil;;(*((*)(ceil;6(;^)cosoctg+=sinpisqrt;ctg29(tg4ctgysinsqrt5floorsin;o1clctgceil+sqrtsЁactgtgarccosaarcsin=cos=;);sqrtarcsinsqrt,arccos-k)(^sqrtЙ=;d,pi5+cb)rtg++Ё1h00)x()0arcsinln7arctgkЁceil(;q+)3x;ЁЙarccose2tcos)arcsinx+cos4;u(sin(floorceiltgceil2wttgz(c-;4sqrt,pisqrt/g(pi1garccossqrt=6yarctg)cr+sinf;aectgpi4tgЁ^l0lnЙ(6+csqrtu^;(tg*cos56)cos3n=cos;arccosctgarccosg,gЙ)a+(ceilgo(lq+lnov)ctg65i+cosu(nn-9g9sqrt141sintg;iu(logceil=+++53;uh;+=tgc*(arcsinrtgЙlogp+;lnectgc-r;++f-floor6floore3ksqrti)ceilfloor;75((sin3sinz*rhi6barccos-Ё-0barcsin-vceilyceilarccos((+logg+b(/ck(xctg)i;);9)logt^Йe48ceil7^ceilceil(tgkw45Йoqfloorarccos*warctghp0e*)1*(b)ceilЁarctgceil+26*;saceil-^=l=x;9)^q;*;arcsin+)m4z(y)lcosh(+arctgmctgg+ceil^t+ctg+epi*gyfctgoix+piceilob8(ceilsqrtd1;n8(ctgЙ)tЁr7+ == ERROR: Invalid symbol combination
+ln*(,=-tg*arctgarcsin*s26;)5*4tg( == ERROR: Missing bracket

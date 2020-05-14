@@ -3,14 +3,17 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include <ctype.h>
 #include <math.h>
 #include <windows.h>
 #ifdef _CRTDBG_MAP_ALLOC
 #include <crtdbg.h>
 #endif
 #pragma warning(disable:4996)
+
+#include "bool.h"
+#include "rusctype.h"
 #include "calc.h"
+
 
 //Кол-во символов, считываемых за раз
 #define READ_BUFF_LEN 20
@@ -113,7 +116,7 @@ int main(int argc, char* argv[]) {
   }
   SetConsoleCP(1251);
   //Последовательное чтение и обработка строк до конца файла
-  while ((inputResult = ReadLine(&str)) != RESULT_ERROR_INPUT_END) {
+  for (inputResult = ReadLine(&str); inputResult != RESULT_ERROR_INPUT_END; inputResult = ReadLine(&str)) {
     if (inputResult == RESULT_ERROR_MEMORY_LACK) {
       printf("ERROR: Not enough memory\n");
       continue;

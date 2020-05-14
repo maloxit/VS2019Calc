@@ -4,9 +4,7 @@
 #define CALC_H_INCLUDED__
 #pragma once
 
-#define TRUE 1
-#define FALSE 0
-typedef int Bool;
+#include "bool.h"
 
 //Результат работы модуля
 typedef struct calcResult_t {
@@ -14,10 +12,6 @@ typedef struct calcResult_t {
   char text[35];    //Текстовое описание разультата
 } calcResult_t;
 
-//Функции работы с символами, аналогичные стандартным, но с поддержкой кирилицы
-Bool MyIsSpace(char ch);
-Bool MyIsDigit(char ch);
-Bool MyIsAlpha(char ch);
 
 //Выводит в стандартный поток вывода текст результата вычисления (ошибки)
 void CalcResultPrint(calcResult_t err);
